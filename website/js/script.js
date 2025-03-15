@@ -1,9 +1,11 @@
 // user log in
-let username
-let password
+let username = "aweasd"
+let password =" asdsff"
 
 // menu
 const menu = document.getElementsById("usermenu")
+const nouser = document.getElementById("nouser")
+const withuser = document.getElementById("withuser")
 
 // profile log in
 function checkprofile() {
@@ -18,7 +20,7 @@ function checkprofile() {
         // check
         if (username && password) {
             // my profile and log out
-            menu.innerHTML = "<a href='login.php'>My Profile</a>"
+            withuser.document.style.display = "block"
 
             // show profile and log out
 
@@ -28,6 +30,7 @@ function checkprofile() {
             // sign up and login
 
             // show profile and log out
+            withuser.document.style.display = "block"
 
             // style
         }
