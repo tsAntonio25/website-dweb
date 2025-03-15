@@ -176,7 +176,7 @@ a .btn:hover {
     color: var(--button);
     background-color: var(--secBg);
     transition: 300ms;
-    font-weight: 600;
+    
 }
 
 
@@ -193,7 +193,7 @@ a .btn-secondary:hover {
     color: var(--navBg);
     background-color: var(--mainBg);
     transition: 300ms;
-    font-weight: 600;
+    
 }
 
 
