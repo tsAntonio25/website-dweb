@@ -448,6 +448,80 @@ input.submit:hover {
 
 }
 
+/********---------------SIGNUP.PHP---------------********/
+.signup-section h1{
+    margin-top: 1.5em;
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.signup-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2em;
+}
+
+.signup-section form {
+    background-color: var(--navBg);
+    padding: 2em;
+    border-radius: 10px;
+    max-width: 500px;
+    width: 100%;
+    margin-top: 1.5em;
+}
+
+.form-group {
+    margin-bottom: 1.5em;
+    margin-left: 0.8em;
+}
+
+.form-group h3{
+    color: var(--mainBg);
+    margin-bottom: 1.5em;
+    font-size: 1.5em;
+    text-align: center;
+    text-decoration: underline;
+    font-style: italic;
+}
+
+.group2 {
+    margin-top: 2em;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5em;
+}
+
+.column1, .column2 {
+    width: 50%;
+}
+
+.column1 input[type=text], .column2 input[type=text]{
+    width: 85%!important;
+    margin-right: 1em;
+}
+
+.signup-section label {
+    font-weight: bold;
+    display: block;
+    margin: 0.5em 0;
+}
+
+.signup-section input[type=text] {
+    width: 92%;
+    padding: 0.8em;
+    border: 1px solid var(--button);
+    border-radius: 4px;
+    margin-bottom: 0.5em;
+}
+
+
 /*footer*/
 footer {
     background-color: var(--footerBg);
