@@ -1,9 +1,9 @@
 // user log in
-let username = "aweasd"
-let password =" asdsff"
+let username
+let password 
 
 // menu
-const menu = document.getElementsById("usermenu")
+const menu = document.getElementById("usermenu")
 const nouser = document.getElementById("nouser")
 const withuser = document.getElementById("withuser")
 
@@ -22,19 +22,15 @@ function checkprofile() {
         // check
         if (username && password) {
             // my profile and log out
-            withuser.document.style.display = "block"
-
-            // show profile and log out
-
-            // style
+            withuser.style.display = "block"
+            nouser.style.display = "none"
+            console.log("may user")
 
         } else {
             // sign up and login
-
-            // show profile and log out
-            withuser.document.style.display = "block"
-
-            // style
+            nouser.style.display = "block"
+            withuser.style.display = "none"
+            console.log("walang user")
         }
     }
 }
