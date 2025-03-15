@@ -91,7 +91,7 @@ nav ul li a {
     cursor: pointer;
 }
 
-.usermenu {
+#usermenu {
     display: none;
 }
 
