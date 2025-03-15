@@ -13,7 +13,7 @@
 <section class = "contact-section">
     <h1>Contact</h1>
 
-    <div class="contact-container">
+    <div class="contact-container-whole">
         <div class="contact-details">
 
             <h2>Contact Details</h2>
@@ -40,6 +40,7 @@
                     <span>@thegaragecars</span>
                 </div>
             </div>
+        </div>
         <div class="contact-form">
             <form action="/action_page.php">
                 <label for="name">Name</label><br>
@@ -51,7 +52,7 @@
                 <label for="message">Message</label><br>
                 <input type="text" id="message" name="message" value="message"><br><br>
 
-                <input type="submit" value="Submit">
+                <input type="submit" value="Submit" class="submit">
             </form>
         </div>
     </div>
