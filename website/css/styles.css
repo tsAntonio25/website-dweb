@@ -90,6 +90,10 @@ nav ul li a {
     font-size: 50px;
 }
 
+.usermenu {
+    display: none;
+}
+
 
 /* hero */
 section {
