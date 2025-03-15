@@ -170,6 +170,7 @@ a .btn {
     border: 2px solid var(--footerBg);
     text-transform: uppercase;
     color: var(--secBg);
+    cursor: pointer;
 }
 
 a .btn:hover {
@@ -187,6 +188,7 @@ a .btn-secondary {
     border: 2px solid var(--button);
     text-transform: uppercase;
     color: var(--mainBg);
+    cursor: pointer;
 }
 
 a .btn-secondary:hover {
