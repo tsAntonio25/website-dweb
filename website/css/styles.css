@@ -242,8 +242,16 @@ a .btn-secondary:hover {
 }
 
 .team-container {
+    color: var(--secBg);
     display: flex;
     flex-direction: row;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.team-member {
+    text-align: center;
 }
 
 
