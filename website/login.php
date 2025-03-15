@@ -27,7 +27,7 @@
                     <label for = "password"> Password </label>
                     <input type = "password" id = "password" name = "password" required>
                     
-                    <a href = "#" class = "alt-login"> Sign in instead...</a>
+                    <a href = "signup1.php" class = "alt-login"> Sign in instead...</a>
 
                     <input type="submit" value="Log In" class="submit">
                     </form>
