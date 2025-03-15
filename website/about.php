@@ -41,7 +41,7 @@
             </div>
             <div class = "team-member">
                 <img src = "" class = "team-img"/>
-                <p>Lorin Yambao</p>
+                <p>Lorin Robelle Yambao</p>
             </div>
         </div>
     </section>
