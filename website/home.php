@@ -45,7 +45,7 @@ $featuredCars = [
             <?php foreach ($recentRentals as $car) : ?>
                 <div class="car-box">
                     <div class="car-image"></div>
-                    <p><?= $car['name']; ?></p>
+                    <p><?= $car['name']; ?></p><br/>
                     <p class="availability"><?= $car['availability']; ?></p>
                 </div>
             <?php endforeach; ?>
