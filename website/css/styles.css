@@ -303,7 +303,7 @@ a .btn-secondary:hover {
     padding: 2em;
     border-radius: 8px;
     max-width: 400px;
-    text-align: left;
+    text-align: center;
 }
 
 .contact-details {
@@ -317,7 +317,7 @@ a .btn-secondary:hover {
     background-color: var(--secBg);
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input[type=text], .contact-form textarea {
     width: 90%;
     padding: 1em;
     margin-top: 5px;
@@ -328,14 +328,15 @@ a .btn-secondary:hover {
 }
 
 input.submit {
-    width: 40%!important;
     margin: 0 auto;
+    padding: 1em;
     background-color: var(--button);
     border-radius: 10px;
     border: 2px solid var(--footerBg);
     text-transform: uppercase;
     color: var(--secBg);
     cursor: pointer;
+    
 }
     
 input.submit:hover {
