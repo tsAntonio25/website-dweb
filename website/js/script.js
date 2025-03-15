@@ -18,8 +18,7 @@ function checkprofile() {
         // check
         if (username && password) {
             // my profile and log out
-            optn1.innerHTML = "My Profile"
-            optn2.innerHTML = "Log Out"
+            menu.innerHTML = 
 
             // show profile and log out
 
