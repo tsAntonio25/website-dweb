@@ -503,8 +503,7 @@ input.submit:hover {
 }
 
 .column1 input[type=text], .column2 input[type=text]{
-    width: 85%!important;
-    margin-right: 1em;
+    width: 88%!important;
 }
 
 .signup-section label {
@@ -514,7 +513,7 @@ input.submit:hover {
 }
 
 .signup-section input[type=text] {
-    width: 92%;
+    width: 94%;
     padding: 0.8em;
     border: 1px solid var(--button);
     border-radius: 4px;
