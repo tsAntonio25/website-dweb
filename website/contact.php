@@ -44,13 +44,13 @@
         <div class="contact-form">
             <form action="/action_page.php">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="name"><br>
+                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz"><br>
 
                 <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" placeholder="email"><br>
+                <input type="text" id="email" name="email" placeholder="E-mail"><br>
 
                 <label for="message">Message</label>
-                <textarea name="message" rows="6″ cols="20″>message</textarea><br><br>
+                <textarea name="message" rows="6″ cols="20″ placeholder="Enter message"></textarea><br><br>
 
                 <input type="submit" value="Submit" class="submit">
             </form>
