@@ -569,6 +569,11 @@ input.submit:hover {
     border-radius: 10px;
 }
 
+.car-box p {
+    color: var(--secBg)!important;
+    display: flex;
+    flex-direction: column;
+}
 .car-image{
     background: url(../assets/background.jpg);
     background-size: cover;
