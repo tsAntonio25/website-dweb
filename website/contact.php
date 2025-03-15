@@ -21,23 +21,23 @@
 
             <div class="contact-container">
                 <div class="contact-item">
-                    <img src="" alt="">
-                    <span>thegarage@gmail.com</span>
+                    <img src="assets/email.svg" alt="email icon">
+                    <span><a href="mailto:thegarage@gmail.com">thegarage@gmail.com</a></span>
                 </div>
 
                 <div class="contact-item">
-                    <img src="" alt="">
-                    <span>0912 345 6789</span>
+                    <img src="assets/phone.svg" alt="phone icon">
+                    <span><a href="tel:+639123456789">0912 345 6789</a></span>
                 </div>
 
                 <div class="contact-item">
-                    <img src="" alt="">
-                    <span>thegarage</span>
+                    <img src="assets/fb.svg" alt="facebook icon"></a>
+                    <span><a href="https://www.facebook.com/holyangel1933" target="_blank">thegarage</a></span>
                 </div>
 
                 <div class="contact-item">
-                    <img src="" alt="">
-                    <span>@thegaragecars</span>
+                <img src="assets/ig.svg" alt="instagram icon">
+                    <span><a href="https://www.instagram.com/holyangel1933/">@thegaragecars</a></span>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                 <input type="text" id="email" name="email" placeholder="email"><br>
 
                 <label for="message">Message</label>
-                <input type="text" id="message" name="message" placeholder="message"><br><br>
+                <textarea name="message" rows="6″ cols="20″>message</textarea><br><br>
 
                 <input type="submit" value="Submit" class="submit">
             </form>

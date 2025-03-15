@@ -321,8 +321,28 @@ form label {
 
 .contact-details p {
     color: var(--navBg)!important;
+    margin: 1.5em 0 1.5em 1em;
 }
 
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    margin-left: 2em;
+}
+
+.contact-item a {
+    text-decoration: none;
+    color: var(--secBg);
+    font-weight: 500;
+    font-style: italic;
+}
+
+.contact-item img {
+    width: 24px;
+    height: 24px;
+}
 .contact-form input[type=text], .contact-form textarea {
     width: 90%;
     padding: 1em;
@@ -350,6 +370,7 @@ input.submit:hover {
     transition: 300ms ease-in-out;
     font-weight: 600;
 }
+
 
 /*footer*/
 footer {
