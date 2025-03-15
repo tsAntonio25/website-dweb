@@ -192,7 +192,7 @@ a .btn-secondary {
 a .btn-secondary:hover {
     color: var(--navBg);
     background-color: var(--mainBg);
-    transition: 300ms 300ms ease-in-out;
+    transition: 300ms ease-in-out;
     font-weight: 600;
 }
 
