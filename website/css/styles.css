@@ -476,7 +476,7 @@ input.submit:hover {
 
 .form-group {
     margin-bottom: 1.5em;
-    margin-left: 0.8em;
+    text-align: center;
 }
 
 .form-group h3{
