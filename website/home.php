@@ -32,7 +32,7 @@ $featuredCars = [
     <section class="hero">
         <div class="hero-content">
             <h1>Tagline</h1>
-            <button>Explore Cars</button>
+            <a href = "carlisting.php"><button class = "btn">Explore Cars</button></a>
             <div class="dots">
                 ● ● ● ●
             </div>
@@ -65,8 +65,6 @@ $featuredCars = [
         </div>
     </section>
 
-    
-        <!-- footer -->
     <footer>
         <?php include 'footer.php' ?>
     </footer>

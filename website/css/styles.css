@@ -520,6 +520,24 @@ input.submit:hover {
     margin-bottom: 0.5em;
 }
 
+/********---------------HOME.PHP---------------********/
+.recent-rentals, .featured-cars {
+    padding: 4em;
+    text-align: left;
+    height: 80vh;
+}
+
+.recent-rentals {
+    background-color: var(--mainBg);
+    color: var(--secBg)!important;
+}
+
+.featured-cars {
+    background-color: var(--secBg);
+    color: var(--mainBg);
+}
+
+
 
 /*footer*/
 footer {
