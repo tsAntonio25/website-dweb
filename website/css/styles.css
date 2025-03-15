@@ -175,8 +175,8 @@ a .btn {
 a .btn:hover {
     color: var(--button);
     background-color: var(--secBg);
-    transition: 300ms;
-    
+    transition: 300ms ease-in-out;
+    font-weight: 600;
 }
 
 
@@ -192,8 +192,8 @@ a .btn-secondary {
 a .btn-secondary:hover {
     color: var(--navBg);
     background-color: var(--mainBg);
-    transition: 300ms;
-    
+    transition: 300ms 300ms ease-in-out;
+    font-weight: 600;
 }
 
 
@@ -242,16 +242,8 @@ a .btn-secondary:hover {
 }
 
 .team-container {
-    color: var(--secBg);
     display: flex;
     flex-direction: row;
-    gap: 40px;
-    flex-wrap: wrap;
-    margin-top: 20px;
-}
-
-.team-member {
-    text-align: center;
 }
 
 
