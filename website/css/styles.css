@@ -272,6 +272,26 @@ a .btn-secondary:hover {
     margin: 0 auto;
 }
 
+/********---------------CONTACT.PHP---------------********/
+/* Contact Section */
+.contact-section {
+    padding: 5em;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.contact-container {
+    
+}
+
+.contact-details p {
+    color: var(--navBg) !important;
+}
+.contact-form {
+    background-color: var(--secBg);
+}
+
+
 
 /*footer*/
 footer {

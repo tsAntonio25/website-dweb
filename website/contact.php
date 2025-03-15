@@ -13,48 +13,51 @@
 <section class = "contact-section">
     <h1>Contact</h1>
 
-    <div class="gallery">
-        <img src="photo1.jpg" alt="Photo 1">
-    </div>
+    <div class="contact-container">
+        <div class="contact-details">
 
-        <h2>Contact Details</h2>
-        <p>Have questions or need help? Contact The Garage, your reliable car rental provider. We're here to help with reservations, queries, and more!</p>
+            <h2>Contact Details</h2>
+            <p>Have questions or need help? Contact The Garage, your reliable car rental provider. We're here to help with reservations, queries, and more!</p>
 
-        <div class="contact-container">
-            <div class="contact-item">
-                <img src="" alt="">
-                <span>thegarage@gmail.com</span>
+            <div class="contact-container">
+                <div class="contact-item">
+                    <img src="" alt="">
+                    <span>thegarage@gmail.com</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="" alt="">
+                    <span>0912 345 6789</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="" alt="">
+                    <span>thegarage</span>
+                </div>
+
+                <div class="contact-item">
+                    <img src="" alt="">
+                    <span>@thegaragecars</span>
+                </div>
             </div>
+        <div class="contact-form">
+            <form action="/action_page.php">
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name" value="name"><br>
 
-            <div class="contact-item">
-                <img src="" alt="">
-                <span>0912 345 6789</span>
-            </div>
+                <label for="email">E-mail</label><br>
+                <input type="text" id="email" name="email" value="email"><br>
 
-            <div class="contact-item">
-                <img src="" alt="">
-                <span>thegarage</span>
-            </div>
+                <label for="message">Message</label><br>
+                <input type="text" id="message" name="message" value="message"><br><br>
 
-            <div class="contact-item">
-                <img src="" alt="">
-                <span>@thegaragecars</span>
-            </div>
+                <input type="submit" value="Submit">
+            </form>
         </div>
+    </div>
 </section>
 
-    <form action="/action_page.php">
-        <label for="name">Name</label><br>
-        <input type="text" id="name" name="name" value="name"><br>
-
-        <label for="email">E-mail</label><br>
-        <input type="text" id="email" name="email" value="email"><br>
-
-        <label for="message">Message</label><br>
-        <input type="text" id="message" name="message" value="message"><br><br>
-
-        <input type="submit" value="Submit">
-    </form>
+    
 
     <footer>
         <?php include 'footer.php' ?>
