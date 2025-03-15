@@ -18,7 +18,20 @@
                 </li>
             </ul>
         </nav>
-        <div id="usermenu"></div>
+        <div id="usermenu">
+            <div class="menu-container">
+
+                <div class="nouser" id="nouser">
+                    <a href="">Sign Up</a>
+                    <a href="">Log In</a>
+                </div>
+
+                <div class="withuser" id="withuser">
+                    <a href="">My Profile</a>
+                    <a href="">Log Out</a>
+                </div>
+            </div>
+        </div>
         <script src="script.js"></script>
     </body> 
 </html>

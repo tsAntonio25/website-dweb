@@ -93,8 +93,22 @@ nav ul li a {
 
 #usermenu {
     display: none;
+    background-color: #1C1C1C;
+    z-index: 2;
 }
 
+.nouser {
+    display: none;
+}
+
+.withuser {
+    display: none;
+}
+
+
+.nouser, .withuser {
+    
+}
 
 /* hero */
 section {
