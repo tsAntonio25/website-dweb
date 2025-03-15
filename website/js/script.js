@@ -3,11 +3,7 @@ let username
 let password
 
 // menu
-const menu = document.getElementsByClassName("usermenu")
-
-// 
-let optn1 = document.getElementById('optn1')
-let optn2 = document.getElementById('optn2')
+const menu = document.getElementsById("usermenu")
 
 // profile log in
 function checkprofile() {
@@ -22,8 +18,7 @@ function checkprofile() {
         // check
         if (username && password) {
             // my profile and log out
-            optn1.innerHTML = "My Profile"
-            optn2.innerHTML = "Log Out"
+            menu.innerHTML = 
 
             // show profile and log out
 
