@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - The Garage</title>
     <link rel="stylesheet" href="\css\styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 </head>
 <body>
     <header>
@@ -16,9 +18,9 @@
         <div class = "login-container">
             <div class = "login-box">
                 <div class = "avatar">
-                    <i class = "fas fa-user-circle"></i>
+                    <i onclick="checkprofile()" class="fa fa-user-circle-o"></i>
                 </div>
-                <form>
+                <form class="login-form">
                     <label for = "email"> Email </label>
                     <input type = "email" id = "email" name = "email" required>
                     
@@ -27,10 +29,9 @@
                     
                     <a href = "#" class = "alt-login"> Sign in instead...</a>
 
-                    <button type = "submit"> LOG IN </button>
-                </form>
+                    <input type="submit" value="Log In" class="submit">
+                    </form>
 
-                <p><em>Sign in instead...</em></p>
             </div>
         </div>
     </main>

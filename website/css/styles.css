@@ -147,7 +147,7 @@ div.featured-content{
 
 
 .featured-text p {
-    color: var(--secBg);
+    color: var(--secBg)!important;
 }
 
 .firstp {
@@ -386,6 +386,51 @@ input.submit:hover {
     font-weight: 600;
 }
 
+/********---------------LOGIN.PHP---------------********/
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login-box {
+    background-color: var(--navBg);
+    padding: 2em;
+    border-radius: 8px;
+    margin-top: 12em;
+    text-align: center;
+    width: 350px;
+}
+
+.avatar i {
+    font-size: 80px;
+    color: var(--mainBg);
+    margin-bottom: 0.5em;
+}
+
+.login-box input {
+    width: 90%;
+    padding: 0.8em;
+    margin: 0.5em 0;
+    border: 1px solid var(--button);
+    border-radius: 5px;
+}
+
+.alt-login {
+    display: block;
+    font-size: 0.9em;
+    margin: 0.5em;
+    text-decoration: none;
+    color: var(--button);
+    text-align: left;
+}
+
+.login-box input.submit {
+    margin-top: 1.5em;
+    width: 40%!important;
+
+}
 
 /*footer*/
 footer {
