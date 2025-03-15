@@ -18,5 +18,6 @@
                 </li>
             </ul>
         </nav>
+        <script src="script.js"></script>
     </body> 
 </html>
