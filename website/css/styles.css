@@ -97,6 +97,11 @@ nav ul li a {
     z-index: 2;
 }
 
+.menu-container {
+    background-color: var(--navBg);
+    border: 1px solid var(--footerBg);
+}
+
 .nouser {
     display: none;
 }
@@ -107,7 +112,7 @@ nav ul li a {
 
 
 .nouser, .withuser {
-    
+    color: var(--mainBg);
 }
 
 /* hero */
