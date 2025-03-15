@@ -563,7 +563,7 @@ input.submit:hover {
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
-    background-color: var(--button);
+    background-color: var(--navBg);
     margin: 5em auto;
     border-radius: 10px;
 }
