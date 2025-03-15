@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* vars */
+:root {
+    
+    /*colors*/
+    --mainBg: #302C2C;
+    --secBg: #F0F0F0;
+    --navBg: #D9D9D9;
+    --footerBg: #1C1C1C;
+    --button: #707070;
+
+    /*fonts*/
+    --header: 'Roboto' , Arial, sans-serif;
+}
+
+/* all */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--header);
+    color: var(--secBg);
+    background-color: var(--mainBg);
+}
+
+/* header */
+div.logo {
+    display: flex;
+    align-items: center;
+}
+
+div.logo img {
+    height: auto;
+    width: 120px;
+}
+
+/* nav */
+header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 0.5em;
+    background-color: var(--navBg);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+header h2 {
+    color: var(--footerBg);
+}
+
+.logo a {
+    text-decoration: none;
+}
+
+nav.headerNav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+nav.headerNav li{
+    display: inline;
+    padding: 1.2em;
+    font-weight: 800;
+}
+
+nav ul li {
+    list-style-type: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    padding-right: 2em;
+    color: var(--footerBg);
+}
+
+.fa {
+    color: var(--footerBg);
+    font-size: 50px;
+}
+
+
+/* hero */
+section {
+    position: relative;
+    top: 7em;
+}
+
+section.hero {
+    background: url(../assets/background.jpg);
+    background-size: cover;
+    height: 83vh;
+    display: flex;
+    justify-content: center; 
+    align-items: flex-end; 
+    position: relative;
+}
+
+section.hero button {
+    margin-bottom: 2em;
+}
+
+
+/* featured */
+section.featured, div.featured-content {
+    height: 100vh;
+}
+
+div.featured-content{
+    display: flex;
+    flex-direction: row;
+}
+
+.featured-text {
+    padding: 6em 3em;
+}
+
+
+.featured-text p {
+    color: var(--secBg);
+}
+
+.firstp {
+    margin-top: 3em;
+}
+
+.featured-image {
+    background: url(../assets/background.jpg);
+    height: 80vh;
+    width: 50%;
+    margin: 3em;
+}
+
+.cta {
+    background-color: var(--secBg);
+    height: 80vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cta h2, p {
+    color: var(--mainBg);
+    padding-bottom: 1em;
+}
+
+.cta p {
+    padding: 1.5em;
+}
+
+/*buttons*/
+
+a .btn {
+    padding: 1em 3em;
+    background-color: var(--button);
+    border-radius: 10px;
+    border: 2px solid var(--footerBg);
+    text-transform: uppercase;
+    color: var(--secBg);
+}
+
+a .btn:hover {
+    color: var(--button);
+    background-color: var(--secBg);
+    transition: 300ms;
+    font-weight: 600;
+}
+
+
+a .btn-secondary {
+    padding: 1em 3em;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 2px solid var(--button);
+    text-transform: uppercase;
+    color: var(--mainBg);
+}
+
+a .btn-secondary:hover {
+    color: var(--navBg);
+    background-color: var(--mainBg);
+    transition: 300ms;
+    font-weight: 600;
+}
+
+
+/********---------------ABOUT.PHP---------------********/
+.about-section {
+    padding: 5em;
+}
+
+.about-section h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+.aboutp {
+    color: var(--secBg)!important;
+}
+
+.about-section p {
+    text-align: center;
+    margin-bottom: 1.5em;
+    line-height: 1.5em;
+    color: var(--secBg);
+}
+
+.info-box {
+    background-color: var(--secBg);
+    padding: 1em;
+    margin: 1.5em auto;
+    border-radius: 15px;
+    max-width: 80%;
+    text-align: center;
+}
+
+.info-box h2, p {
+    color: var(--mainBg)!important;
+}
+
+.info-box h2 {
+    margin-bottom: 1em;
+}
+
+.team-heading {
+    margin-top: 2em;
+}
+
+.team-container {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/*footer*/
+footer {
+    background-color: var(--footerBg);
+    width: 100%;
+    height: auto;
+    position: relative;
+    bottom: 0;
+    margin-top: 7em;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 2em;
+
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.footer-logo a{
+    text-decoration: none;
+    color: var(--secBg);
+}
+
+.site-name {
+    margin-left: 1em;
+}
+
+.logo-footer {
+    height: 100px;
+    width: 100px;
+}
+
+.footer-container ul{
+    list-style-type: none;
+    text-align: right;
+}
+
+.footer-container ul li {
+    margin-bottom: 0.5em;
+}
+
+.footer-container ul li a{
+    text-decoration: none;
+    color: var(--secBg);
+}
