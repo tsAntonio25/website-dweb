@@ -14,7 +14,7 @@
                 <li><a href = "carlisting.php">  CAR LISTING </a></li>
                 <li><a href = "about.php" > ABOUT  </a></li>
                 <li><a href = "contact.php"> CONTACT </a></li>
-                <li><a href=""><i class="fa fa-user-circle-o"></i></a>
+                <li><i onclick="checkprofile()" class="fa fa-user-circle-o"></i>
                 </li>
             </ul>
         </nav>
