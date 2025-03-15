@@ -34,7 +34,7 @@
 
     <section class="cta">
         <h2>Looking for the perfect ride?</h2>
-        <a href = "signup.php"><button class = "btn">SIGN UP</button></a>
+        <a href = "signup1.php"><button class = "btn">SIGN UP</button></a>
         <p>or</p>
         <a href = "login.php"><button class = "btn-secondary">LOG IN</button></a>
     </section>
