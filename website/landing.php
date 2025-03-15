@@ -15,7 +15,7 @@
         <div class = "hero-content">
             <div class = "hero-image"></div>
             <h1 class = "tagline">Tagline</h1>
-            <a href = "listings.php"><button class = "btn">Explore Cars</button></a>
+            <a href = "carlisting.php"><button class = "btn">Explore Cars</button></a>
             
         </div>
     </section>
