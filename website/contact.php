@@ -43,13 +43,13 @@
         </div>
         <div class="contact-form">
             <form action="/action_page.php">
-                <label for="name">Name</label><br>
+                <label for="name">Name</label>
                 <input type="text" id="name" name="name" placeholder="name"><br>
 
-                <label for="email">E-mail</label><br>
+                <label for="email">E-mail</label>
                 <input type="text" id="email" name="email" placeholder="email"><br>
 
-                <label for="message">Message</label><br>
+                <label for="message">Message</label>
                 <input type="text" id="message" name="message" placeholder="message"><br><br>
 
                 <input type="submit" value="Submit" class="submit">

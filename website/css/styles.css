@@ -288,7 +288,7 @@ a .btn-secondary:hover {
 .contact-section h1 {
     font-size: 36px;
     font-weight: bold;
-    margin-bottom: 1em;
+    margin-bottom: 2em;
     text-align: center;   
 }
 
@@ -305,23 +305,29 @@ a .btn-secondary:hover {
     border-radius: 8px;
     max-width: 400px;
     text-align: center;
+    background-color: var(--secBg);
+}
+
+form label {
+    display: block;
+    text-align: left!important;
+    color: var(--mainBg);
+    margin: 0.5em;
 }
 
 .contact-details {
     max-width: 400px;
+    margin: 0 auto;
 }
 
 .contact-details p {
-    color: var(--navBg) !important;
-}
-.contact-form {
-    background-color: var(--secBg);
+    color: var(--navBg)!important;
 }
 
 .contact-form input[type=text], .contact-form textarea {
     width: 90%;
     padding: 1em;
-    margin-top: 5px;
+    margin: 5px 0;
     border: 1px solid black;
     border-radius: 5px;
     background-color: white;
@@ -337,7 +343,6 @@ input.submit {
     text-transform: uppercase;
     color: var(--secBg);
     cursor: pointer;
-    
 }
     
 input.submit:hover {
@@ -346,8 +351,6 @@ input.submit:hover {
     transition: 300ms ease-in-out;
     font-weight: 600;
 }
-
-
 
 /*footer*/
 footer {
