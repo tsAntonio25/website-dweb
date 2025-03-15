@@ -10,6 +10,8 @@ const withuser = document.getElementById("withuser")
 // profile log in
 function checkprofile() {
 
+    console.log("nagclick");
+
     // show
     if (menu.style.display === "block") {
         menu.style.display = "none"
