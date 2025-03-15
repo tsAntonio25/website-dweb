@@ -238,12 +238,36 @@ a .btn-secondary:hover {
 }
 
 .team-heading {
-    margin-top: 2em;
+    margin: 2em 0;
+
 }
 
 .team-container {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    gap: 4em;
+    margin-top: 1.5em;
+}
+    
+.team-member {
+    text-align: center;
+}
+
+.team-member p {
+    margin-top: 1em;
+    font-weight: 600;
+    color: var(--secBg)!important;
+}
+
+.team-img {
+    width: 160px;
+    height: 160px;
+    background-color: var(--navBg);
+    border: 2px solid var(--button);
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
 }
 
 

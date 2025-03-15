@@ -28,19 +28,19 @@
         <h2 class = "team-heading"> Meet Our Team </h2>
         <div class = "team-container">
             <div class = "team-member">
-                <img src = "" class = "team-img"/>
+                <img src = "assets/team-member.jpg" class = "team-img"/>
                 <p>Anne Nichole Alimurung</p>
             </div>
             <div class = "team-member">
-                <img src = "" class = "team-img"/>
+                <img src = "assets/team-member.jpg" class = "team-img"/>
                 <p>Trishia Mae Antonio</p>
             </div>
             <div class = "team-member">
-                <img src = "" class = "team-img"/>
+                <img src = "assets/team-member.jpg" class = "team-img"/>
                 <p>Sherene Tolentino</p>
             </div>
             <div class = "team-member">
-                <img src = "" class = "team-img"/>
+                <img src = "assets/team-member.jpg" class = "team-img"/>
                 <p>Lorin Robelle Yambao</p>
             </div>
         </div>
