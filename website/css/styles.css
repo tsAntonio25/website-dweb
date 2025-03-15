@@ -530,6 +530,51 @@ input.submit:hover {
     margin-bottom: 0.5em;
 }
 
+/********---------------HOME.PHP---------------********/
+.recent-rentals, .featured-cars {
+    padding: 4em;
+    text-align: left;
+    height: 80vh;
+}
+
+.recent-rentals {
+    background-color: var(--mainBg);
+    color: var(--secBg)!important;
+}
+
+.featured-cars {
+    background-color: var(--secBg);
+    color: var(--mainBg);
+}
+
+.cars {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3em;
+}
+
+.car-box{
+    display: flex;
+    width: 25%;
+    height: 24em;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    background-color: var(--button);
+    margin: 5em auto;
+    border-radius: 10px;
+}
+
+.car-image{
+    background: url(../assets/background.jpg);
+    background-size: cover;
+    height: 40vh;
+    width: 30vw;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+}
 
 /*footer*/
 footer {

@@ -32,7 +32,7 @@ $featuredCars = [
     <section class="hero">
         <div class="hero-content">
             <h1>Tagline</h1>
-            <button>Explore Cars</button>
+            <a href = "carlisting.php"><button class = "btn">Explore Cars</button></a>
             <div class="dots">
                 ● ● ● ●
             </div>
@@ -58,15 +58,13 @@ $featuredCars = [
             <?php foreach ($featuredCars as $car) : ?>
                 <div class="car-box">
                     <div class="car-image"></div>
-                    <p><?= $car['name']; ?></p>
+                    <p><?= $car['name'];?></p>
                     <p class="availability"><?= $car['availability']; ?></p>
                 </div>
             <?php endforeach; ?>
         </div>
     </section>
 
-    
-        <!-- footer -->
     <footer>
         <?php include 'footer.php' ?>
     </footer>
