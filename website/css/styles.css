@@ -86,6 +86,9 @@ nav ul li a {
     color: var(--footerBg);
 }
 
+
+/*  USER ICON  */
+
 .fa {
     color: var(--footerBg);
     font-size: 50px;
