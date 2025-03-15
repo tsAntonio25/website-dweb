@@ -18,7 +18,7 @@ function checkprofile() {
         // check
         if (username && password) {
             // my profile and log out
-            menu.innerHTML = 
+            menu.innerHTML = "<a href='login.php'>My Profile</a>"
 
             // show profile and log out
 
