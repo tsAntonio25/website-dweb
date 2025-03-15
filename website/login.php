@@ -13,7 +13,7 @@
         <?php include 'nav.php'; ?>
     </header>
 
-    <main>
+    <main class="login-main">
         <h1>Log In</h1>
         <div class = "login-container">
             <div class = "login-box">
