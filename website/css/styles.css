@@ -99,21 +99,28 @@ nav ul li a {
     display: none;
     z-index: 2;
     position: fixed;
-    right: 0;
+    right: 1em;
     top: 6em;
 }
 
 .menu-container {
-    width: 70%;
+    width: 100%;
     border: 1px solid var(--footerBg);
     background-color: var(--navBg);
-    padding: 2em 0.5em;
     text-align: center;
-
+    padding: 1em 0;
 }
 
 .menu-container div a:hover {
     text-decoration: underline;
+}
+
+.menu-container ul {
+    list-style-type: none;
+}
+
+.menu-container ul li {
+    padding: 0.5em 1em;
 }
 
 .nouser, .withuser {
@@ -124,7 +131,7 @@ nav ul li a {
     text-align: center;
     text-decoration: none;
     color: var(--footerBg);
-    padding: 5px 0;
+    
 }
 
 .nouser, .withuser {

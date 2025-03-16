@@ -20,15 +20,18 @@
         </nav>
         <div id="usermenu">
             <div class="menu-container">
-
                 <div class="nouser" id="nouser">
-                    <a href="signup.php">Sign Up</a>
-                    <a href="login.php">Log In</a>
+                    <ul>
+                    <li><a href="signup.php">Sign Up</a></li>
+                    <li><a href="login.php">Log In</a></li>
+                    </ul>
                 </div>
 
                 <div class="withuser" id="withuser">
-                    <a href="">My Profile</a>
-                    <a href="">Log Out</a>
+                <ul>
+                    <li><a href="">My Profile</a></li>
+                    <li><a href="">Log Out</a></li>
+                    </ul>
                 </div>
             </div>
         </div>

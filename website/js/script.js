@@ -1,5 +1,5 @@
 // user log in
-let username
+let username 
 let password 
 
 // menu
