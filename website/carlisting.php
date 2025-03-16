@@ -5,7 +5,7 @@ $carTypes = [
         ["image" => "sedan1.jpg", "name" => "Toyota Camry", "availability" => "Available"],
         ["image" => "sedan2.jpg", "name" => "Honda Accord", "availability" => "Rented"],
         ["image" => "sedan3.jpg", "name" => "Nissan Altima", "availability" => "Available"],
-        ["image" => "sedan4.jpg", "name" => "ewan ko scroll testing", "availability" => "Available"]
+        ["image" => "sedan4.jpg", "name" => "scroll testing", "availability" => "Available"]
     ],
     "AUV" => [
         ["image" => "auv1.jpg", "name" => "Toyota Innova", "availability" => "Available"],

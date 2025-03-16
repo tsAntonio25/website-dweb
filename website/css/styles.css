@@ -633,15 +633,16 @@ input.submit:hover {
 
 .car-card {
     background-color: var(--button); /*temporary wait pls check T.T*/
-    padding: 40px;
+    padding: 20px;
     border-radius: 5px;
     text-align: center;
-    width: 400px;
-    height: 150px;
+    width: 250px;
+    height: 200px;
     color: black;
     display: inline-block;
 }
 
+/** 2025-03-16: lorin carlisting edit (fix carbox and scrolling)***/
 
 /*footer*/
 footer {
