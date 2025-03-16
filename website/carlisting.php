@@ -1,26 +1,26 @@
 <?php
-//PLACEHOLDER
 // Simulated car data (In real-world use, fetch from a database)
 $carTypes = [
-    "SUVs" => [
-        ["name" => "Toyota RAV4", "availability" => "Available"],
-        ["name" => "Honda CR-V", "availability" => "Rented"],
-        ["name" => "Ford Explorer", "availability" => "Available"]
+    "Sedan" => [
+        ["image" => "sedan1.jpg", "name" => "Toyota Camry", "availability" => "Available"],
+        ["image" => "sedan2.jpg", "name" => "Honda Accord", "availability" => "Rented"],
+        ["image" => "sedan3.jpg", "name" => "Nissan Altima", "availability" => "Available"],
+        ["image" => "sedan4.jpg", "name" => "ewan ko scroll testing", "availability" => "Available"]
     ],
-    "Sedans" => [
-        ["name" => "Toyota Camry", "availability" => "Available"],
-        ["name" => "Honda Accord", "availability" => "Rented"],
-        ["name" => "Nissan Altima", "availability" => "Available"]
+    "AUV" => [
+        ["image" => "auv1.jpg", "name" => "Toyota Innova", "availability" => "Available"],
+        ["image" => "auv2.jpg", "name" => "Mitsubishi Xpander", "availability" => "Rented"],
+        ["image" => "auv3.jpg", "name" => "Suzuki Ertiga", "availability" => "Available"]
     ],
-    "Trucks" => [
-        ["name" => "Ford F-150", "availability" => "Available"],
-        ["name" => "Chevrolet Silverado", "availability" => "Rented"],
-        ["name" => "Ram 1500", "availability" => "Available"]
+    "SUV" => [
+        ["image" => "suv1.jpg", "name" => "Ford Explorer", "availability" => "Available"],
+        ["image" => "suv2.jpg", "name" => "Toyota RAV4", "availability" => "Rented"],
+        ["image" => "suv3.jpg", "name" => "Honda CR-V", "availability" => "Available"]
     ],
-    "Electric Cars" => [
-        ["name" => "Tesla Model 3", "availability" => "Available"],
-        ["name" => "Nissan Leaf", "availability" => "Rented"],
-        ["name" => "Chevrolet Bolt", "availability" => "Available"]
+    "Van" => [
+        ["image" => "van1.jpg", "name" => "Toyota Hiace", "availability" => "Available"],
+        ["image" => "van2.jpg", "name" => "Nissan Urvan", "availability" => "Rented"],
+        ["image" => "van3.jpg", "name" => "Hyundai Staria", "availability" => "Available"]
     ]
 ];
 ?>
@@ -31,136 +31,40 @@ $carTypes = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Listing - The Garage</title>
-    <link rel="stylesheet" href="css\styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <header>
         <?php include 'nav.php'; ?>
     </header>
-        <!-- main -->
+
     <main>
-<!-- SEDAN -->
-        <section class = "sedan">
-            <h2>SEDAN</h2>
-            <div class = "arrow" onclick = "prevSlide()">&#10094;</div>
-            <div class = "sedan-container">
+        <h1 class="car-listing-title">Car Listing</h1>
 
-                <div class = "car-card">
-                    <img src = "sedan1.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
+        <?php foreach ($carTypes as $type => $cars) : ?>
+            <section class="car-section">
+                <h2><?php echo $type; ?></h2>
+                <div class="carousel">
+                    <button class="arrow left" onclick="prevSlide('<?php echo strtolower($type); ?>')">&#10094;</button>
+                    <div class="car-container" id="<?php echo strtolower($type); ?>">
+                        <?php foreach ($cars as $car) : ?>
+                            <div class="car-card">
+                                <img src="images/ <?php echo $car['image']; ?>" alt="<?php echo $car['name']; ?>">
+                                <h3><?php echo $car['name']; ?></h3>
+                                <p><?php echo $car['availability']; ?></p>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <button class="arrow right" onclick="nextSlide('<?php echo strtolower($type); ?>')">&#10095;</button>
                 </div>
-
-                <div class = "car-card">
-                    <img src = "sedan2.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-
-                <div class = "car-card">
-                    <img src = "sedan3.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-            </div>
-
-            <div class = "arrow" onclick = "nextSlide()">&#10095;</div>
-        </section>
-
-    <!-- AUV -->
-        <section class = "auv">
-            <h2>AUV</h2>
-            <div class = "arrow" onclick = "prevSlide()">&#10094;</div>
-            <div class = "auv-container">
-
-                <div class = "car-card">
-                    <img src = "auv1.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-
-                <div class = "car-card">
-                    <img src = "auv2.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-
-                <div class = "car-card">
-                    <img src = "auv3.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-            </div>
-
-            <div class = "arrow" onclick = "nextSlide()">&#10095;</div>
-        </section>
-
-    <!-- SUV -->
-        <section class = "suv">
-            <h2>SUV</h2>
-            <div class = "arrow" onclick = "prevSlide()">&#10094;</div>
-            <div class = "suv-container">
-
-                <div class = "car-card">
-                    <img src = "suv1.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-
-                <div class = "car-card">
-                    <img src = "suv2.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-
-                <div class = "car-card">
-                    <img src = "suv3.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-            </div>
-
-            <div class = "arrow" onclick = "nextSlide()">&#10095;</div>
-        </section>
-
-    <!-- VAN -->
-        <section class = "van">
-            <h2>VAN</h2>
-            <div class = "arrow" onclick = "prevSlide()">&#10094;</div>
-            <div class = "van-container">
-
-                <div class = "car-card">
-                    <img src = "van1.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-
-                <div class = "car-card">
-                    <img src = "van2.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-
-                <div class = "car-card">
-                    <img src = "van3.jpg" alt = "Car Image">
-                    <h3>Car Name</h3>
-                    <p>Availability</p>
-                </div>
-            </div>
-
-            <div class = "arrow" onclick = "nextSlide()">&#10095;</div>
-        </section>
-
+            </section>
+        <?php endforeach; ?>
     </main>
 
-   
-
-    <!-- footer -->
     <footer>
-        <?php include 'footer.php' ?>
+        <?php include 'footer.php'; ?>
     </footer>
+
+    <script src="js/carousel.js"></script>
 </body>
-
-
-
 </html>

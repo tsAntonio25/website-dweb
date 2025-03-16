@@ -70,6 +70,7 @@ nav.headerNav {
     justify-content: center;
 }
 
+
 nav.headerNav li{
     display: inline;
     padding: 1.2em;
@@ -139,10 +140,6 @@ nav ul li a {
 }
 
 /* hero */
-section {
-    position: relative;
-    top: 7em;
-}
 
 section.hero {
     background: url(../assets/background.jpg);
@@ -152,6 +149,7 @@ section.hero {
     justify-content: center; 
     align-items: flex-end; 
     position: relative;
+    margin-top: 7em;
 }
 
 section.hero button {
@@ -594,6 +592,57 @@ input.submit:hover {
 
 }
 
+/********---------------CARLISTING.PHP---------------********/
+.car-listing-title {
+    margin-top: 6em;
+    font-weight: bold;
+    text-align: center;
+}
+
+.car-section {
+    padding: 4em;
+    height: 60vh;
+}
+
+.car-section:nth-child(even) {
+    background-color: var(--mainBg);
+}
+
+.car-section:nth-child(odd) {
+    background-color: var(--secBg);
+    color: var(--mainBg);
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    position: relative;
+}
+
+.car-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 80px;
+    padding: 40px;
+    white-space: nowrap;
+    max-width: 80%;
+}
+
+.car-card {
+    background-color: var(--button); /*temporary wait pls check T.T*/
+    padding: 40px;
+    border-radius: 5px;
+    text-align: center;
+    width: 400px;
+    height: 150px;
+    color: black;
+    display: inline-block;
+}
+
+
 /*footer*/
 footer {
     background-color: var(--footerBg);
@@ -601,7 +650,6 @@ footer {
     height: auto;
     position: relative;
     bottom: 0;
-    margin-top: 7em;
 }
 
 .footer-container {
