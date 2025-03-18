@@ -49,7 +49,8 @@ $carTypes = [
                     <div class="car-container" id="<?php echo strtolower($type); ?>">
                         <?php foreach ($cars as $car) : ?>
                             <div class="car-card">
-                                <img src="images/ <?php echo $car['image']; ?>" alt="<?php echo $car['name']; ?>">
+                                <!-- change into assets/cartype-car php echo pag andyan na assets-->
+                                <img src="assets/background.jpg" alt="<?php echo $car['name']; ?>">
                                 <h3><?php echo $car['name']; ?></h3>
                                 <p><?php echo $car['availability']; ?></p>
                             </div>

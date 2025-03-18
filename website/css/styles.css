@@ -67,7 +67,7 @@ nav.headerNav {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 
@@ -81,10 +81,19 @@ nav ul li {
     list-style-type: none;
 }
 
+nav ul li:last-of-type {
+    margin-right: 1em;
+}
+
 nav ul li a {
     text-decoration: none;
     padding-right: 2em;
     color: var(--footerBg);
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+    color: var(--button);
 }
 
 
@@ -250,6 +259,7 @@ a .btn-secondary:hover {
 }
 
 .about-section h1 {
+    margin-top: 3em;
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 1em;
@@ -326,6 +336,7 @@ a .btn-secondary:hover {
 }
 
 .contact-section h1 {
+    margin-top: 3em;
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 2em;
@@ -414,7 +425,7 @@ input.submit:hover {
 
 /********---------------LOGIN.PHP---------------********/
 .login-main {
-    padding: 5em 5em 0 5em;
+    padding: 5em;
 }
 
 .login-main h1{
@@ -471,7 +482,7 @@ input.submit:hover {
 
 /********---------------SIGNUP.PHP---------------********/
 .signup-section h1{
-    margin-top: 1.5em;
+    margin-top: 5em;
     font-size: 36px;
     font-weight: bold;
     margin-bottom: 1em;
@@ -601,7 +612,15 @@ input.submit:hover {
 
 .car-section {
     padding: 4em;
-    height: 60vh;
+    height: 70vh;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.car-section h2 {
+    font-size: 1.8em;
 }
 
 .car-section:nth-child(even) {
@@ -610,6 +629,9 @@ input.submit:hover {
 
 .car-section:nth-child(odd) {
     background-color: var(--secBg);
+}
+
+.car-section:nth-child(odd) h2{
     color: var(--mainBg);
 }
 
@@ -617,30 +639,60 @@ input.submit:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    position: relative;
+    gap: 2em;
+}
+
+.carousel button{
+    background-color: transparent;
+    border: transparent;
+    font-size: 4em;
+}
+
+.carousel button:hover {
+    color: var(--navBg);
+}
+
+.carousel button:active {
+    color: var(--footerBg);
 }
 
 .car-container {
     display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 80px;
-    padding: 40px;
-    white-space: nowrap;
-    max-width: 80%;
+    flex-direction: row;
+    gap: 4em;
+    overflow-x: hidden;
+    white-space: nowrap; 
+    width: 100%;
+    padding-bottom: 10px;
 }
 
 .car-card {
-    background-color: var(--button); /*temporary wait pls check T.T*/
-    padding: 20px;
-    border-radius: 5px;
-    text-align: center;
-    width: 250px;
-    height: 200px;
-    color: black;
-    display: inline-block;
+    background-color: var(--button);
+    width: 340px!important;
+    height: 250px!important;
+    border-radius: 10px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-end;
+    text-align: left;
+    overflow: hidden;
+    box-shadow: #2a292933 0px 2px 8px 0px;
 }
+
+.car-card img {
+    height: 200px;
+}
+
+.car-card h3  {
+    margin: 8px 0 2px 16px;
+}
+
+.car-card p {
+    margin: 2px 0 8px 16px;
+}
+
 
 /** 2025-03-16: lorin carlisting edit (fix carbox and scrolling)***/
 

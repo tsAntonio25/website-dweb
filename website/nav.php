@@ -10,10 +10,10 @@
         </div>
         <nav class='headerNav'>
             <ul>
-                <li><a href = "home.php"> HOME </a></li>
-                <li><a href = "carlisting.php">  CAR LISTING </a></li>
-                <li><a href = "about.php" > ABOUT  </a></li>
-                <li><a href = "contact.php"> CONTACT </a></li>
+                <li><a href = "home.php">HOME</a></li>
+                <li><a href = "carlisting.php">CAR LISTING</a></li>
+                <li><a href = "about.php" >ABOUT</a></li>
+                <li><a href = "contact.php">CONTACT</a></li>
                 <li><i onclick="checkprofile()" class="fa fa-user-circle-o"></i>
                 </li>
             </ul>
