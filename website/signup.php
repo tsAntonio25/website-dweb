@@ -77,7 +77,8 @@
                 <label for="confirm">Confirm Password</label>
                 <input type="text" id="confirm" name="confirm" placeholder="Re-type Password"><br><br>
 
-                <input type="submit" value="Sign Up" class="submit"> <!-- gagana ba yan? -->
+                <input type="submit" value="Sign Up" class="submit" name="sign_up"> <!-- gagana ba yan? -->
+                <!-- ABA MALAY KO AKO BA NAGLAGAY NYAN-->
             </div>
             
                 
