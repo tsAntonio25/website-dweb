@@ -14,7 +14,7 @@
     <section class = "signup-section">
         <h1>Sign Up</h1>
 
-        <form action="/action_page.php">
+        <form action="admin/operations/create.php" method="post">
             <div class="form-group">
                 <h3>Personal Information</h3>
                 <div class="row">
@@ -77,7 +77,7 @@
                 <label for="confirm">Confirm Password</label>
                 <input type="text" id="confirm" name="confirm" placeholder="Re-type Password"><br><br>
 
-                <input type="submit" value="Sign Up" class="submit">
+                <input type="submit" value="Sign Up" class="submit"> <!-- gagana ba yan? -->
             </div>
             
                 
