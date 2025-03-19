@@ -1,6 +1,6 @@
 // user log in
-let username 
-let password 
+let username = "<?= $emailUser ?>"; // double check values 
+let password = "<?= $passUser ?>" // double check values
 
 // menu
 const menu = document.getElementById("usermenu")
