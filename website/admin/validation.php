@@ -1,7 +1,6 @@
 <?php 
 /* VALIDATION / ERROR HANDLING */
 
-
 // import connection to db
 include '/admin/connectivity.php';
 
@@ -26,28 +25,16 @@ if(isset($_POST['Log In'])) {
     }else {
         // waiting
         echo 'incorrect email or pass';
-        
+
     }
-
-    
-    /* 
-    Kulang:
-
-        ERROR HANDLING na maayos
-    
-    
-    */
-
-    
-
-    // tuloy ko bukas
+    ;
 }
-
-
+;
 // availability
-
 
 ?>
 
+
+
 <!-- connect js script -->
-<script src="js\script.js"></script>
+<script src="../js/script.js"></script> <!-- verify connection -->
