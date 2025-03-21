@@ -3,36 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rent Car - The Garage</title>
+    <link rel="stylesheet" href="\css\styles.css">
 </head>
 <body>
-    
+    <header>
+      <?php include 'nav.php'; ?>
+    </header>
 
-    <h2>Car Name</h2>
-    <h3><i>Price from ₱xx,xxx,xx</i></h3>
 
     <section class="details-container">
-    <div class="details-column">
-      <ul>
-        <li>Details details details</li>
-        <li>Details details details</li>
-        <li>Details details details</li>
-      </ul>
-    </div>
-    <div class="details-column">
-      <ul>
-        <li>Details details details</li>
-        <li>Details details details</li>
-        <li>Details details details</li>
-      </ul>
-    </div>
+      <div class="details-img">
+        <img src ="assets/carImages/mirage.jpg" alt="" />
+      </div>
+      <div class="details">
+        <h2>Car Name</h2>
+        <h3><i>Price from ₱xx,xxx,xx</i></h3>
+
+        <div class="details-column">
+          <ul>
+            <li>Details</li>
+            <li>Details</li>
+            <li>Details</li>
+          </ul>
+        </div>
+
+        <div class="details-column">
+          <ul>
+            <li>Details</li>
+            <li>Details</li>
+            <li>Details</li>
+          </ul>
+        </div>
+
+        <h2>Description</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+        <div class="rent-buttons">
+          <a href = "carlisting.php"><button type="button" class="btn-secondary">Back</button></a>
+
+          <a href = "rent2.php"><button type="button"  class="btn">Rent Now</button></a>
+        </div>
+        
+      </div>
+      
+
     </section>
 
-    <h2>Description</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-    <button type="button">Back</button>
-    <button type="button">Rent Now</button>
-
+    <footer>
+        <?php include 'footer.php' ?>
+    </footer>
 </body>
 </html>

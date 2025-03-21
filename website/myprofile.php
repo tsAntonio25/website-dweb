@@ -11,19 +11,22 @@
         <?php include 'nav.php'; ?>
     </header>
 
+
     <section class = "profile-section">
+        <h1>My Profile</h1>
+
         <div class="gallery">
-            <img src="photo1.jpg" alt="Photo 1">
+            <img src="assets/team-member.jpg" alt="Photo 1">
+            <div class="gallery-details">
+                <h2>Lname, Fname, M.I</h2>
+                <p>name@gmail.com</p>
+                <p>House, Lot, Zone, Street, Barangay, City, Province, Zip Code</p>
+            </div>
         </div>
-
-        <h2>Lname, Fname, M.I</h2>
-
-        <p>name@gmail.com</p>
-
-        <p>House, Lot, Zone, Street, Barangay, City, Province, Zip Code</p>
     </section>
 
     <section class = "history-section">
+        <h1>History</h1>
         <table>
             <tr>
                 <th>Car Name & Model</th>
