@@ -29,7 +29,7 @@
 
                 <div class="withuser" id="withuser">
                 <ul>
-                    <li><a href="">My Profile</a></li>
+                    <li><a href="myprofile.php">My Profile</a></li>
                     <li><a href="">Log Out</a></li>
                     </ul>
                 </div>
