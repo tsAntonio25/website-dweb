@@ -7,7 +7,7 @@ function checkAvail($id) {
     $currentTime = date('Y/m/d');
 
     // query
-    $query = "SELECT availability FROM car WHERE id = $id";
+    $query = "SELECT returnDate FROM transaction WHERE id = $id";
     
     // compare
     if ($currentTime >= ($result = $con->query($query))) {
