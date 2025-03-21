@@ -151,7 +151,7 @@ nav ul li a:hover {
 /* hero */
 
 section.hero {
-    background: url(../assets/background.jpg);
+    background: url(../assets/cover2.jpg);
     background-size: cover;
     height: 83vh;
     display: flex;

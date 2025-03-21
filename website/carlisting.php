@@ -42,7 +42,7 @@
                     <div class="car-container" id="<?php echo strtolower($type); ?>">
                         <?php foreach ($cars as $car) : ?>
                             <div class="car-card">
-                                <img src="assets/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
+                                <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
                                 <h3><?= $car['name']; ?></h3>
                                 <p><?= $car['availability']; ?></p>
                             </div>
