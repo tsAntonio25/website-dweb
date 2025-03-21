@@ -1,8 +1,6 @@
 <?php 
-/* VALIDATION / ERROR HANDLING */
-
 // import connection to db
-include '/admin/connectivity.php';
+include 'connectivity.php';
 
 // log in
 if(isset($_POST['Log In'])) {
@@ -27,14 +25,11 @@ if(isset($_POST['Log In'])) {
         echo 'incorrect email or pass';
 
     }
-    ;
+    
 }
-;
-// availability
-
 ?>
 
 
 
 <!-- connect js script -->
-<script src="../js/script.js"></script> <!-- verify connection -->
+ <script src="../js/script.js"></script>
