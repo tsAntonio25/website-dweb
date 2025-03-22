@@ -68,9 +68,11 @@
                                 <td>{$row['transactionID']}</td>
                                 <td>{$row['userID']}</td>
                                 <td>{$row['carID']}</td>
-                                <td><a href='view-details.php?id={$row['transactionID']}' class='action view'>View</a></td>
-                                <td><a href='edit-details.php?id={$row['transactionID']}' class='action edit'>Edit</a></td>
-                                <td><a href='delete-details.php?id={$row['transactionID']}' class='action delete'>Delete</a></td>
+                                <td><a href='read.php?type=transaction&id=" . $row['transactionID'] . "' class='action view'>View</a></td>
+
+                                <td><a href='update.php?type=transaction&id=" . $row['transactionID'] . "' class='action edit'>Edit</a></td>
+
+                                <td><a href='delete.php?type=transaction&id=" . $row['transactionID'] . "' class='action delete'>Delete</a></td>
                               </tr>";
                     }
                 } else {

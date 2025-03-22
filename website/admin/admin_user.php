@@ -18,7 +18,7 @@
     
     <main class="admin-container">
         <h2 class="title">Users</h2>
-        <a href="add-user.php" class="action add">Add New User</a>
+        <a href="create.php" class="action add">Add New User</a>
         <hr class="sep">
         <table>
             <tr>
@@ -41,9 +41,11 @@
                     <td>{$row['minitial']}</td>
                     <td>{$row['lastname']}</td>
                     <td>{$row['suffix']}</td>
-                    <td><a href='view-details.php?id={$row['userID']}'  class='action view'>View</a></td>
-                    <td><a href='edit-details.php?id={$row['userID']}'  class='action edit'>Edit</a></td>
-                    <td><a href='delete-details.php?id={$row['userID']}'  class='action delete'>Delete</a></td>
+                    <td><a href='read.php?type=user&id=" . $row['userID'] . "' class='action view'>View</a></td>
+
+                    <td><a href='update.php?type=user&id=" . $row['userID'] . "' class='action edit'>Edit</a></td>
+
+                    <td><a href='delete.php?type=user&id=" . $row['userID'] . "' class='action delete'>Delete</a></td>
               </tr>";
             }
             } else {

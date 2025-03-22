@@ -157,6 +157,20 @@ body {
     background-color: #c0392b;
 }
 
+.back {
+    border: #7c7c7c 2px solid;
+    color: var(--fontColor);
+    float: left;
+    margin-bottom: 0.5em;
+}
+.back:hover {
+    background-color: #7c7c7c;
+    color: var(--tableBg);
+    float: left;
+    margin-bottom: 0.5em;
+}
+
+
 .admin-container td:last-child,
 .admin-container td:nth-last-child(2),
 .admin-container td:nth-last-child(3) {
@@ -165,7 +179,49 @@ body {
     padding: 1em 0.2em;
 }
 
+/*dashboard*/
+.page-container {
+    background: #3C3C3C;
+    padding: 1em;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
 
+.box {
+    display: inline-block;
+    width: 26%;
+    height: 200px;
+    margin: 10px;
+    padding: 1em;
+    background-color: var(--tableBg);
+    border-radius: 5px;
+    color: var(--fontColor);
+    font-size: 18px;
+}
+
+.box a {
+    text-decoration: none;
+    color: #fff;
+}
+
+.box:hover {
+    background-color: var(--tableLine);
+    color: var(--button);
+}
+
+.box h3 {
+    color: var(--fontColor);
+}
+
+.box p {
+    color: var(--tableHeading);
+}
+
+.sub-title {
+    margin: 2em 0 1em 0;
+}
 
 
 /*admin user*/

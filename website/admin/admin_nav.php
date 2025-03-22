@@ -6,7 +6,7 @@
     <body>
         <nav class='headerNav'>
             <div class = "logo">
-                <a href="admin_user.php"><img src="../assets/logo.png" alt="car logo"></a>
+                <a href="admin_dashboard.php"><img src="../assets/logo.png" alt="car logo"></a>
             </div>
             <ul>
                 <li><a href = "admin_user.php"><div class="nav-box">User</div></a></li>
@@ -14,6 +14,6 @@
                 <li><a href = "admin_transaction.php" ><div class="nav-box">Transactions</div></a></li>
             </ul>
         </nav>
-        <script src="js\script.js"></script>
+        <script src="../js/script.js"></script>
     </body> 
 </html>

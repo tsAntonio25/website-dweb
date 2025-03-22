@@ -37,9 +37,11 @@
                                 <td>{$row['model']}</td>
                                 <td>{$row['brand']}</td>
                                 <td>{$row['type']}</td>
-                                <td><a href='view-details.php?id={$row['carID']}' class='action view'>View</a></td>
-                                <td><a href='edit-details.php?id={$row['carID']}' class='action edit'>Edit</a></td>
-                                <td><a href='delete-details.php?id={$row['carID']}' class='action delete'>Delete</a></td>
+                                <td><a href='read.php?type=car&id=" . $row['carID'] . "' class='action view'>View</a></td>
+
+                                <td><a href='update.php?type=car&id=" . $row['carID'] . "' class='action edit'>Edit</a></td>
+
+                                <td><a href='delete.php?type=car&id=" . $row['carID'] . "' class='action delete'>Delete</a></td>
                             </tr>";
                     }
                 } else {
