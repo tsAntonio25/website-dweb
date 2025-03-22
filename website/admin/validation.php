@@ -1,4 +1,7 @@
 <?php 
+// session
+session_start();
+
 // import connection to db
 include 'connectivity.php';
 
@@ -16,9 +19,9 @@ if(isset($_POST['Log In'])) {
         // get result
         $row = $result->fetch_array();
 
-        // assign result to vars then pass vars to js script
-        $emailUser = $row['email'];
-        $passUser = $row['password'];
+        // assign result to session
+        $_SESSION["email"] = $row['email'];
+        $_SESSION["password"] = $row['password'];
 
     }else {
         // waiting
@@ -27,6 +30,7 @@ if(isset($_POST['Log In'])) {
     }
     
 }
+   
 ?>
 
 

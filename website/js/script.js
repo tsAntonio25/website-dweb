@@ -1,6 +1,6 @@
 // user log in
-let username; // double check values 
-let password; // double check values
+let username = 'asds'; // double check values 
+let password = 'asdasd'; // double check values
 
 // menu
 const menu = document.getElementById("usermenu")
