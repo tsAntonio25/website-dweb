@@ -18,6 +18,7 @@
     
     <main class="admin-container">
         <h2 class="title">Cars</h2>
+        <a href="add-car.php" class="action add">Add New Car</a>
         <hr class="sep">
         <table>
             <tr>
@@ -25,9 +26,7 @@
                 <th>Model</th>
                 <th>Brand</th>
                 <th>Type</th>
-                <th>Fuel Type</th>
-                <th>Availability</th>
-                <th>Rental Price</th>
+                <th colspan ="3">Actions</th>
             </tr>
 
             <?php
@@ -38,9 +37,9 @@
                                 <td>{$row['model']}</td>
                                 <td>{$row['brand']}</td>
                                 <td>{$row['type']}</td>
-                                <td>{$row['fuelType']}</td>
-                                <td>{$row['availability']}</td>
-                                <td>{$row['rentalPrice']}</td>
+                                <td><a href='view-details.php?id={$row['carID']}' class='action view'>View</a></td>
+                                <td><a href='edit-details.php?id={$row['carID']}' class='action edit'>Edit</a></td>
+                                <td><a href='delete-details.php?id={$row['carID']}' class='action delete'>Delete</a></td>
                             </tr>";
                     }
                 } else {

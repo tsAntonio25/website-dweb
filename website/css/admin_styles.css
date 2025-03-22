@@ -4,7 +4,7 @@
     
     /*colors*/
     --mainBg: #E5E5E5;
-    --navBg: #191C24;
+    --navBg: #1C1C1C;
     --navHover: #080808;
     --button: #272727;
     --tableBg: #F0F0F0;
@@ -97,6 +97,76 @@ body {
     font-weight: bold;
 }
 
+/*actions*/
+.action {
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    padding: 6px 12px;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background 0.3s ease-in-out;
+    color: white;
+    padding: 0.5em 1em;
+}
+
+.action:not(.add) {
+    width: 50px;
+}
+
+.add {
+    float: right;
+    margin-bottom: 0.5em;
+    background-color: #27ae60;
+    font-weight: 500;
+    border-radius: 5px;
+    text-decoration: none;
+    padding: 0.5em 1em!important;
+}
+
+.add:hover {
+    background-color: #219150;
+}
+
+.sep {
+    clear: both;
+}
+
+.view {
+    background-color: #3498db;
+}
+
+.view:hover {
+    background-color: #2980b9;
+}
+
+.edit {
+    background-color: #7c7c7c;
+}
+
+.edit:hover {
+    background-color: #646464;
+}
+
+
+.delete {
+    background-color: #e74c3c;
+}
+
+.delete:hover {
+    background-color: #c0392b;
+}
+
+.admin-container td:last-child,
+.admin-container td:nth-last-child(2),
+.admin-container td:nth-last-child(3) {
+    text-align: center;
+    vertical-align: middle;
+    padding: 1em 0.2em;
+}
+
+
+
 
 /*admin user*/
 .admin-container {
@@ -125,15 +195,20 @@ body {
     text-align: left;
 }
 
+.admin-container .action {
+    padding: 0.5em;
+}
+
 .admin-container th {
     background-color: var(--tableHeading);
     color: var(--mainBg);
+    text-align: center;
 }
 
 .admin-container td {
     color: var(--navHover)!important;
-}
 
+}
 
 .arrowBtn {
     position: fixed;

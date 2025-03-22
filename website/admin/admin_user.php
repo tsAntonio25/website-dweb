@@ -18,6 +18,7 @@
     
     <main class="admin-container">
         <h2 class="title">Users</h2>
+        <a href="add-user.php" class="action add">Add New User</a>
         <hr class="sep">
         <table>
             <tr>
@@ -27,34 +28,31 @@
                 <th>Middle Initial</th>
                 <th>Last Name</th>
                 <th>Suffix</th>
-                <th>Address</th>
-                <th>Barangay</th>
-                <th>City</th>
-                <th>Province</th>
-                <th>Zipcode</th>
+                <th colspan ="3">Actions</th>
             </tr>
 
             <?php
                 if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()){
-                        echo "<tr>
-                                <td>{$row['userID']}</td>
-                                <td>{$row['email']}</td>
-                                <td>{$row['firstname']}</td>
-                                <td>{$row['minitial']}</td>
-                                <td>{$row['lastname']}</td>
-                                <td>{$row['suffix']}</td>
-                                <td>{$row['address']}</td>
-                                <td>{$row['barangay']}</td>
-                                <td>{$row['city']}</td>
-                                <td>{$row['province']}</td>
-                                <td>{$row['zipcode']}</td>
-                              </tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='11'>No users found.</td></tr>";
-                }
-            ?>
+                while($row = $result->fetch_assoc()) {
+                echo "<tr>
+                    <td>{$row['userID']}</td>
+                    <td>{$row['email']}</td>
+                    <td>{$row['firstname']}</td>
+                    <td>{$row['minitial']}</td>
+                    <td>{$row['lastname']}</td>
+                    <td>{$row['suffix']}</td>
+                    <td><a href='view-details.php?id={$row['userID']}'  class='action view'>View</a></td>
+                    <td><a href='edit-details.php?id={$row['userID']}'  class='action edit'>Edit</a></td>
+                    <td><a href='delete-details.php?id={$row['userID']}'  class='action delete'>Delete</a></td>
+              </tr>";
+            }
+            } else {
+                echo "<tr><td colspan='9'>No users found.</td></tr>";
+            }
+?>
+
+            </tr>
+            
         </table>
 
     <a class="arrowBtn" title="Go to top" href="#top">↑</a>

@@ -51,18 +51,14 @@
     
     <main class="admin-container">
         <h2 class="title">Transactions</h2>
+        <a href="add-transaction.php" class="action add">Add New Transaction</a>
         <hr class="sep">
         <table>
             <tr>
                 <th>Transaction ID</th>
                 <th>User ID</th>
                 <th>Car ID</th>
-                <th>Rental Price</th>
-                <th>Additional Price</th>
-                <th>Total Amount</th>
-                <th>Payment Method</th>
-                <th>Pickup Date</th>
-                <th>Return Date</th>
+                <th colspan ="3">Actions</th>
             </tr>
 
             <?php
@@ -72,16 +68,13 @@
                                 <td>{$row['transactionID']}</td>
                                 <td>{$row['userID']}</td>
                                 <td>{$row['carID']}</td>
-                                <td>{$row['rentalPrice']}</td>
-                                <td>{$row['additionalPrice']}</td>
-                                <td>{$row['totalAmount']}</td>
-                                <td>{$row['paymentMethod']}</td>
-                                <td>{$row['pickUpDate']}</td>
-                                <td>{$row['returnDate']}</td>
+                                <td><a href='view-details.php?id={$row['transactionID']}' class='action view'>View</a></td>
+                                <td><a href='edit-details.php?id={$row['transactionID']}' class='action edit'>Edit</a></td>
+                                <td><a href='delete-details.php?id={$row['transactionID']}' class='action delete'>Delete</a></td>
                               </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='9'>No transactions found.</td></tr>";
+                    echo "<tr><td colspan='6'>No transactions found.</td></tr>";
                 }
             ?>
         </table>
