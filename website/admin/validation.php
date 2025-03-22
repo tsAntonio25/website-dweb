@@ -1,6 +1,6 @@
 <?php 
 // session
-session_start();
+include '../session.php';
 
 // import connection to db
 include 'connectivity.php';
