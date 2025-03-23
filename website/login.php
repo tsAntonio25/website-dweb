@@ -1,3 +1,9 @@
+<?php session_start();
+
+// aayusin 
+$error = $_SESSION['error'] ?? '';
+unset($_SESSION['error']);?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +26,7 @@
                 <div class = "avatar">
                     <i onclick="checkprofile()" class="fa fa-user-circle-o"></i>
                 </div>
-                <form class="login-form" action="admin/validation.php" method="post">
+                <form class="login-form" action="admin/logincheck.php" method="post">
                     <label for = "email"> Email </label>
                     <input type = "email" id = "email" name = "email" required>
                     
@@ -28,8 +34,12 @@
                     <input type = "password" id = "password" name = "password" required>
                     
                     <a href = "signup.php" class = "alt-login"> Sign in instead...</a>
+                    
+                    <?php if (!empty($error)): ?> <!-- aayusin  -->
+                        <span class="error" style="color:red;"><?= htmlspecialchars($error) ?></span>
+                    <?php endif; ?>
 
-                    <input type="submit" value="Log In" class="submit">
+                    <input name="login" type="submit" value="Log In" class="submit">
                     </form>
 
             </div>

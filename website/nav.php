@@ -30,7 +30,7 @@
                 <div class="withuser" id="withuser">
                 <ul>
                     <li><a href="myprofile.php">My Profile</a></li>
-                    <li><a href="">Log Out</a></li>
+                    <li><a href="logout.php">Log Out</a></li>
                     </ul>
                 </div>
             </div>

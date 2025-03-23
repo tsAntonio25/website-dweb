@@ -1,6 +1,5 @@
 // user log in
-let username = 'asds'; // double check values 
-let password = 'asdasd'; // double check values
+let loggedin = "<?php echo json_encode($_SESSION['loggedin']); ?>"
 
 // menu
 const menu = document.getElementById("usermenu")
@@ -20,7 +19,7 @@ function checkprofile() {
         menu.style.display = "block" 
 
         // check
-        if (username && password) {
+        if (loggedin) {
             // my profile and log out
             withuser.style.display = "block"
             nouser.style.display = "none"
