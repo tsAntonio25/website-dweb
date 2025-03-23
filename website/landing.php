@@ -34,10 +34,12 @@
     </section>
 
     <section class="cta">
-        <h2>Looking for the perfect ride?</h2>
-        <a href = "signup.php"><button class = "btn">SIGN UP</button></a>
-        <p>or</p>
-        <a href = "login.php"><button class = "btn-secondary">LOG IN</button></a>
+        <div>
+            <h2>Looking for the perfect ride?</h2>
+            <a href = "signup.php"><button class = "btn">SIGN UP</button></a>
+            <p>or</p>
+            <a href = "login.php"><button class = "btn-secondary ctabtn">LOG IN</button></a>
+        </div>
     </section>
  
     <footer>
