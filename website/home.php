@@ -31,7 +31,7 @@ $featuredCars = [
     <!-- PLACEHOLDER -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Tagline</h1>
+            <h1>Your Garage Away From Home</h1>
             <a href = "carlisting.php"><button class = "btn">Explore Cars</button></a>
             <div class="dots">
                 ● ● ● ●
