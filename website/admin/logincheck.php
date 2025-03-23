@@ -1,6 +1,8 @@
 <?php 
 // session
-session_start();
+include 'session.php';
+
+//session_start();
 
 // import connection to db
 include 'connectivity.php';
@@ -23,12 +25,10 @@ if(isset($_POST['login'])) {
         if ($result->num_rows === 1){
             if ($email === $row['email'] && $pass === $row['password']) {
                 // assign result to session
-                $_SESSION["email"] = $row['email'];
+                // $_SESSION["email"] = $row['email'];
                 $_SESSION["loggedin"] = true;
     
-                echo '<script>
-                location.replace("../home.php");
-                </script>';
+                header('Location: ../home.php');
     
             } else {
                 throw new Exception("Invalid Email or Password");
@@ -39,9 +39,7 @@ if(isset($_POST['login'])) {
         }
     }catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage(); // catch
-            echo '<script>
-                location.replace("../login.php");
-                </script>';
+            header('Location: ../login.php');
     }
 
     // enhance security
@@ -51,4 +49,3 @@ if(isset($_POST['login'])) {
 ?>
 
 <!-- connect js script -->
- <script src="../js/script.js"></script>
