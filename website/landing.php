@@ -15,7 +15,7 @@
     <section class = "hero">
         <div class = "hero-content">
             <div class = "hero-image"></div>
-            <h1 class = "tagline">Tagline</h1>
+            <h1 class = "tagline">Your Garage Away From Home</h1>
             <a href = "carlisting.php"><button class = "btn">Explore Cars</button></a>
             
         </div>
@@ -25,9 +25,9 @@
         <div class = "featured-content">
             <div class = "featured-image"></div>
             <div class = "featured-text">
-                <h2>FEATURED HEADING</h2>
-                <p class="firstp">Why Rent with The Garage? </p>
-                <p>Quality Cars, Affordable Rates, and Hassle-Free Experience!</p>
+                <h2>Why Rent with The Garage?</h2>
+                <p class="firstp">Quality Cars, Affordable Rates, and Hassle-Free Experience!</p>
+                <p>Whether its a road trip, business trip, or just exploring the city, The Garage offers well-maintained vehicles to suit your needs. Experience the peace of mind that comes with choosing reliable and convenient car rentals at The Garage.</p>
                 <a href = "carlisting.php"><button class = "btn">See More...</button></a>
             </div>
         </div>
