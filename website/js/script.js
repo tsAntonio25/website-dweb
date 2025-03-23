@@ -1,6 +1,18 @@
-// user log in
-let loggedin = "<?php echo json_encode($_SESSION['loggedin']); ?>"
+let loggedin = false;
 
+// MAGFETCH KA PLEASEEE
+async function checkLoginStatus() {
+    try {
+        const response = await fetch('../admin/session.php');
+        const data = await response.json();
+        loggedin = data.loggedin;
+        console.log("Logged in status:", loggedin);
+    } catch (error) {
+        console.error('Error fetching login status:', error);
+    }
+}
+
+checkLoginStatus()
 // menu
 const menu = document.getElementById("usermenu")
 const nouser = document.getElementById("nouser")
