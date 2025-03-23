@@ -41,11 +41,26 @@ include 'admin/connectivity.php';
         <?php include 'nav.php'; ?>
     </header>
     <section class="home">
+        <div class="slideshow-container">
+            <div class="coverSlides fade">
+                <img src="assets/cover1.jpg">
+            </div>
+
+            <div class="coverSlides fade">
+                <img src="assets/cover2.jpg">
+            </div>
+
+            <div class="coverSlides fade">
+                <img src="assets/background.jpg">
+            </div>
+        </div>
         <div class="home-content">
             <h1>Your Garage Away From Home</h1>
             <a href = "carlisting.php"><button class = "btn">Explore Cars</button></a>
             <div class="dots">
-                ● ● ● ●
+                <span class="dot"></span> 
+                <span class="dot"></span> 
+                <span class="dot"></span> 
             </div>
         </div>
     </section>
@@ -91,6 +106,8 @@ include 'admin/connectivity.php';
     <footer>
         <?php include 'footer.php' ?>
     </footer>
+
+    <script src="js/slides.js"></script>
 </body>
 
 
