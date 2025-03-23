@@ -816,6 +816,11 @@ section.home button {
     padding-bottom: 10px;
 }
 
+.car-card-link {
+    text-decoration: none!important;
+    color: inherit !important;
+}
+
 .car-card {
     background-color: var(--button);
     width: 340px!important;
@@ -828,6 +833,14 @@ section.home button {
     justify-content: flex-end;
     overflow: hidden;
     box-shadow: #2a292933 0px 2px 8px 0px;
+}
+
+.car-card h3, 
+.car-card p {
+    margin: 8px 0 2px 16px;
+    color: #ffffff !important;
+    font-size: 1.1em;
+    text-decoration: none;
 }
 
 .car-card img {

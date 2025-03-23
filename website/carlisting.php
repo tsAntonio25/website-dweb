@@ -16,12 +16,10 @@
         $carTypes[$row['type']][] = [
             "image" => $row['image'],
             "name" => "{$row['brand']} {$row['model']}",
+            "carID" => $row['carID'],
             "availability" => $row['availability']
         ];
     }
-    ?>
-    
-
 ?>
 
 <!DOCTYPE html>
@@ -47,11 +45,13 @@
                     <button class="arrow left" onclick="prevSlide('<?php echo strtolower($type); ?>')">&#10094;</button>
                     <div class="car-container" id="<?php echo strtolower($type); ?>">
                         <?php foreach ($cars as $car) : ?>
-                            <div class="car-card">
-                                <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
-                                <h3><?= $car['name']; ?></h3>
-                                <p><?= $car['availability']; ?></p>
-                            </div>
+                            <a href="rent1.php?carID=<?= $car['carID']; ?>" class="car-card-link">
+                                <div class="car-card">
+                                    <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
+                                    <h3><?= $car['name']; ?></h3>
+                                    <p><?= $car['availability']; ?></p>
+                                </div>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                     <button class="arrow right" onclick="nextSlide('<?php echo strtolower($type); ?>')">&#10095;</button>
