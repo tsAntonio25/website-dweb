@@ -228,7 +228,6 @@ section.cta {
     background: url(../assets/cover1.jpg) no-repeat center center fixed;
     background-size: cover;
     height: 83vh;
-    
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);
 }
 .cta div {
@@ -611,6 +610,44 @@ input.submit:hover {
 }
 
 /********---------------HOME.PHP---------------********/
+
+section.home {
+    background-size: cover;
+    height: 83vh;
+    position: relative;
+}
+
+
+.home-content {
+    background-color: #111111ce;
+    height: 83vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    align-items: center; 
+    position: relative;
+    margin-top: 7em;
+}
+
+.home-content h1 {
+    margin-bottom: 1em;
+    font-size: 32px;
+    color: #fff;
+    letter-spacing: 2px;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+
+section.home button {
+    margin-bottom: 1em;
+}
+
+.dots {
+    margin-bottom: 1em;
+}
+
 .recent-rentals, .featured-cars {
     padding: 4em;
     text-align: left;
@@ -636,13 +673,14 @@ input.submit:hover {
 .car-box{
     display: flex;
     width: 25%;
-    height: 24em;
+    height: 20em;
     display: flex;
     justify-content: left;
     flex-wrap: wrap;
     background-color: var(--navBg);
     margin: 5em auto;
     border-radius: 10px;
+    box-shadow: #b8b8b833 0px 2px 8px 0px;
 }
 
 .car-box ul{
@@ -651,11 +689,8 @@ input.submit:hover {
     list-style-type: none;
 }
 
-.car-image{
-    background: url(../assets/background.jpg);
-    background-size: cover;
-    height: 40vh;
-    width: 30vw;
+.car-image img{
+    width: 100%;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 

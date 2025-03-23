@@ -1,17 +1,30 @@
-    
 <?php
-// Simulating car listings (In production, fetch from a database)
-$recentRentals = [
-    ["name" => "Car Model 1", "availability" => "Available"],
-    ["name" => "Car Model 2", "availability" => "Rented"],
-    ["name" => "Car Model 3", "availability" => "Available"]
-];
+include 'admin/connectivity.php';
 
-$featuredCars = [
-    ["name" => "Car Model A", "availability" => "Available"],
-    ["name" => "Car Model B", "availability" => "Rented"],
-    ["name" => "Car Model C", "availability" => "Available"]
-];
+    $featuredCarsQuery = "SELECT carID, model AS name, image FROM car ORDER BY carID ASC LIMIT 3";
+    $featuredCarsResult = $con->query($featuredCarsQuery);
+    $featuredCars = [];
+    
+    while ($row = $featuredCarsResult->fetch_assoc()) {
+        $featuredCars[] = $row;
+    }
+
+
+    // ganito ba? d ko maimagine wla p ksi table HAHAHAHA
+
+    // $recentRentalsQuery = "
+    //     SELECT c.carID, c.model AS name, 
+    //     FROM car c
+    //     LEFT JOIN transaction t ON c.carID = t.carID
+    //     ORDER BY t.transactionID DESC 
+    //     LIMIT 3
+    // ";
+
+    // $recentRentalsResult = $con->query($recentRentalsQuery);
+    // $recentRentals = [];
+    // while ($row = $recentRentalsResult->fetch_assoc()) {
+    //     $recentRentals[] = $row;
+    // }
 ?>
 
 
@@ -27,10 +40,8 @@ $featuredCars = [
     <header>
         <?php include 'nav.php'; ?>
     </header>
-        <!-- main -->
-    <!-- PLACEHOLDER -->
-    <section class="hero">
-        <div class="hero-content">
+    <section class="home">
+        <div class="home-content">
             <h1>Your Garage Away From Home</h1>
             <a href = "carlisting.php"><button class = "btn">Explore Cars</button></a>
             <div class="dots">
@@ -41,8 +52,8 @@ $featuredCars = [
 
     <section class="recent-rentals">
         <h2>Recent Rentals</h2>
-        <div class="cars">
-            <?php foreach ($recentRentals as $car) : ?>
+        <!-- <div class="cars">
+            <?php //foreach ($recentRentals as $car) : ?>
                 <div class="car-box">
                     <div class="car-image"></div>
                     <ul class="car-details">
@@ -50,24 +61,32 @@ $featuredCars = [
                         <li><p class="availability"><?= $car['availability']; ?></p></li>
                     </ul>
                 </div>
-            <?php endforeach; ?>
-        </div>
+            <?php //endforeach; ?>
+        </div> -->
     </section>
 
     <section class="featured-cars">
-        <h2>Featured Cars</h2>
-        <div class="cars">
+    <h2>Featured Cars</h2>
+    <div class="cars">
+        <?php if (count($featuredCars) > 0) : ?>
             <?php foreach ($featuredCars as $car) : ?>
                 <div class="car-box">
-                    <div class="car-image"></div>
+                    <div class="car-image">
+                        <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
+                    </div>
                     <ul class="car-details">
-                        <li><p><?= $car['name'];?></p></li>
-                        <li><p class="availability"><?= $car['availability']; ?></p></li>
+                        <li><p><?= htmlspecialchars($car['name']); ?></p></li>
+                        <li><p class="availability">Available</p></li>
                     </ul>
                 </div>
             <?php endforeach; ?>
-        </div>
-    </section>
+        <?php else : ?>
+            <p>No featured cars available.</p>
+        <?php endif; ?>
+    </div>
+</section>
+
+
 
     <footer>
         <?php include 'footer.php' ?>
