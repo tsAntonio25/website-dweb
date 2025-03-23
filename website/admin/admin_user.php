@@ -7,7 +7,11 @@
     <?php 
         include 'connectivity.php';
 
-        $query = "SELECT * FROM user";
+        $query = "SELECT u.UserID, u.Email, ui.FirstName, ui.MiddleInitial, ui.LastName, ui.Suffix 
+                  FROM user u 
+                  LEFT JOIN userinfo ui ON u.UserID = ui.UserID
+                ";
+
         $result = $con->query($query);
     ?>
 </head>
@@ -33,25 +37,23 @@
 
             <?php
                 if ($result->num_rows > 0) {
-                while($row = $result->fetch_assoc()) {
-                echo "<tr>
-                    <td>{$row['userID']}</td>
-                    <td>{$row['email']}</td>
-                    <td>{$row['firstname']}</td>
-                    <td>{$row['minitial']}</td>
-                    <td>{$row['lastname']}</td>
-                    <td>{$row['suffix']}</td>
-                    <td><a href='read.php?type=user&id=" . $row['userID'] . "' class='action view'>View</a></td>
-
-                    <td><a href='update.php?type=user&id=" . $row['userID'] . "' class='action edit'>Edit</a></td>
-
-                    <td><a href='delete.php?type=user&id=" . $row['userID'] . "' class='action delete'>Delete</a></td>
-              </tr>";
-            }
-            } else {
-                echo "<tr><td colspan='9'>No users found.</td></tr>";
-            }
-?>
+                    while($row = $result->fetch_assoc()) {
+                        echo "<tr>
+                            <td>{$row['UserID']}</td>
+                            <td>{$row['Email']}</td>
+                            <td>{$row['FirstName']}</td>
+                            <td>{$row['MiddleInitial']}</td>
+                            <td>{$row['LastName']}</td>
+                            <td>{$row['Suffix']}</td>
+                            <td><a href='read.php?type=user&id=" . $row['UserID'] . "' class='action view'>View</a></td>
+                            <td><a href='update.php?type=user&id=" . $row['UserID'] . "' class='action edit'>Edit</a></td>
+                            <td><a href='delete.php?type=user&id=" . $row['UserID'] . "' class='action delete'>Delete</a></td>
+                        </tr>";
+                    }
+                } else {
+                    echo "<tr><td colspan='9'>No users found.</td></tr>";
+                }
+            ?>
 
             </tr>
             

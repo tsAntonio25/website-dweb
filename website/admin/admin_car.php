@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Car</title>
     <?php 
-        include 'connectivity.php';
-
-        $query = "SELECT * FROM car";
-        $result = $con->query($query);
+         include 'connectivity.php';
+ 
+         $query = "SELECT c.CarID, c.Model, c.Brand, c.Type, cd.Availability, cd.RentalPrice 
+                   FROM car c
+                   LEFT JOIN carrentaldetail cd ON c.CarID = cd.CarID
+                   ";
+                   
+         $result = $con->query($query);
     ?>
 </head>
 <body>
@@ -26,26 +30,28 @@
                 <th>Model</th>
                 <th>Brand</th>
                 <th>Type</th>
-                <th colspan ="3">Actions</th>
+                <th>Availability</th>
+                <th>Rental Price</th>
+                <th colspan="3">Actions</th>
             </tr>
 
             <?php
                 if ($result->num_rows > 0) {
                     while($row = $result->fetch_assoc()){
                         echo "<tr>
-                                <td>{$row['carID']}</td>
-                                <td>{$row['model']}</td>
-                                <td>{$row['brand']}</td>
-                                <td>{$row['type']}</td>
-                                <td><a href='read.php?type=car&id=" . $row['carID'] . "' class='action view'>View</a></td>
-
-                                <td><a href='update.php?type=car&id=" . $row['carID'] . "' class='action edit'>Edit</a></td>
-
-                                <td><a href='delete.php?type=car&id=" . $row['carID'] . "' class='action delete'>Delete</a></td>
+                                <td>{$row['CarID']}</td>
+                                <td>{$row['Model']}</td>
+                                <td>{$row['Brand']}</td>
+                                <td>{$row['Type']}</td>
+                                <td>{$row['Availability']}</td>
+                                <td>{$row['RentalPrice']}</td>
+                                <td><a href='read.php?type=car&id=" . $row['CarID'] . "' class='action view'>View</a></td>
+                                <td><a href='update.php?type=car&id=" . $row['CarID'] . "' class='action edit'>Edit</a></td>
+                                <td><a href='delete.php?type=car&id=" . $row['CarID'] . "' class='action delete'>Delete</a></td>
                             </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='7'>No cars found.</td></tr>";
+                    echo "<tr><td colspan='9'>No cars found.</td></tr>";
                 }
             ?>
         </table>

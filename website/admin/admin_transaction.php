@@ -7,41 +7,14 @@
     <?php 
         include 'connectivity.php';
 
-        $query = "SELECT * FROM transaction";
+        $query = "SELECT t.transactionID, t.userID, t.carID, td.pickupDate, td.returnDate, cc.cardNumber
+                  FROM transactiondetails t
+                  LEFT JOIN transactiondates td ON t.transactionID = td.transactionID
+                  LEFT JOIN creditcard cc ON t.userID = cc.userID
+                  ";
+
         $result = $con->query($query);
     ?>
-    <style>
-        body {
-            background-color: #302C2C;
-            color: #fff;
-            font-family: Arial, sans-serif;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            background-color: #3C3C3C;
-            color: #fff;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #707070;
-            text-align: center;
-        }
-        th {
-            background-color: #707070;
-        }
-        .arrowBtn {
-            position: fixed;
-            bottom: 20px;
-            right: 30px;
-            background-color: #D9D9D9;
-            color: #302C2C;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-size: 18px;
-        }
     </style>
 </head>
 <body>
@@ -58,7 +31,10 @@
                 <th>Transaction ID</th>
                 <th>User ID</th>
                 <th>Car ID</th>
-                <th colspan ="3">Actions</th>
+                <th>Pickup Date</th>
+                <th>Return Date</th>
+                <th>Payment (Card Number)</th>
+                <th colspan="3">Actions</th>
             </tr>
 
             <?php
@@ -68,15 +44,16 @@
                                 <td>{$row['transactionID']}</td>
                                 <td>{$row['userID']}</td>
                                 <td>{$row['carID']}</td>
-                                <td><a href='read.php?type=transaction&id=" . $row['transactionID'] . "' class='action view'>View</a></td>
-
-                                <td><a href='update.php?type=transaction&id=" . $row['transactionID'] . "' class='action edit'>Edit</a></td>
-
-                                <td><a href='delete.php?type=transaction&id=" . $row['transactionID'] . "' class='action delete'>Delete</a></td>
+                                <td>{$row['pickupDate']}</td>
+                                <td>{$row['returnDate']}</td>
+                                <td>" . substr($row['cardNumber'], -4) . "</td> <!-- Show last 4 digits for security -->
+                                <td><a href='read.php?type=transaction&id=" . $row['TransactionID'] . "' class='action view'>View</a></td>
+                                <td><a href='update.php?type=transaction&id=" . $row['TransactionID'] . "' class='action edit'>Edit</a></td>
+                                <td><a href='delete.php?type=transaction&id=" . $row['TransactionID'] . "' class='action delete'>Delete</a></td>
                               </tr>";
                     }
                 } else {
-                    echo "<tr><td colspan='6'>No transactions found.</td></tr>";
+                    echo "<tr><td colspan='9'>No transactions found.</td></tr>";
                 }
             ?>
         </table>

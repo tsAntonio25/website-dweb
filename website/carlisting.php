@@ -1,20 +1,26 @@
 <?php
     include 'admin/connectivity.php';
- 
-    $query = "SELECT * FROM car ORDER BY type";
+    
+    $query = "SELECT c.carID, c.brand, c.model, c.type, c.image, crd.availability 
+              FROM car c
+              LEFT JOIN carrentaldetail crd ON c.carID = crd.carID
+              ORDER BY c.type
+            ";
+    
     $result = $con->query($query);
-
+    
     $carTypes = [];
-
     $cars = $result->fetch_all(MYSQLI_ASSOC);
-
+    
     foreach ($cars as $row) {
-            $carTypes[$row['type']][] = [
-                "image" => $row['image'],
-                "name" => "{$row['brand']} {$row['model']}",
-                "availability" => $row['availability']
-            ];
+        $carTypes[$row['type']][] = [
+            "image" => $row['image'],
+            "name" => "{$row['brand']} {$row['model']}",
+            "availability" => $row['availability']
+        ];
     }
+    ?>
+    
 
 ?>
 
