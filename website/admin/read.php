@@ -8,15 +8,15 @@
         switch ($type) {
             case 'car':
                 $table = "car";
-                $id_column = "carID";
+                $id_column = "CarID";
                 break;
             case 'transaction':
-                $table = "transaction";
-                $id_column = "transactionID";
+                $table = "transactiondetails";
+                $id_column = "TransactionID";
                 break;
             case 'user':
-                $table = "users";
-                $id_column = "userID";
+                $table = "user";
+                $id_column = "UserID";
                 break;
             default:
                 echo "<h2>Invalid type.</h2>";

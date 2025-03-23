@@ -1,7 +1,7 @@
 <?php
 include 'admin/connectivity.php';
 
-    $featuredCarsQuery = "SELECT carID, model AS name, image FROM car ORDER BY carID ASC LIMIT 3";
+    $featuredCarsQuery = "SELECT CarID, Model AS name, image FROM car ORDER BY CarID ASC LIMIT 3";
     $featuredCarsResult = $con->query($featuredCarsQuery);
     $featuredCars = [];
     
@@ -87,7 +87,7 @@ include 'admin/connectivity.php';
             <?php foreach ($featuredCars as $car) : ?>
                 <div class="car-box">
                     <div class="car-image">
-                        <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
+                        <img src="assets/carImages/<?= $car['Image']; ?>" alt="<?= $car['name']; ?>">
                     </div>
                     <ul class="car-details">
                         <li><p><?= htmlspecialchars($car['name']); ?></p></li>

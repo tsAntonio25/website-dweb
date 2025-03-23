@@ -3,7 +3,7 @@ include 'connectivity.php';
 
     $userCountQuery = "SELECT COUNT(*) AS total FROM user";
     $carCountQuery = "SELECT COUNT(*) AS total FROM car";
-    $transactionCountQuery = "SELECT COUNT(*) AS total FROM transaction";
+    $transactionCountQuery = "SELECT COUNT(*) AS total FROM transactiondetails";
 
     $userCount = $con->query($userCountQuery)->fetch_assoc()['total'];
     $carCount = $con->query($carCountQuery)->fetch_assoc()['total'];
