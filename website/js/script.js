@@ -1,9 +1,9 @@
-let loggedin = true;
+let loggedin = false;
 
 // MAGFETCH KA PLEASEEE
 async function checkLoginStatus() {
     try {
-        const response = await fetch('../admin/session.php');
+        const response = await fetch('../website/admin/session.php');
         const data = await response.json();
         loggedin = data.loggedin;
         console.log("Logged in status:", loggedin);
@@ -12,7 +12,10 @@ async function checkLoginStatus() {
     }
 }
 
+// call function
 checkLoginStatus()
+
+
 // menu
 const menu = document.getElementById("usermenu")
 const nouser = document.getElementById("nouser")

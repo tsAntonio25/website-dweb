@@ -10,3 +10,5 @@ $response = ['loggedin' => $_SESSION['loggedin'] ?? false];
 
 // check value
 echo json_encode($response);
+
+?>
