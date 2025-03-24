@@ -1,30 +1,44 @@
 <?php
+session_start();
 include 'admin/connectivity.php';
 
-    $featuredCarsQuery = "SELECT CarID, Model AS name, image FROM car ORDER BY CarID ASC LIMIT 3";
+    $featuredCarsQuery = "SELECT CarID, Model, image FROM car ORDER BY CarID ASC LIMIT 3";
+
+    /* pag andito na availability sa crd check query*/
+    // $featuredCarsQuery = "SELECT c.CarID, c.Model, crd.Availability AS name, c.Image
+    //                         FROM car c
+    //                         JOIN carrentaldetail crd ON c.CarID = crd.CarID
+    //                         ORDER BY c.CarID ASC 
+    //                         LIMIT 3
+    //                     ";
+
     $featuredCarsResult = $con->query($featuredCarsQuery);
     $featuredCars = [];
     
-    while ($row = $featuredCarsResult->fetch_assoc()) {
-        $featuredCars[] = $row;
+while ($row = $featuredCarsResult->fetch_assoc()) {
+    $featuredCars[] = $row;
+}
+
+if (isset($_SESSION['userID'])) {
+    $userID = $_SESSION['userID'];
+
+    $recentRentalsQuery = " SELECT c.CarID, c.Model AS name, c.Image, crd.Availability
+                            FROM car c
+                            JOIN transactiondetails t ON c.CarID = t.CarID
+                            LEFT JOIN carrentaldetail crd ON c.CarID = crd.CarID
+                            ORDER BY t.TransactionID DESC
+                            LIMIT 3
+                        ";
+
+    $recentRentalsResult = $con->query($recentRentalsQuery);
+    $recentRentals = [];
+
+    while ($row = $recentRentalsResult->fetch_assoc()) {
+        $recentRentals[] = $row;
     }
-
-
-    // ganito ba? d ko maimagine wla p ksi table HAHAHAHA
-
-    // $recentRentalsQuery = "
-    //     SELECT c.carID, c.model AS name, 
-    //     FROM car c
-    //     LEFT JOIN transaction t ON c.carID = t.carID
-    //     ORDER BY t.transactionID DESC 
-    //     LIMIT 3
-    // ";
-
-    // $recentRentalsResult = $con->query($recentRentalsQuery);
-    // $recentRentals = [];
-    // while ($row = $recentRentalsResult->fetch_assoc()) {
-    //     $recentRentals[] = $row;
-    // }
+} else {
+    $recentRentals = [];
+}
 ?>
 
 
@@ -67,42 +81,49 @@ include 'admin/connectivity.php';
 
     <section class="recent-rentals">
         <h2>Recent Rentals</h2>
-        <!-- <div class="cars">
-            <?php //foreach ($recentRentals as $car) : ?>
-                <div class="car-box">
-                    <div class="car-image"></div>
-                    <ul class="car-details">
-                        <li><p><?= $car['name']; ?></p></li>
-                        <li><p class="availability"><?= $car['availability']; ?></p></li>
-                    </ul>
-                </div>
-            <?php //endforeach; ?>
-        </div> -->
+        <div class="cars">
+            <?php if (count($recentRentals) > 0) : ?>
+                <?php foreach ($recentRentals as $car) : ?>
+                    <a href="rent1.php?carID=<?= $car['CarID']; ?>" class="car-box-link">
+                        <div class="car-box">
+                            <div class="car-image">
+                                <img src="assets/carImages/<?= htmlspecialchars($car['Image']); ?>" alt="<?= htmlspecialchars($car['name']); ?>">
+                            </div>
+                            <ul class="car-details">
+                                <li><p><?= htmlspecialchars($car['name']); ?></p></li>
+                                <li><p class="availability"><?= htmlspecialchars($car['Availability']); ?></p></li>
+                            </ul>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <h4>No recent rented cars available.</h4>
+            <?php endif; ?>
+        </div>
     </section>
 
     <section class="featured-cars">
-    <h2>Featured Cars</h2>
-    <div class="cars">
-        <?php if (count($featuredCars) > 0) : ?>
-            <?php foreach ($featuredCars as $car) : ?>
-                <div class="car-box">
-                    <div class="car-image">
-                        <img src="assets/carImages/<?= $car['Image']; ?>" alt="<?= $car['name']; ?>">
-                    </div>
-                    <ul class="car-details">
-                        <li><p><?= htmlspecialchars($car['name']); ?></p></li>
-                        <li><p class="availability">Available</p></li>
-                    </ul>
-                </div>
-            <?php endforeach; ?>
-        <?php else : ?>
-            <p>No featured cars available.</p>
-        <?php endif; ?>
-    </div>
-</section>
-
-
-
+        <h2>Featured Cars</h2>
+        <div class="cars">
+            <?php if (count($featuredCars) > 0) : ?>
+                <?php foreach ($featuredCars as $car) : ?>
+                    <a href="rent1.php?carID=<?= $car['CarID']; ?>" class="car-box-link">
+                        <div class="car-box">
+                            <div class="car-image">
+                                <img src="assets/carImages/<?= $car['Image']; ?>" alt="<?= $car['Model']; ?>">
+                            </div>
+                            <ul class="car-details">
+                                <li><p><?= htmlspecialchars($car['Model']); ?></p></li>
+                                <!-- availability dito-->
+                            </ul>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            <?php else : ?>
+                <h4>No featured cars available.</h4>
+            <?php endif; ?>
+        </div>
+    </section>
     <footer>
         <?php include 'footer.php' ?>
     </footer>

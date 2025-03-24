@@ -45,7 +45,7 @@
                     <button class="arrow left" onclick="prevSlide('<?php echo strtolower($type); ?>')">&#10094;</button>
                     <div class="car-container" id="<?php echo strtolower($type); ?>">
                         <?php foreach ($cars as $car) : ?>
-                            <a href="rent1.php?carID=<?= $car['carID']; ?>" class="car-card-link">
+                            <a href="rent1.php?carID=<?= $car['carID']; ?>"class="car-card-link">
                                 <div class="car-card">
                                     <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
                                     <h3><?= $car['name']; ?></h3>

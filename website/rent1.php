@@ -8,7 +8,7 @@
 
     $carID = intval($_GET['carID']);
 
-    $query = " SELECT c.carID, c.brand, c.model, c.type, c.image, c.description, crd.availability, crd.rentalPrice
+    $query = " SELECT c.carID, c.brand, c.model, c.type, c.image, c.color, c.description, c.fueltype, crd.availability, crd.rentalPrice
                FROM car c
                LEFT JOIN carrentaldetail crd ON c.carID = crd.carID
                WHERE c.carID = $carID
@@ -50,6 +50,10 @@
           <ul>
             <li><strong>Type:</strong> <?= htmlspecialchars($car['type']); ?></li>
             <li><strong>Availability:</strong> <?= htmlspecialchars($car['availability']); ?></li>
+            <li><strong>Type:</strong> <?= htmlspecialchars($car['type']); ?></li>
+            <li><strong>Color:</strong> <?= htmlspecialchars($car['color']); ?></li>
+            <li><strong>Fuel Type:</strong> <?= htmlspecialchars($car['fueltype']); ?></li>
+
           </ul>
         </div>
 
@@ -58,8 +62,7 @@
 
         <div class="rent-buttons">
           <a href="carlisting.php"><button type="button" class="btn-secondary">Back</button></a>
-          <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>">
-            <button type="button" class="btn">Rent Now</button>
+          <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>&rentalPrice=<?= htmlspecialchars($car['rentalPrice']); ?>">            <button type="button" class="btn">Rent Now</button>
           </a>
         </div>
       </div>

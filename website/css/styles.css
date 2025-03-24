@@ -700,7 +700,7 @@ section.home button {
 .recent-rentals, .featured-cars {
     padding: 4em;
     text-align: left;
-    height: 80vh;
+    height: auto;
 }
 
 .recent-rentals {
@@ -716,20 +716,35 @@ section.home button {
 .cars {
     display: flex;
     flex-wrap: wrap;
-    gap: 3em;
+    justify-content: space-around;
+    gap: 5em;
+}
+
+.cars h4 {
+    color: var(--button)!important;
+    font-weight: 600;
+    font-size: 24px;
 }
 
 .car-box{
+    background-color: #707070!important;
+    width: 280px!important;
+    height: 250px!important;
+    border-radius: 10px;
+    flex-shrink: 0;
     display: flex;
-    width: 25%;
-    height: 20em;
-    display: flex;
-    justify-content: left;
+    flex-direction: column;
+    align-items: left;
+    justify-content: flex-end;
     flex-wrap: wrap;
-    background-color: var(--navBg);
     margin: 5em auto;
     border-radius: 10px;
     box-shadow: #b8b8b833 0px 2px 8px 0px;
+}
+
+.car-box-link {
+    text-decoration: none!important;
+    color: inherit !important;
 }
 
 .car-box ul{
@@ -833,6 +848,10 @@ section.home button {
     justify-content: flex-end;
     overflow: hidden;
     box-shadow: #2a292933 0px 2px 8px 0px;
+}
+
+.car-card:hover {
+    background-color: #424242;
 }
 
 .car-card h3, 
@@ -975,6 +994,9 @@ section.home button {
     width: 45%;
     vertical-align: top;
     font-size: 14px;
+}
+.details-column ul li {
+    padding-bottom: 0.5em;
 }
 
 .details ul {
