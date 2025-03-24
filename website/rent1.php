@@ -62,7 +62,8 @@
 
         <div class="rent-buttons">
           <a href="carlisting.php"><button type="button" class="btn-secondary">Back</button></a>
-          <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>&rentalPrice=<?= htmlspecialchars($car['rentalPrice']); ?>">            <button type="button" class="btn">Rent Now</button>
+          <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>">
+            <button type="button" class="btn">Rent Now</button>
           </a>
         </div>
       </div>

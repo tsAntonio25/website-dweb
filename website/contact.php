@@ -22,7 +22,7 @@
             <div class="contact-container">
                 <div class="contact-item">
                     <img src="assets/email.svg" alt="email icon">
-                    <span><a href="mailto:thegarage@gmail.com">thegarage@gmail.com</a></span>
+                    <span><a href="mailto:thegarage.carrental@gmail.com">thegarage.carrental@gmail.com</a></span>
                 </div>
 
                 <div class="contact-item">
@@ -41,19 +41,8 @@
                 </div>
             </div>
         </div>
-        <div class="contact-form">
-            <form action="/action_page.php">
-                <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Juan Dela Cruz"><br>
-
-                <label for="email">E-mail</label>
-                <input type="text" id="email" name="email" placeholder="E-mail"><br>
-
-                <label for="message">Message</label>
-                <textarea name="message" rows="6″ cols="20″ placeholder="Enter message"></textarea><br><br>
-
-                <input type="submit" value="Submit" class="submit">
-            </form>
+        <div class="contact-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3851.4596080946176!2d120.58743607416007!3d15.133083163820324!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3396f24ec2f5a1f9%3A0x5e0af8a6aaab2282!2sHoly%20Angel%20University!5e0!3m2!1sen!2sph!4v1742831370328!5m2!1sen!2sph" loading="lazy"  referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </section>

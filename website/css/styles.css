@@ -452,33 +452,16 @@ form label {
     width: 24px;
     height: 24px;
 }
-.contact-form input[type=text], .contact-form textarea {
-    width: 90%;
-    padding: 1em;
-    margin: 5px 0;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: white;
-    color: black;
+
+
+.contact-map iframe {
+    width: 80%;
+    height: 60vh;
+    border-radius: 8px;
+    border: var(--navBg) 2px solid;
+
 }
 
-input.submit {
-    margin: 0 auto;
-    padding: 1em;
-    background-color: var(--button);
-    border-radius: 10px;
-    border: 2px solid var(--footerBg);
-    text-transform: uppercase;
-    color: var(--secBg);
-    cursor: pointer;
-}
-    
-input.submit:hover {
-    color: var(--button);
-    background-color: var(--secBg);
-    transition: 300ms ease-in-out;
-    font-weight: 600;
-}
 
 /********---------------LOGIN.PHP---------------********/
 .login-main {

@@ -1,32 +1,36 @@
 <?php
     include 'admin/connectivity.php';
 
-    if (!isset($_GET['carID']) || !is_numeric($_GET['carID']) || !isset($_GET['rentalPrice'])) {
-        echo "<h2>Invalid Car ID or Rental Price.</h2>";
+    if (!isset($_GET['carID']) || !is_numeric($_GET['carID'])) {
+        echo "<h2>Invalid Car ID.</h2>";
         exit;
     }
 
     $carID = intval($_GET['carID']);
-    $rentalPrice = floatval($_GET['rentalPrice']);
 
-    $additionalPriceQuery = "SELECT c.Model, c.Brand, t.AdditionalPrice 
-                                FROM car c 
-                                LEFT JOIN transactiondetails t ON c.CarID = t.CarID 
-                                WHERE c.CarID = $carID
-                            ";
+    $query = "SELECT crd.RentalPrice, c.Model, c.Brand, t.AdditionalPrice 
+                FROM carrentaldetail crd 
+                JOIN car c ON crd.CarID = c.CarID 
+                LEFT JOIN transactiondetails t ON crd.CarID = t.CarID 
+                WHERE c.CarID = $carID
+            ";
 
-    $additionalPriceResult = $con->query($additionalPriceQuery);
-    $additionalPrice = 0;   
+    $result = $con->query($query);
+    $rentalPrice = 0;
+    $additionalPrice = 0;
     $carModel = '';
     $carBrand = '';
 
-    if ($additionalPriceResult && $additionalPriceResult->num_rows > 0) {
-        $row = $additionalPriceResult->fetch_assoc();
+    if ($result && $result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $rentalPrice = floatval($row['RentalPrice']);
         $additionalPrice = floatval($row['AdditionalPrice']);
         $carModel = htmlspecialchars($row['Model']);
         $carBrand = htmlspecialchars($row['Brand']);
+    } else {
+        echo "<script> alert('Car not found or rental price not available');</script>";
+        exit;
     }
-
 
     $totalAmount = 0;
 
@@ -35,7 +39,7 @@
         $returnDate = $_POST['return-date'];
     
         if (strtotime($returnDate) < strtotime($pickupDate)) {
-            echo "<h2>Error: Return date must be after pickup date.</h2>";
+            echo "<script>alert('Error: Return date must be after pickup date.');</script>";
         } else {
             $date1 = new DateTime($pickupDate);
             $date2 = new DateTime($returnDate);
