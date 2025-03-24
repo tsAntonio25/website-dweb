@@ -49,3 +49,4 @@ if(isset($_POST['login'])) {
 ?>
 
 <!-- connect js script -->
+ <script src="../js/script.js"></script>
