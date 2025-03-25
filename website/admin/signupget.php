@@ -1,5 +1,4 @@
 <?php
-
 // session
 session_start();
 
@@ -28,17 +27,40 @@ if (isset($_POST['sign_up'])) {
     $email = trim($_POST['email']);
     $password = trim($_POST['password']);
 
+    # confirm pass
+    $confirmpass = trim($_POST['confirm']);
+
+
     // secure email and pass
     try {
+        // check if pass and confirm pass r the same
+        if ($password !== $confirmpass) {
+            throw new Exception('Password does not match. Please try again.');
+
+        }
+
+        // check email 
+        $stmt = $con->prepare("SELECT email FROM user WHERE email = ? ");
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            throw new Exception('Email already existing');
+        }
+
+
         // hash password 
         $hash_pass = password_hash($password, PASSWORD_DEFAULT);
         // sanitize email
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
+        // check if email is already at the db || if so, throw error
+
         // prepare query
         $stmt = $con->prepare("INSERT INTO user
       (email, password)
-      VALUES ( '?', '?')");
+      VALUES ( ?, ?)");
 
         // bind parameters
         $stmt->bind_param('ss', $email, $hash_pass);
@@ -60,7 +82,7 @@ if (isset($_POST['sign_up'])) {
          userid,
          firstname,
          lastname,
-         minitial,
+         middleinitial,
          suffix,
          address,
          barangay,
@@ -69,16 +91,16 @@ if (isset($_POST['sign_up'])) {
          zipcode
       )
       VALUES (
-         '?',
-         '?',
-         '?',
-         '?',
-         '?',
-         '?',
-         '?',
-         '?',
-         '?',
-         '?'
+         ?,
+         ?,
+         ?,
+         ?,
+         ?,
+         ?,
+         ?,
+         ?,
+         ?,
+         ?
       )");
         // bind parameters
         $stmt->bind_param(
@@ -98,7 +120,16 @@ if (isset($_POST['sign_up'])) {
         // execute query
         $stmt->execute();
 
+        // go back to login
+        echo "<script>
+                alert('Sign up OK!'); 
+                window.location.href='../login.php';
+            </script>";
+       
+
     } catch (Exception $e) {
-        echo $e->getMessage();
+        $_SESSION['error'] = $e->getMessage();
+        header('Location: ../signup.php');
+
     }
 }

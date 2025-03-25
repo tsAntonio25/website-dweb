@@ -1,3 +1,11 @@
+<?php 
+    session_start();
+
+    // get error msg (if meron)
+    $error = $_SESSION['error'] ?? '';
+    unset($_SESSION['error']);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -76,6 +84,10 @@
 
                 <label for="confirm">Confirm Password</label>
                 <input type="password" id="confirm" name="confirm" placeholder="Re-type Password"><br><br>
+
+                <?php if (!empty($error)): ?> <!-- aayusin  -->
+                        <span class="error" style="color:red;"><?= htmlspecialchars($error) ?></span>
+                    <?php endif; ?>
 
                 <div class="submit-container">
                     <input type="submit" value="Sign Up" class="submit btn" name="sign_up">
