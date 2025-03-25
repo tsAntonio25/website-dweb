@@ -27,7 +27,7 @@
 
                 <div class="contact-item">
                     <img src="assets/phone.svg" alt="phone icon">
-                    <span><a href="tel:+639123456789">0912 345 6789</a></span>
+                    <span><a href="">09xx xxx xxxx</a></span>
                 </div>
 
                 <div class="contact-item">

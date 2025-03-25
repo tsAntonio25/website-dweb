@@ -28,21 +28,21 @@
         <h2 class = "team-heading"> Meet Our Team </h2>
         <div class = "team-container">
             <div class = "team-member">
-                <img src = "assets/team-member.jpg" class = "team-img"/>
-                <p>Anne Nichole Alimurung</p>
+                <img src = "assets/team-member1.jpg" class = "team-img"/>
+                <p>Chief Executive Officer</p>
             </div>
             <div class = "team-member">
-                <img src = "assets/team-member.jpg" class = "team-img"/>
-                <p>Trishia Mae Antonio</p>
+                <img src = "assets/team-member2.jpg" class = "team-img"/>
+                <p>Chief Operating Officer</p>
             </div>
             <div class = "team-member">
-                <img src = "assets/team-member.jpg" class = "team-img"/>
-                <p>Sherene Tolentino</p>
+                <img src = "assets/team-member3.jpg" class = "team-img"/>
+                <p>Chief Financial Officer</p>
             </div>
             <div class = "team-member">
-                <img src = "assets/team-member.jpg" class = "team-img"/>
-                <p>Lorin Robelle Yambao</p>
-            </div>
+                <img src = "assets/team-member4.jpg" class = "team-img"/>
+                <p>Chief Information Officer</p>
+                </div>
         </div>
     </section>
 
