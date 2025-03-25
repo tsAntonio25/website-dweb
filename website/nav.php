@@ -1,3 +1,4 @@
+
 <html lang="en">
     <head>
         <link rel="stylesheet" href="css/styles.css">
@@ -5,6 +6,7 @@
     </head>
     <body>
         <div class = "logo">
+            <!-- if session(loggedin) = true: home.php ? landing.php  -->
             <a href="landing.php"><img src="assets\logo.png" alt="car logo"></a>
             <a href="landing.php"><h2>The Garage</h2></a>
         </div>

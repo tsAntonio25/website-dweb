@@ -3,7 +3,7 @@
 session_start();
 
 // empty session values
-$_SESSION = [];
+session_unset();
 
 // remove session
 session_destroy();

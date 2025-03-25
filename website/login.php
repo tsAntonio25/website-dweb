@@ -1,6 +1,6 @@
 <?php session_start();
 
-// aayusin 
+// get error msg (if meron)
 $error = $_SESSION['error'] ?? '';
 unset($_SESSION['error']);?>
 
