@@ -7,19 +7,28 @@
 
         switch ($type) {
             case 'user':
-                $con->query("DELETE FROM userinfo WHERE UserID = $id");
+                $checkUser  = $con->query("SELECT * FROM userinfo WHERE UserID = $id");
+                if ($checkUser ->num_rows > 0) {
+                    $con->query("DELETE FROM userinfo WHERE UserID = $id");
+                }
                 $table = "user";
                 $id_column = "UserID";
                 $redirect_page = "admin_user.php";
                 break;
             case 'car':
-                $con->query("DELETE FROM carrentaldetail WHERE CarID = $id");
+                $checkCar = $con->query("SELECT * FROM carrentaldetail WHERE CarID = $id");
+                if ($checkCar->num_rows > 0) {
+                    $con->query("DELETE FROM carrentaldetail WHERE CarID = $id");
+                }
                 $table = "car";
                 $id_column = "CarID";
                 $redirect_page = "admin_car.php";
                 break;
             case 'transaction':
-                $con->query("DELETE FROM transactiondates WHERE TransactionID = $id");
+                $checkTransaction = $con->query("SELECT * FROM transactiondates WHERE TransactionID = $id");
+                if ($checkTransaction->num_rows > 0) {
+                    $con->query("DELETE FROM transactiondates WHERE TransactionID = $id");
+                }
                 $table = "transactiondetails";
                 $id_column = "TransactionID";
                 $redirect_page = "admin_transaction.php";
@@ -46,3 +55,26 @@
         die("<h2>Invalid request.</h2>");
     }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Confirmation</title>
+    <link rel="stylesheet" href="../css/admin_styles.css">
+</head>
+<body>
+    <header>
+        <?php include 'admin_nav.php'; ?>
+    </header>
+    <main class="admin-container">
+        <h2 class="title">Are you sure you want to delete this record?</h2>
+        <hr class="sep">
+        <div class="buttons">
+            <a href="delete.php?type=<?php echo $type; ?>&id=<?php echo $id; ?>&confirm=yes" class="action delete">Yes, Delete</a>
+            <a href="<?php echo $redirect_page; ?>" class="action back">Cancel</a>
+        </div>
+    </main>
+</body>
+</html>

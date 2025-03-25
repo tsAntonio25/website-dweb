@@ -28,6 +28,7 @@ if (isset($_GET['type'])) {
             $table2 = "userinfo";
             $fields1 = ['Email', 'Password'];
             $fields2 = ['FirstName', 'LastName', 'MiddleInitial', 'Suffix', 'Address', 'Barangay', 'City', 'Province', 'ZipCode'];
+            $optionalField = ['Suffix'];
             $redirect_page = "admin_user.php";
             break;
         default:
@@ -107,7 +108,7 @@ if (isset($_GET['type'])) {
                     <?php foreach ($fields2 as $field) { ?>
                         <tr>
                             <th><?php echo ucfirst($field); ?></th>
-                            <td><input type="text" name="<?php echo $field; ?>" required></td>
+                            <td><input type="text" name="<?php echo $field; ?>" <?php echo in_array($field, $optionalField) ? "" : "required"; ?>></td>
                         </tr>
                     <?php } ?>
                 </table>
