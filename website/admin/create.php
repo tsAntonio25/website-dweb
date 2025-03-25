@@ -1,62 +1,108 @@
 <?php 
+// session
+session_start();
+
 // import connection to db
 include '/admin/connectivity.php';
 
 // if(isset($_POST['save'])) <-- gagamitin for specific submission of form
+
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
 // sign up form
 //pinalitan ko value sa loob ng post; nag add ako name sa submit sa sign up
  if (isset($_POST['sign_up'])){
     // get values from sign up form
 
-    # personal info
-    $firstname = $_POST['fname'];
-    $lastname = $_POST['lname'];
-    $middle = $_POST['mi'];
-    $suffix = $_POST['suffix'];
-    $address = $_POST['hlzs'];
-    $brgy = $_POST['barangay'];
-    $city = $_POST['city'];
-    $province = $_POST['province'];
-    $zipcode = $_POST['zip'];
+    # user info table
+   $firstname = trim($_POST['firstname']);
+   $lastname = trim($_POST['lastname']);
+   $middle = trim($_POST['minitial']);
+   $suffix = trim($_POST['suffix']);
+   $address = trim($_POST['address']);
+   $brgy = trim($_POST['barangay']);
+   $city = trim($_POST['city']);
+   $province = trim($_POST['province']);
+   $zipcode = trim($_POST['zipcode']);
 
-    # user info
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    // confirm pass
+   # user table
+   $email = trim($_POST['email']);
+   $password = trim($_POST['password']);
 
-    # sql
-    $query = "INSERT into user (
-               email,
-               password,
-               firstname,
-               lastname,
-               minitial,
-               suffix,
-               address,
-               barangay,
-               city,
-               province,
-               zipcode
-            )
-            VALUES (
-               '$email',
-               '$password',
-               '$firstname',
-               '$lastname',
-               '$middle',
-               '$suffix',
-               '$address',
-               '$brgy',
-               '$city',
-               '$province',
-               '$zipcode'
-            )";
-   
-    $result = $con->query($query);
+   // secure email and pass
+   try {
+      // hash password 
+      $hash_pass = password_hash($password, PASSWORD_DEFAULT);
+      // sanitize email
+      $email = filter_var($email, FILTER_SANITIZE_EMAIL);
 
-   //wala pa verification
-    echo "<script> location.replace('index.php') </script>";
+      // prepare query
+      $stmt = $con->prepare("INSERT INTO user
+      (email, password)
+      VALUES ( '?', '?')");
+
+      // bind parameters
+      $stmt->bind_param('ss', $email, $hash_pass);
+
+      // execute query
+      $stmt->execute();
+
+   // get userid
+      $stmt = $con->prepare("SELECT userID FROM user WHERE email = ?");
+      $stmt->bind_param("s", $email);
+      $stmt->execute();
+      $result = $stmt->get_result();
+      $row = $result->fetch_assoc();
+      $userID = $row['userID'];
+
+   // secure query (user info)
+      // prepare query
+      $stmt = $con->prepare("INSERT into userInfo (
+         userid,
+         firstname,
+         lastname,
+         minitial,
+         suffix,
+         address,
+         barangay,
+         city,
+         province,
+         zipcode
+      )
+      VALUES (
+         '?',
+         '?',
+         '?',
+         '?',
+         '?',
+         '?',
+         '?',
+         '?',
+         '?',
+         '?'
+      )");
+      // bind parameters
+      $stmt->bind_param(
+         "isssssssss", 
+         $userID,
+         $firstname,
+         $lastname,
+         $middle,
+         $suffix,
+         $address,
+         $brgy,
+         $city,
+         $province,
+         $zipcode
+     );
+
+     // execute query
+      $stmt->execute();
+
+  } catch (Exception $e) {
+   echo $e->getMessage();
+  }
+ 
 
 // transaction form
  } else if (isset($_POST['pay'])) {
