@@ -82,7 +82,7 @@
             </div>
 
             <div class="coverSlides fade">
-                <img src="assets/background.jpg">
+                <img src="assets/cover3.jpg">
             </div>
         </div>
         <div class="home-content">

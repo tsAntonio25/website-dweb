@@ -26,7 +26,9 @@
 
     <section class = "featured">
         <div class = "featured-content">
-            <div class = "featured-image"></div>
+            <div class = "featured-image">
+                <img src = "assets/cover4.jpg">
+            </div>
             <div class = "featured-text">
                 <h2>Why Rent with The Garage?</h2>
                 <p class="firstp">Quality Cars, Affordable Rates, and Hassle-Free Experience!</p>

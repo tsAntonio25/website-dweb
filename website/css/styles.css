@@ -191,9 +191,11 @@ section.featured, div.featured-content {
     height: 80vh;
 }
 
-div.featured-content{
+.featured-content{
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .featured-text {
@@ -216,10 +218,15 @@ div.featured-content{
 }
 
 .featured-image {
-    background: url(../assets/background.jpg);
-    height: 65vh;
-    width: 50%!important;
-    margin: 3em;
+   margin: 0 10em;
+
+}
+
+.featured-image img{
+    height: 70vh;
+    width: 100%!important;
+    object-fit: cover;
+    margin: 5em;
 }
 
 .featured-text a {
