@@ -19,7 +19,7 @@ if (isset($_GET['type'])) {
         case 'transaction':
             $table1 = "transactiondetails";
             $table2 = "transactiondates";
-            $fields1 = ['UserID', 'CarID', 'RentalPrice', 'AdditionalPrice', 'TotalAmount', 'PaymentMethod'];
+            $fields1 = ['UserID', 'CarID', 'RentalPrice', 'TotalAmount', 'PaymentMethod'];
             $fields2 = ['PickupDate', 'ReturnDate'];
             $redirect_page = "admin_transaction.php";
             break;

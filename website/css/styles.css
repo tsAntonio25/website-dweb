@@ -292,6 +292,10 @@ a .btn:hover {
     font-weight: 600;
 }
 
+.not:hover {
+    background-color: var(--button)!important;
+}
+
 
 a .btn-secondary {
     padding: 1em 3em;
@@ -513,6 +517,7 @@ form label {
     text-decoration: none;
     color: var(--button);
     text-align: left;
+    margin-bottom: 1.5em;
 }
 
 .submit {
@@ -520,6 +525,7 @@ form label {
     width: 40%!important;
     text-transform: uppercase;
 }
+
 
 /********---------------SIGNUP.PHP---------------********/
 .signup-section h1{
@@ -670,9 +676,9 @@ section.home button {
 }
 
 .dot {
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
+    height: 10px;
+    width: 10px;
+    margin: 0 4px;
     background-color: #bbb;
     border-radius: 50%;
     display: inline-block;
@@ -694,9 +700,13 @@ section.home button {
 }
 
 .recent-rentals, .featured-cars {
-    padding: 4em;
+    padding: 5em 4em;
     text-align: left;
     height: auto;
+}
+
+.recent-rentals h2, .featured-cars h2 {
+    margin-bottom: 2em;
 }
 
 .recent-rentals {
@@ -713,7 +723,7 @@ section.home button {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 5em;
+    gap: 2em;
 }
 
 .cars h4 {
@@ -728,12 +738,12 @@ section.home button {
     height: 250px!important;
     border-radius: 10px;
     flex-shrink: 0;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: left;
     justify-content: flex-end;
     flex-wrap: wrap;
-    margin: 5em auto;
     border-radius: 10px;
     box-shadow: #b8b8b833 0px 2px 8px 0px;
 }
@@ -762,7 +772,7 @@ section.home button {
 
 .car-image {
     width: 100%;
-    height: 66%;
+    height: 165px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1016,22 +1026,34 @@ section.home button {
     margin: 0;
 }
 
-.rent-buttons {
+.rent-now {
     padding: 0 2em;
-    margin-top: 1em;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.rent-buttons {
+    width: 100%;    
+    display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
 
 .unavailable {
-    color: #bd1111!important; 
+    color: red!important;
+    clear: both; 
     font-style: italic;
     font-weight: bold;
-    margin-top: 1em;
-    padding-top: 2em;
+    margin-top: 1em!important;
     font-size: 1em;
     text-align: center;
+}
+
+.rent-buttons a, .rent-buttons button {
+    width: fit-content;
 }
 
 /*rent2*/

@@ -47,9 +47,9 @@
                                 <td>{$row['pickupDate']}</td>
                                 <td>{$row['returnDate']}</td>
                                 <td>" . substr($row['cardNumber'], -4) . "</td> <!-- Show last 4 digits for security -->
-                                <td><a href='read.php?type=transaction&id=" . $row['TransactionID'] . "' class='action view'>View</a></td>
-                                <td><a href='update.php?type=transaction&id=" . $row['TransactionID'] . "' class='action edit'>Edit</a></td>
-                                <td><a href='delete.php?type=transaction&id=" . $row['TransactionID'] . "' class='action delete'>Delete</a></td>
+                                <td><a href='read.php?type=transaction&id=" . $row['transactionID'] . "' class='action view'>View</a></td>
+                                <td><a href='update.php?type=transaction&id=" . $row['transactionID'] . "' class='action edit'>Edit</a></td>
+                                <td><a href='delete.php?type=transaction&id=" . $row['transactionID'] . "' class='action delete'>Delete</a></td>
                               </tr>";
                     }
                 } else {

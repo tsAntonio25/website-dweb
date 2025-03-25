@@ -28,7 +28,7 @@
     }
 
 
-    $historyQuery = "SELECT td.TransactionID, c.brand, c.model, td.RentalPrice, td.AdditionalPrice, td.TotalAmount, td.PaymentMethod 
+    $historyQuery = "SELECT td.TransactionID, c.brand, c.model, td.RentalPrice, td.TotalAmount, td.PaymentMethod 
                      FROM transactiondetails td 
                      JOIN car c ON td.CarID = c.carID 
                      WHERE td.UserID = ?

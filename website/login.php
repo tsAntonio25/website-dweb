@@ -38,7 +38,7 @@
                     <a href = "signup.php" class = "alt-login"> Sign in instead...</a>
                     
                     <?php if (!empty($error)): ?> <!-- aayusin  -->
-                        <span class="error" style="color:red;"><?= htmlspecialchars($error) ?></span>
+                        <span class="error unavailable"><?= htmlspecialchars($error) ?></span>
                     <?php endif; ?>
 
                     <input name="login" type="submit" value="Log In" class="submit btn">
