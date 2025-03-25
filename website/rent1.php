@@ -13,8 +13,12 @@
                LEFT JOIN carrentaldetail crd ON c.carID = crd.carID
                WHERE c.carID = $carID
             ";
-
-    $result = $con->query($query);
+            
+    //prepared statements for security
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("i", $carID);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $car = $result->fetch_assoc();

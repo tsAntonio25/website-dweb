@@ -22,7 +22,7 @@
             "carID" => $row['CarID'],
             "image" => htmlspecialchars($row['Image']),
             "name" => htmlspecialchars($row['Model']),
-            "availability" => $row['Availability'] === 'Available' ? 'Available' : 'Unavailable'
+            "availability" => strtolower($row['Availability']) === 'available' ? 'Available' : 'Unavailable'
         ];        
 }
 
@@ -49,7 +49,7 @@
                 "carID" => $row['CarID'],
                 "image" => htmlspecialchars($row['Image']),
                 "name" => htmlspecialchars($row['name']),
-                "availability" => $row['Availability'] === 'Available' ? 'Available' : 'Unavailable'
+                "availability" => strtolower($row['Availability']) === 'available' ? 'Available' : 'Unavailable'
             ];
         }
     } else {
