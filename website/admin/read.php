@@ -7,13 +7,22 @@
 
         switch ($type) {
             case 'user':
-                $query = "SELECT * FROM user u JOIN userinfo ui ON u.UserID = ui.UserID WHERE u.UserID = ?";
+                $query = "SELECT * FROM user u 
+                            JOIN userinfo ui ON u.UserID = ui.UserID
+                            WHERE u.UserID = ?
+                        ";
                 break;
             case 'car':
-                $query = "SELECT * FROM car c JOIN carrentaldetail cd ON c.CarID = cd.CarID WHERE c.CarID = ?";
+                $query = "SELECT * FROM car c 
+                            JOIN carrentaldetail cd ON c.CarID = cd.CarID 
+                            WHERE c.CarID = ?
+                        ";
                 break;
             case 'transaction':
-                $query = "SELECT * FROM transactiondetails td JOIN transactiondates tdt ON td.TransactionID = tdt.TransactionID WHERE td.TransactionID = ?";
+                $query = "SELECT * FROM transactiondetails td 
+                            JOIN transactiondates tdt ON td.TransactionID = tdt.TransactionID 
+                            WHERE td.TransactionID = ?
+                        ";
                 break;
             default:
                 echo "<h2>Invalid type.</h2>";
