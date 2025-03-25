@@ -23,6 +23,12 @@
 
     <main class="login-main">
         <h1>Log In</h1>
+        <?php if (isset($_GET['message'])): ?>
+            <div class="notification">
+                <h6><?= htmlspecialchars($_GET['message']); ?></h6>
+             </div>
+        <?php endif; ?>
+
         <div class = "login-container">
             <div class = "login-box">
                 <div class = "avatar">

@@ -1,7 +1,9 @@
 <?php
-    include 'admin/connectivity.php';
+  session_start();
 
-    if (!isset($_GET['carID']) || !is_numeric($_GET['carID'])) {
+  include 'admin/connectivity.php';
+
+  if (!isset($_GET['carID']) || !is_numeric($_GET['carID'])) {
         echo "<h2>Invalid Car ID.</h2>";
         exit;
     }
@@ -29,6 +31,11 @@
 
     $isAvailable = (strtolower($car['availability']) === 'available');
 
+    $notification = "";
+      if (isset($_SESSION['rent_error'])) {
+      $notification = $_SESSION['rent_error'];
+      unset($_SESSION['rent_error']);
+  }
 ?>
 
 <!DOCTYPE html>
@@ -43,6 +50,12 @@
     <header>
       <?php include 'nav.php'; ?>
     </header>
+
+    <div id="notification" class="notification">
+        <?php if (!empty($notification)) : ?>
+            <p><?= htmlspecialchars($notification); ?></p>
+        <?php endif; ?>
+    </div>
 
     <section class="details-container">
       <div class="details-img">
@@ -74,9 +87,13 @@
           <div class="rent-buttons">
             <a href="carlisting.php"><button type="button" class="btn-secondary">Back</button></a>
             <?php if ($isAvailable): ?>
-              <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>">
-                <button type="button" class="btn">Rent Now</button>
-              </a>
+              <?php if (isset($_SESSION['userID'])) : ?>
+                <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>">
+                  <button type="button" class="btn">Rent Now</button>
+                </a>
+              <?php else : ?>
+                  <button type="button" class="btn" onclick="redirectToLogin()">Rent Now</button>
+              <?php endif; ?>
             <?php else: ?>
               <button type="button" class="btn not" disabled>Unavailable</button>
             <?php endif; ?>
@@ -87,5 +104,6 @@
     <footer>
         <?php include 'footer.php' ?>
     </footer>
+    <script src="js/redirectLogin.js"></script>
 </body>
 </html>

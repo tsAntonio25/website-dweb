@@ -282,8 +282,8 @@ section.cta {
 
 /*buttons*/
 
-a .btn {
-    padding: 1em 3em;
+.btn {
+    padding: 1em 3em!important;
     background-color: var(--button);
     border-radius: 10px;
     border: 2px solid var(--footerBg);
@@ -292,7 +292,7 @@ a .btn {
     cursor: pointer;
 }
 
-a .btn:hover {
+.btn:hover {
     color: var(--button);
     background-color: var(--secBg);
     transition: 300ms ease-in-out;
@@ -487,6 +487,22 @@ form label {
     margin-bottom: 1em;
     text-align: center;
 }
+
+.notification {
+    display: flex;
+    justify-content: center;
+    align-items: center!important;
+    background-color: #f8d7da!important;
+    color: #721c24!important;
+    padding: 1em;
+    border-radius: 5px;
+    width: 80%;
+    text-align: center;
+    margin: 1em auto;
+    font-weight: bold;
+    font-size: 24px;
+}
+
 
 .login-container {
     display: flex;
