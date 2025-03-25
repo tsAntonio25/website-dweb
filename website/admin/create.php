@@ -1,4 +1,7 @@
 <?php 
+// session
+session_start();
+
 // import connection to db
 include '/admin/connectivity.php';
 
