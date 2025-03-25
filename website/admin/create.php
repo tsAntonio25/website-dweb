@@ -44,12 +44,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
       // execute query
       $stmt->execute();
 
-  } catch (Exception $e) {
-   echo $e->getMessage();
-  }
-
    // get userid
-   try {
       $stmt = $con->prepare("SELECT userID FROM user WHERE email = ?");
       $stmt->bind_param("s", $email);
       $stmt->execute();
@@ -57,12 +52,7 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
       $row = $result->fetch_assoc();
       $userID = $row['userID'];
 
-   } catch (Exception $e) {
-      echo $e->getMessage();
-   }
-   
    // secure query (user info)
-   try {
       // prepare query
       $stmt = $con->prepare("INSERT into userInfo (
          userid,
@@ -105,7 +95,6 @@ mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
      // execute query
       $stmt->execute();
-
 
   } catch (Exception $e) {
    echo $e->getMessage();
