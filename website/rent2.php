@@ -14,7 +14,12 @@
                 WHERE c.CarID = $carID
             ";
 
-    $result = $con->query($query);
+    //prepared statements for security
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("i", $carID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     $rentalPrice = 0;
     $days = 0;
     $hours = 0;

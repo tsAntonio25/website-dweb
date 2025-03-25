@@ -1,44 +1,60 @@
 <?php
-session_start();
-include 'admin/connectivity.php';
+    session_start();
+    include 'admin/connectivity.php';
 
-    $featuredCarsQuery = "SELECT CarID, Model, image FROM car ORDER BY CarID ASC LIMIT 3";
 
-    /* pag andito na availability sa crd check query*/
-    // $featuredCarsQuery = "SELECT c.CarID, c.Model, crd.Availability AS name, c.Image
-    //                         FROM car c
-    //                         JOIN carrentaldetail crd ON c.CarID = crd.CarID
-    //                         ORDER BY c.CarID ASC 
-    //                         LIMIT 3
-    //                     ";
-
-    $featuredCarsResult = $con->query($featuredCarsQuery);
-    $featuredCars = [];
-    
-while ($row = $featuredCarsResult->fetch_assoc()) {
-    $featuredCars[] = $row;
-}
-
-if (isset($_SESSION['userID'])) {
-    $userID = $_SESSION['userID'];
-
-    $recentRentalsQuery = " SELECT c.CarID, c.Model AS name, c.Image, crd.Availability
+    $featuredCarsQuery = "SELECT c.CarID, c.Model, c.Image, crd.Availability
                             FROM car c
-                            JOIN transactiondetails t ON c.CarID = t.CarID
-                            LEFT JOIN carrentaldetail crd ON c.CarID = crd.CarID
-                            ORDER BY t.TransactionID DESC
+                            JOIN carrentaldetail crd ON c.CarID = crd.CarID
+                            ORDER BY c.CarID ASC 
                             LIMIT 3
                         ";
 
-    $recentRentalsResult = $con->query($recentRentalsQuery);
-    $recentRentals = [];
 
-    while ($row = $recentRentalsResult->fetch_assoc()) {
-        $recentRentals[] = $row;
-    }
-} else {
-    $recentRentals = [];
+    //prepared statements for security
+    $stmt = $con->prepare($featuredCarsQuery);
+    $stmt->execute();
+    $featuredCarsResult = $stmt->get_result();
+    
+    $featuredCars = [];
+    while ($row = $featuredCarsResult->fetch_assoc()) {
+        $featuredCars[] = [
+            "carID" => $row['CarID'],
+            "image" => htmlspecialchars($row['Image']),
+            "name" => htmlspecialchars($row['Model']),
+            "availability" => $row['Availability'] === 'Available' ? 'Available' : 'Unavailable'
+        ];        
 }
+
+    if (isset($_SESSION['userID'])) {
+        $userID = $_SESSION['userID'];
+
+        $recentRentalsQuery = " SELECT c.CarID, c.Model, c.Image, crd.Availability
+                                FROM car c
+                                JOIN transactiondetails t ON c.CarID = t.CarID
+                                LEFT JOIN carrentaldetail crd ON c.CarID = crd.CarID
+                                ORDER BY t.TransactionID DESC
+                                LIMIT 3
+                            ";
+
+        //prepared statements for security
+        $stmt = $con->prepare($recentRentalsQuery);
+        $stmt->bind_param("i", $userID);
+        $stmt->execute();
+        $recentRentalsResult = $stmt->get_result();
+        
+        $recentRentals = [];
+        while ($row = $recentRentalsResult->fetch_assoc()) {
+            $recentRentals[] = [
+                "carID" => $row['CarID'],
+                "image" => htmlspecialchars($row['Image']),
+                "name" => htmlspecialchars($row['name']),
+                "availability" => $row['Availability'] === 'Available' ? 'Available' : 'Unavailable'
+            ];
+        }
+    } else {
+        $recentRentals = [];
+    }
 ?>
 
 
@@ -84,15 +100,19 @@ if (isset($_SESSION['userID'])) {
         <div class="cars">
             <?php if (count($recentRentals) > 0) : ?>
                 <?php foreach ($recentRentals as $car) : ?>
-                    <a href="rent1.php?carID=<?= $car['CarID']; ?>" class="car-box-link">
+                    <a href="rent1.php?carID=<?= $car['carID']; ?>" class="car-box-link">
                         <div class="car-box">
-                            <div class="car-image">
-                                <img src="assets/carImages/<?= htmlspecialchars($car['Image']); ?>" alt="<?= htmlspecialchars($car['name']); ?>">
+                        <a href="rent1.php?carID=<?= $car['carID']; ?>" class="car-box-link">
+                            <div class="car-box">
+                                <div class="car-image">
+                                    <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
+                                </div>
+                                <ul class="car-details">
+                                    <li><p><?= htmlspecialchars($car['name']); ?></p></li>
+                                    <p><?= htmlspecialchars($car['availability']); ?></p>
+                                </ul>
                             </div>
-                            <ul class="car-details">
-                                <li><p><?= htmlspecialchars($car['name']); ?></p></li>
-                                <li><p class="availability"><?= htmlspecialchars($car['Availability']); ?></p></li>
-                            </ul>
+                        </a>
                         </div>
                     </a>
                 <?php endforeach; ?>
@@ -107,14 +127,14 @@ if (isset($_SESSION['userID'])) {
         <div class="cars">
             <?php if (count($featuredCars) > 0) : ?>
                 <?php foreach ($featuredCars as $car) : ?>
-                    <a href="rent1.php?carID=<?= $car['CarID']; ?>" class="car-box-link">
+                    <a href="rent1.php?carID=<?= $car['carID']; ?>" class="car-box-link">
                         <div class="car-box">
                             <div class="car-image">
-                                <img src="assets/carImages/<?= $car['Image']; ?>" alt="<?= $car['Model']; ?>">
+                                <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
                             </div>
                             <ul class="car-details">
-                                <li><p><?= htmlspecialchars($car['Model']); ?></p></li>
-                                <!-- availability dito-->
+                                <li><p><?= htmlspecialchars($car['name']); ?></p></li>
+                                <p><?= htmlspecialchars($car['availability']); ?></p>
                             </ul>
                         </div>
                     </a>

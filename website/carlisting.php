@@ -7,17 +7,25 @@
               ORDER BY c.type
             ";
     
-    $result = $con->query($query);
-    
+    //prepared statements for security
+    $stmt = $con->prepare($query); 
+    $stmt->execute();
+    $result = $stmt->get_result();
+        
+    if (!$result) {
+        echo "<script> alert('Error fetching car listings: ' . htmlspecialchars($con->error) . ')</script>";
+        exit;
+    }
+
     $carTypes = [];
     $cars = $result->fetch_all(MYSQLI_ASSOC);
     
     foreach ($cars as $row) {
         $carTypes[$row['type']][] = [
-            "image" => $row['image'],
-            "name" => "{$row['brand']} {$row['model']}",
+            "image" => htmlspecialchars($row['image']),
+            "name" => htmlspecialchars("{$row['brand']} {$row['model']}"),
             "carID" => $row['carID'],
-            "availability" => $row['availability']
+            "availability" => $row['availability'] === 'Available' ? 'Available' : 'Unavailable'
         ];
     }
 ?>
@@ -47,9 +55,9 @@
                         <?php foreach ($cars as $car) : ?>
                             <a href="rent1.php?carID=<?= $car['carID']; ?>"class="car-card-link">
                                 <div class="car-card">
-                                    <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>">
+                                    <img src="assets/carImages/<?= $car['image']; ?>" alt="<?= $car['name']; ?>" loading="lazy">
                                     <h3><?= $car['name']; ?></h3>
-                                    <p><?= $car['availability']; ?></p>
+                                    <p><?= htmlspecialchars($car['availability']); ?></p>
                                 </div>
                             </a>
                         <?php endforeach; ?>
