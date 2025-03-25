@@ -11,7 +11,7 @@
     $query = "SELECT crd.RentalPrice, c.Model, c.Brand
                 FROM carrentaldetail crd 
                 JOIN car c ON crd.CarID = c.CarID 
-                WHERE c.CarID = $carID
+                WHERE c.CarID = ?
             ";
 
     //prepared statements for security

@@ -11,9 +11,9 @@
     $query = " SELECT c.carID, c.brand, c.model, c.type, c.image, c.color, c.description, c.fueltype, crd.availability, crd.rentalPrice
                FROM car c
                LEFT JOIN carrentaldetail crd ON c.carID = crd.carID
-               WHERE c.carID = $carID
+               WHERE c.carID = ?
             ";
-            
+
     //prepared statements for security
     $stmt = $con->prepare($query);
     $stmt->bind_param("i", $carID);

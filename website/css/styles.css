@@ -515,10 +515,10 @@ form label {
     text-align: left;
 }
 
-.login-box input.submit {
-    margin-top: 1.5em;
+.submit {
+    margin-top: 2em!important;
     width: 40%!important;
-
+    text-transform: uppercase;
 }
 
 /********---------------SIGNUP.PHP---------------********/
@@ -593,6 +593,10 @@ form label {
     margin-bottom: 0.5em;
 }
 
+.submit-container {
+    display: flex;
+    justify-content: center;
+}
 /********---------------HOME.PHP---------------********/
 
 section.home {
@@ -1132,7 +1136,7 @@ section.home button {
 .btn {
     background-color: #707070;
     color: white;
-    border: 2px solid black;
+    border: 2px solid black!important;
     padding: 10px;
     cursor: pointer;
     font-size: 16px;
