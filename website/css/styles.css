@@ -323,9 +323,9 @@ section.cta {
 
 button.compute {
     display: block;
-    margin: 1.5em 0!important;
+    margin: 0.5em 0!important;
     text-align: center;
-    width: 200px;
+    width: 150px;
     float: right!important;
 }
 
@@ -1120,7 +1120,8 @@ section.home button {
 
 .cost {
     border-right: var(--footerBg) 2px solid;
-    padding-right: 3em;
+    height: auto;
+    padding-right: 2em;
 }
 
 .rent-container form {
@@ -1145,10 +1146,6 @@ section.home button {
     padding: 10px;
     border: 1px solid black;
     border-radius: 4px;
-}
-
-a.back {
-    margin-top: 10em!important;
 }
 
 .payment-method {
@@ -1221,7 +1218,7 @@ a.back {
     background-color: #707070;
     color: white;
     border: 2px solid black!important;
-    padding: 10px;
+    padding: 1em;
     cursor: pointer;
     font-size: 16px;
     border-radius: 4px;
