@@ -29,13 +29,14 @@
     if (isset($_SESSION['userID'])) {
         $userID = $_SESSION['userID'];
 
-        $recentRentalsQuery = " SELECT c.CarID, c.Model, c.Image, crd.Availability
-                                FROM car c
-                                JOIN transactiondetails t ON c.CarID = t.CarID
-                                LEFT JOIN carrentaldetail crd ON c.CarID = crd.CarID
-                                ORDER BY t.TransactionID DESC
-                                LIMIT 3
-                            ";
+            $recentRentalsQuery = "SELECT c.CarID, c.Model, c.Image, crd.Availability
+                                    FROM car c
+                                    JOIN transactiondetails t ON c.CarID = t.CarID
+                                    LEFT JOIN carrentaldetail crd ON c.CarID = crd.CarID
+                                    WHERE t.UserID = ? 
+                                    ORDER BY t.TransactionID DESC
+                                    LIMIT 3
+                                ";
 
         //prepared statements for security
         $stmt = $con->prepare($recentRentalsQuery);

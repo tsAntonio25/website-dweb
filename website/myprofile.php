@@ -62,7 +62,7 @@
             <img src="assets/team-member.jpg" alt="Photo 1">
             <div class="gallery-details">
                 <h2><?= htmlspecialchars($user['LastName'] . ', ' . $user['FirstName'] . ' ' . htmlspecialchars($user['MiddleInitial'])); ?></h2>
-                <p><?= htmlspecialchars($user['Address'] . ', ' . $user['Barangay'] . ', ' . $user['City'] . ', ' . $user['Province'] . ', ' . $user['ZipCode']); ?></p>
+                <p><?= htmlspecialchars($user['Barangay'] . ', ' . $user['City'] . ', ' . $user['Province'] . ', ' . $user['ZipCode']); ?></p>
             </div>
         </div>
     </section>
@@ -76,15 +76,21 @@
                 <th>Return Date</th>
                 <th>Amount Paid</th>
             </tr>
-            <?php while ($history = $historyResult->fetch_assoc()): ?>
+            <?php if ($historyResult->num_rows > 0):
+                while ($history = $historyResult->fetch_assoc()): ?>
             <tr>
-            <td><?= htmlspecialchars($history['brand'] . ' ' . $history['model']); ?></td>
+                <td><?= htmlspecialchars($history['brand'] . ' ' . $history['model']); ?></td>
                 <td><?= htmlspecialchars(number_format($history['RentalPrice'], 2)); ?></td>
-                <td><?= htmlspecialchars(number_format($history['AdditionalPrice'], 2)); ?></td>
                 <td><?= htmlspecialchars(number_format($history['TotalAmount'], 2)); ?></td>
                 <td><?= htmlspecialchars($history['PaymentMethod']); ?></td>
             </tr>
-            <?php endwhile; ?>
+    <?php endwhile; ?>
+<?php else: ?>
+    <tr>
+        <td colspan="4">No rentals found.</td> 
+    </tr>
+<?php endif; ?>
+                
         </table>
     </section>
  

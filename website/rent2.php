@@ -103,7 +103,7 @@
                     <label for="return-time">Time</label>
                     <input type="time" id="return-time" name="return-time">
                 </div>
-                <a><input type="submit" value="Confirm" class="btn"></a>
+                <a><input type="submit" value="Confirm" class="btn compute"></a>
             </form>
             
             <h2>Cost Breakdown</h2>
@@ -159,7 +159,9 @@
 
                 <input type="hidden" name="total-amount" value="<?= htmlspecialchars($totalAmount); ?>">
                 <input type="hidden" name="carID" value="<?= htmlspecialchars($carID); ?>">
-                <input type="submit" value="Confirm & Pay" class="btn">
+                <div class="button-container">
+                     <input type="submit" value="Confirm & Pay" class="btn pay">
+                </div>            
             </form>
         </section>
     </div>
