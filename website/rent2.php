@@ -40,11 +40,15 @@
         $returnDate = $_POST['return-date'];
         $returnTime = $_POST['return-time'];
 
+        $currentDateTime = new DateTime(); 
+
         $pickupDateTime = new DateTime($pickupDate . ' ' . $pickupTime);
         $returnDateTime = new DateTime($returnDate . ' ' . $returnTime);
     
-        if ($returnDateTime < $pickupDateTime) {
-            echo "<script>alert('Error: Return date must be after pickup date.');</script>";
+        if ($pickupDateTime < $currentDateTime){
+            echo "<script>alert('Error: The pick-up date cannot be in the past. Please choose a valid pick-up date.');</script>";
+        } else if ($returnDateTime < $pickupDateTime) {
+            echo "<script>alert('Error: Return date must be after pickup date. Please choose a valid return date.');</script>";
         } else {
             $interval = $pickupDateTime->diff($returnDateTime);
             $days = $interval->days;
