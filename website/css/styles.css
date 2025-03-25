@@ -879,13 +879,14 @@ section.home button {
 
 .gallery {
     background-color: var(--secBg);
-    margin: 2em 20em;
+    margin: 0 auto;
     border-radius: 8px;
     color: var(--footerBg);
     display: flex;
     align-items: center;
     justify-content: space-around;
     padding: 2em;
+    width: 40%;
 }
 
 .gallery img {
@@ -894,7 +895,7 @@ section.home button {
     background-color: var(--navBg);
     border: 2px solid var(--button);
     border-radius: 50%;
-    margin: 0 auto;
+    float: left;
 }
 
 .history-section {
@@ -1006,7 +1007,8 @@ section.home button {
 }
 
 .unavailable {
-    color: #bd1111; 
+    color: #bd1111!important; 
+    font-style: italic;
     font-weight: bold;
     margin-top: 1em;
     padding-top: 2em;
@@ -1128,8 +1130,15 @@ section.home button {
 
 .rent-container input[type=submit] {
     width: 40%!important;
-    margin: 1.5em 2em 1.5em 0!important;
+    margin: 1.5em;
+    margin-right: 3.5em!important;
     float: right!important;
+}
+
+.button-container {
+    display: flex;            
+    justify-content: flex-end; 
+    margin-top: 1em;
 }
 
 /* Buttons */
