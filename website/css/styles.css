@@ -996,6 +996,15 @@ section.home button {
     justify-content: space-between;
 }
 
+.unavailable {
+    color: #bd1111; 
+    font-weight: bold;
+    margin-top: 1em;
+    padding-top: 2em;
+    font-size: 1em;
+    text-align: center;
+}
+
 /*rent2*/
 .rent-container {
     width: 60%;
