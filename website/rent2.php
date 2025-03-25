@@ -120,7 +120,7 @@
                     <span><i>₱<?= number_format($totalAmount, 2); ?></i></span>
                 </div>
             </div>
-            <a href = "rent1.php?carID=<?=$carID?>" class="btn-secondary">Back</a>
+            <a href = "rent1.php?carID=<?=$carID?>" class="btn-secondary back">Back</a>
         </section>
 
         <section class="payment-details">
