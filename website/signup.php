@@ -86,7 +86,7 @@
                 <input type="password" id="confirm" name="confirm" placeholder="Re-type Password"><br><br>
 
                 <?php if (!empty($error)): ?> <!-- aayusin  -->
-                        <span class="error" style="color:red;"><?= htmlspecialchars($error) ?></span>
+                        <span class="error unavailable"><?= htmlspecialchars($error) ?></span>
                     <?php endif; ?>
 
                 <div class="submit-container">
