@@ -1,4 +1,6 @@
 <?php
+    session_start();
+    
     include 'admin/connectivity.php';
 
     if (!isset($_GET['carID']) || !is_numeric($_GET['carID'])) {
@@ -127,40 +129,43 @@
         <section class="payment-details">
             <h2>Payment Details</h2>
             <h3>Choose your payment method: </h3>
-            <form>
+            <form id="payment-form" method="POST" action="process_payment.php">
                 <div class="form-group payment-method">
                     <label>
-                        <input type="radio" name="payment-method" value="credit-debit-card"> Credit / Debit Card
+                        <input type="radio" name="payment-method" value="credit-debit-card" required> Credit / Debit Card
                     </label>
                     <label>
-                        <input type="radio" name="payment-method" value="paypal"> PayPal
+                        <input type="radio" name="payment-method" value="cash" required> Cash
                     </label>
                 </div>
 
-                <div class="form-group">
-                    <label for="cardholder-name">Card Holder Name</label>
-                    <input type="text" id="cardholder-name" name="cardholder-name">
-                </div>
-                <div class="form-group">
-                    <label for="card-number">Credit Card Number</label>
-                    <input type="text" id="card-number" name="card-number">
-                </div>
-                
-                <div class="form-row">
+                <div id="card-details">
                     <div class="form-group">
-                        <label for="cvv">CVV</label>
-                        <input type="text" id="cvv" name="cvv">
+                        <label for="cardholder-name">Card Holder Name</label>
+                        <input type="text" id="cardholder-name" name="cardholder-name">
                     </div>
                     <div class="form-group">
-                        <label for="expiration">Expiration (MM/YY)</label>
-                        <input type="text" id="expiration" name="expiration" placeholder="MM/YY">
+                        <label for="card-number">Credit Card Number</label>
+                        <input type="text" id="card-number" name="card-number">
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="cvv">CVV</label>
+                            <input type="text" id="cvv" name="cvv">
+                        </div>
+                        <div class="form-group">
+                            <label for="expiration">Expiration (MM/YY)</label>
+                            <input type="text" id="expiration" name="expiration" placeholder="MM/YY">
+                        </div>
                     </div>
                 </div>
 
                 <input type="hidden" name="total-amount" value="<?= htmlspecialchars($totalAmount); ?>">
                 <input type="hidden" name="carID" value="<?= htmlspecialchars($carID); ?>">
+
                 <div class="button-container">
-                    <button type="submit" class="btn pay">Confirm & Pay</button>
+                    <button type="submit" class="btn payconf">Confirm & Pay</button>
                 </div>            
             </form>
         </section>
@@ -169,5 +174,6 @@
     <footer>
         <?php include 'footer.php'; ?>
     </footer>
+    <script src="js/payment.js"></script>
 </body>
 </html>

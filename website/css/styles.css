@@ -1219,12 +1219,13 @@ a.back {
 
 .button-container {
     display: flex;            
-    justify-content: start; 
+    justify-content: center; 
     margin-top: 1em;
 }
 
-/* Buttons */
-
+.btn.payconf {
+    width: 60%;
+}
 
 /*footer*/
 footer {
