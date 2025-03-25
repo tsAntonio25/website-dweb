@@ -585,7 +585,15 @@ form label {
     margin: 0.5em 0;
 }
 
-.signup-section input[type=text] {
+.signup-section input[type=text]{
+    width: 94%;
+    padding: 0.8em;
+    border: 1px solid var(--button);
+    border-radius: 4px;
+    margin-bottom: 0.5em;
+}
+
+.signup-section input[type=password] {
     width: 94%;
     padding: 0.8em;
     border: 1px solid var(--button);
