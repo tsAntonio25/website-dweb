@@ -41,7 +41,7 @@
                         <span class="error" style="color:red;"><?= htmlspecialchars($error) ?></span>
                     <?php endif; ?>
 
-                    <input name="login" type="submit" value="Log In" class="submit">
+                    <input name="login" type="submit" value="Log In" class="submit btn">
                     </form>
 
             </div>
