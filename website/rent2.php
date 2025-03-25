@@ -29,6 +29,7 @@
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $rentalPrice = floatval($row['RentalPrice']);
+        $additionalPrice = floatval($row['AdditionalPrice']);
         $carModel = htmlspecialchars($row['Model']);
         $carBrand = htmlspecialchars($row['Brand']);
     } else {
@@ -120,7 +121,7 @@
                     <span><i>₱<?= number_format($totalAmount, 2); ?></i></span>
                 </div>
             </div>
-            <a href = "rent1.php?carID=<?=$carID?>" class="btn-secondary">Back</a>
+            <a href = "rent1.php?carID=<?=$carID?>" class="btn-secondary back">Back</a>
         </section>
 
         <section class="payment-details">
