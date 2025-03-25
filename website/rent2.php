@@ -29,6 +29,7 @@
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $rentalPrice = floatval($row['RentalPrice']);
+        $additionalPrice = floatval($row['AdditionalPrice']);
         $carModel = htmlspecialchars($row['Model']);
         $carBrand = htmlspecialchars($row['Brand']);
     } else {
