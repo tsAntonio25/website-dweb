@@ -14,7 +14,7 @@
     <section class = "signup-section">
         <h1>Sign Up</h1>
 
-        <form action="admin/operations/create.php" method="post">
+        <form action="admin/create.php" method="post">
             <div class="form-group">
                 <h3>Personal Information</h3>
                 <div class="row">
