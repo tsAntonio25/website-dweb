@@ -103,7 +103,7 @@
                     <label for="return-time">Time</label>
                     <input type="time" id="return-time" name="return-time">
                 </div>
-                <a><input type="submit" value="Confirm" class="btn compute"></a>
+                <button type="submit" value="Confirm" class="btn compute">Confirm</button>
             </form>
             
             <h2>Cost Breakdown</h2>
@@ -121,7 +121,7 @@
                     <span><i>₱<?= number_format($totalAmount, 2); ?></i></span>
                 </div>
             </div>
-            <a href = "rent1.php?carID=<?=$carID?>"><input type="button" class="btn-secondary back" value="Back"></button></a>
+            <a href = "rent1.php?carID=<?=$carID?>" class="btn-secondary back">Back</a>
         </section>
 
         <section class="payment-details">
@@ -160,7 +160,7 @@
                 <input type="hidden" name="total-amount" value="<?= htmlspecialchars($totalAmount); ?>">
                 <input type="hidden" name="carID" value="<?= htmlspecialchars($carID); ?>">
                 <div class="button-container">
-                     <input type="submit" value="Confirm & Pay" class="btn pay">
+                    <button type="submit" class="btn pay">Confirm & Pay</button>
                 </div>            
             </form>
         </section>

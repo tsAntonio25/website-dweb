@@ -304,7 +304,7 @@ section.cta {
 }
 
 
-a .btn-secondary {
+.btn-secondary {
     padding: 1em 3em;
     background-color: transparent;
     border-radius: 10px;
@@ -314,11 +314,23 @@ a .btn-secondary {
     cursor: pointer;
 }
 
-a .btn-secondary:hover {
+.btn-secondary:hover {
     color: var(--navBg);
     background-color: var(--mainBg);
     transition: 300ms ease-in-out;
     font-weight: 600;
+}
+
+button.compute {
+    display: block;
+    margin: 1.5em 0!important;
+    text-align: center;
+    width: 200px;
+    float: right!important;
+}
+
+.pay {
+    float: right!important;
 }
 
 
@@ -1135,8 +1147,8 @@ section.home button {
     border-radius: 4px;
 }
 
-.cost .back{
-    margin-top: 2em;
+a.back {
+    margin-top: 10em!important;
 }
 
 .payment-method {
