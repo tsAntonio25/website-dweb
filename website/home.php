@@ -49,7 +49,7 @@
             $recentRentals[] = [
                 "carID" => $row['CarID'],
                 "image" => htmlspecialchars($row['Image']),
-                "name" => htmlspecialchars($row['name']),
+                "name" => htmlspecialchars($row['Model']),
                 "availability" => strtolower($row['Availability']) === 'available' ? 'Available' : 'Unavailable'
             ];
         }
