@@ -2,49 +2,45 @@
 // session
 include 'session.php';
 
-//session_start();
-
 // import connection to db
 include 'connectivity.php';
 
-mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // wait
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
-// log in
 if(isset($_POST['login'])) {
-    // get email and pass from form
-    $email = $_POST['email'];
+    // secure email
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
     $pass = $_POST['password'];
 
-    // query 
-    // bat ayaw select * from user WHERE email = '$email' AND password = '$pass'
-    $query = "SELECT userID, email, password FROM user WHERE email = '$email' AND password = '$pass'";
-    $result = $con->query($query);
-    $row = $result->fetch_array();
-
-    // check condition
     try {
-        if ($result->num_rows === 1){
-            if ($email === $row['email'] && $pass === $row['password']) {
-                // assign result to session
-                $_SESSION["userID"] = $row['userID']; // for showing my profile
+        // secure sql query
+        $stmt = $con->prepare("SELECT userID, email, password FROM user WHERE email = ?");
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        // Check if user exists
+        if ($result->num_rows === 1) {
+            $row = $result->fetch_assoc();
+
+            // get hashed password to compare
+            if (password_verify($pass, $row['password'])) {
+                $_SESSION["userID"] = $row['userID'];
                 $_SESSION["loggedin"] = true;
-    
+                
                 header('Location: ../home.php');
-    
+                exit();
             } else {
-                throw new Exception("Invalid Email or Password. Please try again.");
-            } 
-            
-        }else {
-            throw new Exception("Invalid Email/Password or No user found");
+                throw new Exception("Invalid email or password. Please try again.");
+            }
+        } else {
+            throw new Exception("Invalid email or password. Please try again.");
         }
-    }catch (Exception $e) {
-            $_SESSION['error'] = $e->getMessage(); // catch
-            header('Location: ../login.php');
+    } catch (Exception $e) {
+        $_SESSION['error'] = $e->getMessage();
+        header('Location: ../login.php');
+        exit();
     }
-
-    // enhance security
-
 }
    
 ?>
