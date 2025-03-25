@@ -129,10 +129,12 @@ function checkAvail($id) {
                 <table>
                     <?php
                         foreach ($data2 as $key => $value) {
+                            $isOptional = ($key === 'suffix');
+
                             echo "<tr>
                                     <th>" . ucfirst($key) . "</th>
-                                    <td><input type='text' name='$key' value='$value' required></td>
-                                  </tr>";
+                                    <td><input type='text' name='$key' value='$value'" . ($isOptional ? "" : " required") . "></td>
+                                </tr>";
                         }
                     ?>
                 </table>
