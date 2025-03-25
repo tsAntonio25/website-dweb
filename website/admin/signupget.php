@@ -14,15 +14,15 @@ if (isset($_POST['sign_up'])) {
     // get values from sign up form
 
     # user info table
-    $firstname = trim($_POST['firstname']);
-    $lastname = trim($_POST['lastname']);
-    $middle = trim($_POST['minitial']);
+    $firstname = trim($_POST['fname']);
+    $lastname = trim($_POST['lname']);
+    $middle = trim($_POST['mi']);
     $suffix = trim($_POST['suffix']);
-    $address = trim($_POST['address']);
+    $address = trim($_POST['hlzs']);
     $brgy = trim($_POST['barangay']);
     $city = trim($_POST['city']);
     $province = trim($_POST['province']);
-    $zipcode = trim($_POST['zipcode']);
+    $zipcode = trim($_POST['zip']);
 
     # user table
     $email = trim($_POST['email']);

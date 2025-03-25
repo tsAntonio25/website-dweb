@@ -72,10 +72,10 @@
                 <input type="text" id="email" name="email" placeholder="juandelacruz@email.com"><br>
 
                 <label for="password">Password</label>
-                <input type="text" id="password" name="password" placeholder="Password"><br>
+                <input type="password" id="password" name="password" placeholder="Password"><br>
 
                 <label for="confirm">Confirm Password</label>
-                <input type="text" id="confirm" name="confirm" placeholder="Re-type Password"><br><br>
+                <input type="password" id="confirm" name="confirm" placeholder="Re-type Password"><br><br>
 
                 <div class="submit-container">
                     <input type="submit" value="Sign Up" class="submit btn" name="sign_up">
