@@ -36,10 +36,26 @@
         
         if ($result->num_rows > 0) {
             $data = $result->fetch_assoc();
+
+            if ($type === 'transaction' && $data['PaymentMethod'] === 'credit') {
+                $transactionID = $data['TransactionID'];
+                $creditCardQuery = "SELECT * FROM creditcard WHERE TransactionID = ?";
+                $creditCardStmt = $con->prepare($creditCardQuery);
+                $creditCardStmt->bind_param("i", $transactionID);
+                $creditCardStmt->execute();
+                $creditCardResult = $creditCardStmt->get_result();
+    
+                if ($creditCardResult->num_rows > 0) {
+                    $creditCardData = $creditCardResult->fetch_assoc();
+                } else {
+                    $creditCardData = null;
+                }
+            }
         } else {
             echo "<h2>No record found.</h2>";
             exit;
         }
+
     } else {
         echo "<h2>Invalid request.</h2>";
         exit;
@@ -70,6 +86,19 @@
                             <th>" . ucfirst($key) . "</th>
                             <td>$value</td>
                           </tr>";
+                }
+            ?>
+        </table>
+        <table>
+            <?php
+                if (isset($creditCardData)) {
+                    echo "<h3 class='table-name'>Credit Card Details</h3>";
+                    foreach ($creditCardData as $key => $value) {
+                        echo "<tr>
+                                <th>" . ucfirst($key) . "</th>
+                                <td>$value</td>
+                              </tr>";
+                    }
                 }
             ?>
         </table>

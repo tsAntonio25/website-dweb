@@ -7,7 +7,7 @@
     <?php 
         include 'connectivity.php';
 
-        $query = "SELECT t.transactionID, t.userID, t.carID, td.pickupDate, td.returnDate, cc.cardNumber
+        $query = "SELECT t.transactionID, t.userID, t.carID, td.pickupDate, td.returnDate, t.PaymentMethod
                   FROM transactiondetails t
                   LEFT JOIN transactiondates td ON t.transactionID = td.transactionID
                   LEFT JOIN creditcard cc ON t.userID = cc.userID
@@ -33,7 +33,7 @@
                 <th>Car ID</th>
                 <th>Pickup Date</th>
                 <th>Return Date</th>
-                <th>Payment (Card Number)</th>
+                <th>Payment Method</th>
                 <th colspan="3">Actions</th>
             </tr>
 
@@ -46,7 +46,7 @@
                                 <td>{$row['carID']}</td>
                                 <td>{$row['pickupDate']}</td>
                                 <td>{$row['returnDate']}</td>
-                                <td>" . substr($row['cardNumber'], -4) . "</td> <!-- Show last 4 digits for security -->
+                                <td>{$row['PaymentMethod']}</td>
                                 <td><a href='read.php?type=transaction&id=" . $row['transactionID'] . "' class='action view'>View</a></td>
                                 <td><a href='update.php?type=transaction&id=" . $row['transactionID'] . "' class='action edit'>Edit</a></td>
                                 <td><a href='delete.php?type=transaction&id=" . $row['transactionID'] . "' class='action delete'>Delete</a></td>
