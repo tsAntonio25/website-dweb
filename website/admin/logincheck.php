@@ -16,7 +16,8 @@ if(isset($_POST['login'])) {
     $pass = $_POST['password'];
 
     // query 
-    $query = "SELECT email, password FROM user WHERE email = '$email' AND password = '$pass'";
+    // bat ayaw select * from user WHERE email = '$email' AND password = '$pass'
+    $query = "SELECT userID, email, password FROM user WHERE email = '$email' AND password = '$pass'";
     $result = $con->query($query);
     $row = $result->fetch_array();
 
@@ -25,13 +26,13 @@ if(isset($_POST['login'])) {
         if ($result->num_rows === 1){
             if ($email === $row['email'] && $pass === $row['password']) {
                 // assign result to session
-                // $_SESSION["email"] = $row['email'];
+                $_SESSION["userID"] = $row['userID']; // for showing my profile
                 $_SESSION["loggedin"] = true;
     
                 header('Location: ../home.php');
     
             } else {
-                throw new Exception("Invalid Email or Password");
+                throw new Exception("Invalid Email or Password. Please try again.");
             } 
             
         }else {
