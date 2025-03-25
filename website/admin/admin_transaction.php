@@ -24,7 +24,7 @@
     
     <main class="admin-container">
         <h2 class="title">Transactions</h2>
-        <a href="add-transaction.php" class="action add">Add New Transaction</a>
+        <a href="create.php?type=transaction" class="action add">Add New Transaction</a>
         <hr class="sep">
         <table>
             <tr>

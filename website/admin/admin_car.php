@@ -22,7 +22,7 @@
     
     <main class="admin-container">
         <h2 class="title">Cars</h2>
-        <a href="add-car.php" class="action add">Add New Car</a>
+        <a href="create.php?type=car" class="action add">Add New Car</a>
         <hr class="sep">
         <table>
             <tr>

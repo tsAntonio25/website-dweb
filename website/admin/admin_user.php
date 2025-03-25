@@ -22,7 +22,7 @@
     
     <main class="admin-container">
         <h2 class="title">Users</h2>
-        <a href="create.php" class="action add">Add New User</a>
+        <a href="create.php?type=user" class="action add">Add New User</a>
         <hr class="sep">
         <table>
             <tr>
