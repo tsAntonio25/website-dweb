@@ -1,9 +1,11 @@
-<?php session_start();
+<?php 
+    session_start();
 
-// get error msg (if meron)
-$error = $_SESSION['error'] ?? '';
-unset($_SESSION['error']);?>
+    // get error msg (if meron)
+    $error = $_SESSION['error'] ?? '';
+    unset($_SESSION['error']);
 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

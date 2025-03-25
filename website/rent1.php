@@ -13,8 +13,12 @@
                LEFT JOIN carrentaldetail crd ON c.carID = crd.carID
                WHERE c.carID = $carID
             ";
-
-    $result = $con->query($query);
+            
+    //prepared statements for security
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("i", $carID);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
         $car = $result->fetch_assoc();
@@ -22,6 +26,9 @@
         echo "<h2>Car not found.</h2>";
         exit;
     }
+
+    $isAvailable = (strtolower($car['availability']) === 'available');
+
 ?>
 
 <!DOCTYPE html>
@@ -62,11 +69,16 @@
 
         <div class="rent-buttons">
           <a href="carlisting.php"><button type="button" class="btn-secondary">Back</button></a>
-          <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>">
-            <button type="button" class="btn">Rent Now</button>
-          </a>
+          <?php if ($isAvailable): ?>
+            <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>">
+              <button type="button" class="btn">Rent Now</button>
+            </a>
+          <?php else: ?>
+            <button type="button" class="btn" disabled>Unavailable</button>
         </div>
-      </div>
+            <p class="unavailable">This car is currently unavailable for rent.</p>
+          <?php endif; ?>
+        </div>
     </section>
 
     <footer>

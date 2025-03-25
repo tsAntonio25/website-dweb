@@ -8,16 +8,21 @@
 
     $carID = intval($_GET['carID']);
 
-    $query = "SELECT crd.RentalPrice, c.Model, c.Brand, t.AdditionalPrice 
+    $query = "SELECT crd.RentalPrice, c.Model, c.Brand
                 FROM carrentaldetail crd 
                 JOIN car c ON crd.CarID = c.CarID 
-                LEFT JOIN transactiondetails t ON crd.CarID = t.CarID 
                 WHERE c.CarID = $carID
             ";
 
-    $result = $con->query($query);
+    //prepared statements for security
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("i", $carID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
     $rentalPrice = 0;
-    $additionalPrice = 0;
+    $days = 0;
+    $hours = 0;
     $carModel = '';
     $carBrand = '';
 
@@ -36,17 +41,29 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pickupDate = $_POST['pickup-date'];
+        $pickupTime = $_POST['pickup-time'];
         $returnDate = $_POST['return-date'];
+        $returnTime = $_POST['return-time'];
+
+        $currentDateTime = new DateTime(); 
+
+        $pickupDateTime = new DateTime($pickupDate . ' ' . $pickupTime);
+        $returnDateTime = new DateTime($returnDate . ' ' . $returnTime);
     
-        if (strtotime($returnDate) < strtotime($pickupDate)) {
-            echo "<script>alert('Error: Return date must be after pickup date.');</script>";
+        if ($pickupDateTime < $currentDateTime){
+            echo "<script>alert('Error: The pick-up date cannot be in the past. Please choose a valid pick-up date.');</script>";
+        } else if ($returnDateTime < $pickupDateTime) {
+            echo "<script>alert('Error: Return date must be after pickup date. Please choose a valid return date.');</script>";
         } else {
-            $date1 = new DateTime($pickupDate);
-            $date2 = new DateTime($returnDate);
-            $interval = $date1->diff($date2);
+            $interval = $pickupDateTime->diff($returnDateTime);
             $days = $interval->days;
-    
-            $totalAmount = ($days * $rentalPrice) + $additionalPrice;
+            $hours = $interval->h;
+            
+            if ($days === 0 && $hours > 0) {
+                $totalAmount = ($hours * ($rentalPrice / 24)); 
+            } else {
+                $totalAmount = ($days * $rentalPrice);
+            }   
         }
     }
 
@@ -96,8 +113,8 @@
                     <span><i>₱<?= number_format($rentalPrice, 2); ?></i></span>
                 </div>
                 <div class="item">
-                    <span>Additional Fees</span>
-                    <span><i>₱<?= number_format($additionalPrice, 2); ?></i></span>
+                    <span>Total Days</span>
+                    <span><i><?= $days ?> days, <?= $hours ?> hrs.</i></span>
                 </div>
                 <div class="total">
                     <span>Total Amount</span>

@@ -1,3 +1,46 @@
+<?php
+    session_start();
+    include 'admin/connectivity.php';
+
+    if (!isset($_SESSION['userID'])) {
+        echo "<script> alert('You must be logged in to view this page.');</script>";
+        exit;
+    }
+
+    $userID = $_SESSION['userID'];
+
+    $query = "SELECT FirstName, LastName, MiddleInitial, Address, Barangay, City, Province, ZipCode 
+                FROM userinfo 
+                WHERE UserID = ?
+            ";
+
+    //prepared statements for security
+    $stmt = $con->prepare($query);
+    $stmt->bind_param("i", $userID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($result->num_rows > 0) {
+        $user = $result->fetch_assoc();
+    } else {
+        echo "<h2>User not found.</h2>";
+        exit;
+    }
+
+
+    $historyQuery = "SELECT td.TransactionID, c.brand, c.model, td.RentalPrice, td.AdditionalPrice, td.TotalAmount, td.PaymentMethod 
+                     FROM transactiondetails td 
+                     JOIN car c ON td.CarID = c.carID 
+                     WHERE td.UserID = ?
+                    ";
+
+    //prepared statements for security
+    $historyStmt = $con->prepare($historyQuery);
+    $historyStmt->bind_param("i", $userID);
+    $historyStmt->execute();
+    $historyResult = $historyStmt->get_result();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,9 +61,8 @@
         <div class="gallery">
             <img src="assets/team-member.jpg" alt="Photo 1">
             <div class="gallery-details">
-                <h2>Lname, Fname, M.I</h2>
-                <p>name@gmail.com</p>
-                <p>House, Lot, Zone, Street, Barangay, City, Province, Zip Code</p>
+                <h2><?= htmlspecialchars($user['LastName'] . ', ' . $user['FirstName'] . ' ' . htmlspecialchars($user['MiddleInitial'])); ?></h2>
+                <p><?= htmlspecialchars($user['Address'] . ', ' . $user['Barangay'] . ', ' . $user['City'] . ', ' . $user['Province'] . ', ' . $user['ZipCode']); ?></p>
             </div>
         </div>
     </section>
@@ -34,24 +76,15 @@
                 <th>Return Date</th>
                 <th>Amount Paid</th>
             </tr>
+            <?php while ($history = $historyResult->fetch_assoc()): ?>
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <td><?= htmlspecialchars($history['brand'] . ' ' . $history['model']); ?></td>
+                <td><?= htmlspecialchars(number_format($history['RentalPrice'], 2)); ?></td>
+                <td><?= htmlspecialchars(number_format($history['AdditionalPrice'], 2)); ?></td>
+                <td><?= htmlspecialchars(number_format($history['TotalAmount'], 2)); ?></td>
+                <td><?= htmlspecialchars($history['PaymentMethod']); ?></td>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            <?php endwhile; ?>
         </table>
     </section>
  
