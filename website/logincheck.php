@@ -1,9 +1,9 @@
 <?php 
 // session
-include 'session.php';
+include 'admin/session.php';
 
 // import connection to db
-include 'connectivity.php';
+include 'admin/connectivity.php';
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
@@ -28,7 +28,7 @@ if(isset($_POST['login'])) {
                 $_SESSION["userID"] = $row['userID'];
                 $_SESSION["loggedin"] = true;
                 
-                header('Location: ../home.php');
+                header('Location: home.php');
                 exit();
             } else {
                 throw new Exception("Invalid email or password. Please try again.");
@@ -38,7 +38,7 @@ if(isset($_POST['login'])) {
         }
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage();
-        header('Location: ../login.php');
+        header('Location: login.php');
         exit();
     }
 }

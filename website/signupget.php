@@ -3,7 +3,7 @@
 session_start();
 
 // import connection to db
-include 'connectivity.php';
+include 'admin/connectivity.php';
 
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
@@ -123,13 +123,13 @@ if (isset($_POST['sign_up'])) {
         // go back to login
         echo "<script>
                 alert('Sign up OK!'); 
-                window.location.href='../login.php';
+                window.location.href='login.php';
             </script>";
        
 
     } catch (Exception $e) {
         $_SESSION['error'] = $e->getMessage();
-        header('Location: ../signup.php');
+        header('Location: signup.php');
 
     }
 }

@@ -34,7 +34,7 @@
                 <div class = "avatar">
                     <i onclick="checkprofile()" class="fa fa-user-circle-o"></i>
                 </div>
-                <form class="login-form" action="admin/logincheck.php" method="post">
+                <form class="login-form" action="logincheck.php" method="post">
                     <label for = "email"> Email </label>
                     <input type = "email" id = "email" name = "email" required>
                     
