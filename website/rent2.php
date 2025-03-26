@@ -77,7 +77,15 @@
         }
     }
 
+    /*
     // availability
+    function changeAvail($carID){
+        include 'admin/connectivity.php';
+        // update availability
+        $query = "UPDATE carrentaldetail SET availability = 'Rented' WHERE carID = $carID";
+        $con->query($query);
+        
+    } */
 
 ?>
 <!DOCTYPE html>
