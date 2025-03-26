@@ -41,38 +41,39 @@
 
     $totalAmount = 0;
 
-    // try catch dito
+    // try catch
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $pickupDate = $_POST['pickup-date'];
-        $pickupTime = $_POST['pickup-time'];
-        $returnDate = $_POST['return-date'];
-        $returnTime = $_POST['return-time'];
+        try {
+            $pickupDate = $_POST['pickup-date'];
+            $pickupTime = $_POST['pickup-time'];
+            $returnDate = $_POST['return-date'];
+            $returnTime = $_POST['return-time'];
 
-        $currentDateTime = new DateTime(); 
+            $currentDateTime = new DateTime(); 
 
-        $pickupDateTime = new DateTime($pickupDate . ' ' . $pickupTime);
-        $returnDateTime = new DateTime($returnDate . ' ' . $returnTime);
-    
-        if ($pickupDateTime < $currentDateTime){
-            // throw exception
-            echo "<script>alert('Error: The pick-up date cannot be in the past. Please choose a valid pick-up date.');</script>";
-        } else if ($returnDateTime < $pickupDateTime) {
-
-            // throw exception
-            echo "<script>alert('Error: Return date must be after pickup date. Please choose a valid return date.');</script>";
-        } else {
-            $interval = $pickupDateTime->diff($returnDateTime);
-            $days = $interval->days;
-            $hours = $interval->h;
-            
-            if ($days === 0 && $hours > 0) {
-                $totalAmount = ($hours * ($rentalPrice / 24)); 
+            $pickupDateTime = new DateTime($pickupDate . ' ' . $pickupTime);
+            $returnDateTime = new DateTime($returnDate . ' ' . $returnTime);
+        
+            if ($pickupDateTime < $currentDateTime){
+                // throw exception
+                throw new Exception('Error: The pick-up date cannot be in the past. Please choose a valid pick-up date.');
+            } else if ($returnDateTime < $pickupDateTime) {
+                // throw exception
+                throw new Exception('Error: Return date must be after pickup date. Please choose a valid return date.');
             } else {
-                $totalAmount = ($days * $rentalPrice);
-            }   
+                $interval = $pickupDateTime->diff($returnDateTime);
+                $days = $interval->days;
+                $hours = $interval->h;
+                
+                if ($days === 0 && $hours > 0) {
+                    $totalAmount = ($hours * ($rentalPrice / 24)); 
+                } else {
+                    $totalAmount = ($days * $rentalPrice);
+                }   
+            }
+        } catch (Exception $e) {
+            echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
         }
-
-        // wait
     }
 
 ?>
