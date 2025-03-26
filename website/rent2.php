@@ -71,10 +71,13 @@
                     $totalAmount = ($days * $rentalPrice);
                 }   
             }
+
         } catch (Exception $e) {
             echo "<script>alert('Error: " . $e->getMessage() . "');</script>";
         }
     }
+
+    // availability
 
 ?>
 <!DOCTYPE html>
