@@ -1,5 +1,8 @@
-<?php 
+<?php
     session_start();
+    if (!isset($_SESSION['loggedin'])) {
+        $_SESSION['loggedin'] = false;
+    }
  ?>
  
 <!DOCTYPE html>
@@ -40,11 +43,16 @@
 
     <section class="cta">
         <div>
-            <!-- hmmm -->
             <h2>Looking for the perfect ride?</h2>
             <a href = "signup.php"><button class = "btn">SIGN UP</button></a>
             <p>or</p>
-            <a href = "login.php"><button class = "btn-secondary ctabtn">LOG IN</button></a>
+            <?php
+                if (!$_SESSION['loggedin'] || !isset($_SESSION['loggedin'])) {
+                echo '<a href = "login.php"><button class = "btn-secondary ctabtn">LOG IN</button></a>';
+                } else {
+                echo '<a href = "home.php"><button class = "btn-secondary ctabtn">LOG IN</button></a>';
+                }
+            ?>
         </div>
     </section>
  
