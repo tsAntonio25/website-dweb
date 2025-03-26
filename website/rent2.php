@@ -41,6 +41,7 @@
 
     $totalAmount = 0;
 
+    // try catch dito
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $pickupDate = $_POST['pickup-date'];
         $pickupTime = $_POST['pickup-time'];
@@ -53,8 +54,11 @@
         $returnDateTime = new DateTime($returnDate . ' ' . $returnTime);
     
         if ($pickupDateTime < $currentDateTime){
+            // throw exception
             echo "<script>alert('Error: The pick-up date cannot be in the past. Please choose a valid pick-up date.');</script>";
         } else if ($returnDateTime < $pickupDateTime) {
+
+            // throw exception
             echo "<script>alert('Error: Return date must be after pickup date. Please choose a valid return date.');</script>";
         } else {
             $interval = $pickupDateTime->diff($returnDateTime);
@@ -67,6 +71,8 @@
                 $totalAmount = ($days * $rentalPrice);
             }   
         }
+
+        // wait
     }
 
 ?>

@@ -1,4 +1,5 @@
 <?php 
+/*
 // availability
 function checkAvail($id) {
     include '../connectivity.php';
@@ -19,7 +20,7 @@ function checkAvail($id) {
         return false;
     }
 
-}
+} */
 ?>
 
 
