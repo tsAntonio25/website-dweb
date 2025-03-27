@@ -1,6 +1,5 @@
 let loggedin = false;
 
-// MAGFETCH KA PLEASEEE
 async function checkLoginStatus() {
     try {
         const response = await fetch('../website/admin/session.php');
