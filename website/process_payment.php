@@ -54,8 +54,35 @@
         }
 
         // set an event to update availability
-        $stmt = $con->prepare("CREATE EVENT update_car_availability ON SCHEDULE EVERY 1 DAY STARTS CURRENT_TIMESTAMP DO UPDATE carrentaldetail crd INNER JOIN transactiondates t ON crd.carid = t.carid SET crd.availability = 'Available' WHERE t.returndate <= CURDATE();");
-        $stmt->execute();
+        $eventname = "updateCarAvail" . time();
+        $query = "CREATE EVENT $eventname
+            ON SCHEDULE EVERY 1 HOUR
+            STARTS CURRENT_TIMESTAMP
+            DO
+            BEGIN
+                DECLARE done INT DEFAULT 0;
+
+                -- update availability
+                UPDATE carrentaldetail crd
+                INNER JOIN transactiondates t ON crd.CarID = t.CarID
+                SET crd.Availability = 'Available'
+                WHERE t.ReturnDate <= CURDATE();
+
+                -- check rows if affected
+                IF ROW_COUNT() = 0 THEN
+                    SET done = 1;
+                END IF;
+
+                -- drop the event 
+                IF done = 1 THEN
+                    SET @sql = CONCAT('DROP EVENT IF EXISTS ', '$eventname');
+                    PREPARE stmt FROM @sql;
+                    EXECUTE stmt;
+                    DEALLOCATE PREPARE stmt;
+                END IF;
+            END;
+        ";
+        $result = $con->query($query);
 
         // credit card
         if ($paymentMethod === 'credit') {
