@@ -28,10 +28,11 @@
     }
 
 
-    $historyQuery = "SELECT td.TransactionID, c.brand, c.model, td.RentalPrice, td.TotalAmount, td.PaymentMethod 
-                     FROM transactiondetails td 
-                     JOIN car c ON td.CarID = c.carID 
-                     WHERE td.UserID = ?
+    $historyQuery = "SELECT td.TransactionID, c.brand, c.model, td.TotalAmount, tdates.PickupDate, tdates.ReturnDate
+                        FROM transactiondetails td 
+                        JOIN car c ON td.CarID = c.carID
+                        JOIN transactiondates tdates ON td.TransactionID = tdates.TransactionID
+                        WHERE td.UserID = ?
                     ";
 
     //prepared statements for security
@@ -72,17 +73,17 @@
         <table>
             <tr>
                 <th>Car Name & Model</th>
-                <th>Pick up date</th>
+                <th>Total Price</th>
+                <th>Pickup Date</th>
                 <th>Return Date</th>
-                <th>Amount Paid</th>
             </tr>
             <?php if ($historyResult->num_rows > 0):
                 while ($history = $historyResult->fetch_assoc()): ?>
             <tr>
                 <td><?= htmlspecialchars($history['brand'] . ' ' . $history['model']); ?></td>
-                <td><?= htmlspecialchars(number_format($history['RentalPrice'], 2)); ?></td>
                 <td><?= htmlspecialchars(number_format($history['TotalAmount'], 2)); ?></td>
-                <td><?= htmlspecialchars($history['PaymentMethod']); ?></td>
+                <td><?= htmlspecialchars($history['PickupDate']); ?></td>
+                <td><?= htmlspecialchars($history['ReturnDate']); ?></td>
             </tr>
     <?php endwhile; ?>
 <?php else: ?>
