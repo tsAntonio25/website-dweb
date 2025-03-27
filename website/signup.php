@@ -1,7 +1,6 @@
 <?php 
     session_start();
 
-    // get error msg (if meron)
     $error = $_SESSION['error'] ?? '';
     unset($_SESSION['error']);
 
@@ -89,7 +88,7 @@
                 <label for="confirm">Confirm Password</label>
                 <input type="password" id="confirm" name="confirm" placeholder="Re-type Password"><br><br>
 
-                <?php if (!empty($error)): ?> <!-- aayusin  -->
+                <?php if (!empty($error)): ?>
                         <span class="error unavailable"><?= htmlspecialchars($error) ?></span>
                     <?php endif; ?>
 

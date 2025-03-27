@@ -1,7 +1,6 @@
 <?php 
     session_start();
 
-    // get error msg (if meron)
     $error = $_SESSION['error'] ?? '';
     unset($_SESSION['error']);
 
@@ -46,7 +45,7 @@
                     
                     <a href = "signup.php" class = "alt-login"> Sign in instead...</a>
                     
-                    <?php if (!empty($error)): ?> <!-- aayusin  -->
+                    <?php if (!empty($error)): ?>
                         <span class="error unavailable"><?= htmlspecialchars($error) ?></span>
                     <?php endif; ?>
 
