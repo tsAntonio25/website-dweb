@@ -31,7 +31,6 @@
     if ($result && $result->num_rows > 0) {
         $row = $result->fetch_assoc();
         $rentalPrice = floatval($row['RentalPrice']);
-        $additionalPrice = floatval($row['AdditionalPrice']);
         $carModel = htmlspecialchars($row['Model']);
         $carBrand = htmlspecialchars($row['Brand']);
     } else {
@@ -56,10 +55,10 @@
         
             if ($pickupDateTime < $currentDateTime){
                 // throw exception
-                throw new Exception('Error: The pick-up date cannot be in the past. Please choose a valid pick-up date.');
+                throw new Exception('The pick-up date cannot be in the past. Please choose a valid pick-up date.');
             } else if ($returnDateTime < $pickupDateTime) {
                 // throw exception
-                throw new Exception('Error: Return date must be after pickup date. Please choose a valid return date.');
+                throw new Exception('Return date must be after pickup date. Please choose a valid return date.');
             } else {
                 $interval = $pickupDateTime->diff($returnDateTime);
                 $days = $interval->days;
@@ -109,19 +108,19 @@
                 <h3><?= $carBrand . ' ' . $carModel; ?></h3>
                 <div class="form-group">
                     <label for="pickup-date">Pick-up Date</label>
-                    <input type="date" id="pickup-date" name="pickup-date">
+                    <input type="date" id="pickup-date" name="pickup-date" required>
                 </div>
                 <div class="form-group">
                     <label for="pickup-time">Time</label>
-                    <input type="time" id="pickup-time" name="pickup-time">
+                    <input type="time" id="pickup-time" name="pickup-time" required>
                 </div>
                 <div class="form-group">
                     <label for="return-date">Return Date</label>
-                    <input type="date" id="return-date" name="return-date">
+                    <input type="date" id="return-date" name="return-date" required>
                 </div>
                 <div class="form-group">
                     <label for="return-time">Time</label>
-                    <input type="time" id="return-time" name="return-time">
+                    <input type="time" id="return-time" name="return-time" required>
                 </div>
                 <button type="submit" value="Confirm" class="btn compute">Confirm</button>
             </form>
@@ -150,7 +149,7 @@
             <form id="payment-form" method="POST" action="process_payment.php">
                 <div class="form-group payment-method">
                     <label>
-                        <input type="radio" name="payment-method" value="credit-debit-card" required> Credit / Debit Card
+                        <input type="radio" name="payment-method" value="credit" required> Credit / Debit Card
                     </label>
                     <label>
                         <input type="radio" name="payment-method" value="cash" required> Cash
@@ -160,27 +159,30 @@
                 <div id="card-details">
                     <div class="form-group">
                         <label for="cardholder-name">Card Holder Name</label>
-                        <input type="text" id="cardholder-name" name="cardholder-name">
+                        <input type="text" id="cardholder-name" name="cardholder-name" required>
                     </div>
                     <div class="form-group">
                         <label for="card-number">Credit Card Number</label>
-                        <input type="text" id="card-number" name="card-number">
+                        <input type="text" id="card-number" name="card-number" required>
                     </div>
                     
                     <div class="form-row">
                         <div class="form-group">
                             <label for="cvv">CVV</label>
-                            <input type="text" id="cvv" name="cvv">
+                            <input type="text" id="cvv" name="cvv" required>
                         </div>
                         <div class="form-group">
-                            <label for="expiration">Expiration (MM/YY)</label>
-                            <input type="text" id="expiration" name="expiration" placeholder="MM/YY">
+                            <label for="expiration">Expiration (YYYY)</label>
+                            <input type="text" id="expiration" name="expiration" placeholder="YYYY" required>
                         </div>
                     </div>
                 </div>
 
                 <input type="hidden" name="total-amount" value="<?= htmlspecialchars($totalAmount); ?>">
                 <input type="hidden" name="carID" value="<?= htmlspecialchars($carID); ?>">
+                <input type="hidden" name="rentalPrice" value="<?= htmlspecialchars($rentalPrice); ?>">
+                <input type="hidden" name="pickupDateTime" value="<?= htmlspecialchars($pickupDateTime->format('Y-m-d H:i')); ?>">
+                <input type="hidden" name="returnDateTime" value="<?= htmlspecialchars($returnDateTime->format('Y-m-d H:i')); ?>">
 
                 <div class="button-container">
                     <button type="submit" class="btn payconf">Confirm & Pay</button>
