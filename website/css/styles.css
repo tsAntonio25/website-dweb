@@ -356,10 +356,9 @@ a.back {
 
 .aboutp {
     color: var(--secBg)!important;
-    max-width: 72%;
+    max-width: 72%!important;
     margin: 0 auto;
 }
-
 
 .about-section p {
     text-align: center;
