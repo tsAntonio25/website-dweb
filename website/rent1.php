@@ -70,7 +70,6 @@
           <ul>
             <li><strong>Type:</strong> <?= htmlspecialchars($car['type']); ?></li>
             <li><strong>Availability:</strong> <?= htmlspecialchars($car['availability']); ?></li>
-            <li><strong>Type:</strong> <?= htmlspecialchars($car['type']); ?></li>
             <li><strong>Color:</strong> <?= htmlspecialchars($car['color']); ?></li>
             <li><strong>Fuel Type:</strong> <?= htmlspecialchars($car['fueltype']); ?></li>
 
