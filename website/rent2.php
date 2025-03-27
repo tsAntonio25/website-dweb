@@ -123,7 +123,7 @@
                 </div>
                 <div class="item">
                     <span>Total Days</span>
-                    <span><i><?= $days ?> days, <?= $hours ?> hrs.</i></span>
+                    <span><i><?= $days ?> day(s), <?= $hours ?> hrs.</i></span>
                 </div>
                 <div class="total">
                     <span>Total Amount</span>
