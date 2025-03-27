@@ -33,6 +33,8 @@
                         JOIN car c ON td.CarID = c.carID
                         JOIN transactiondates tdates ON td.TransactionID = tdates.TransactionID
                         WHERE td.UserID = ?
+                        ORDER BY td.TransactionID DESC
+                        LIMIT 3
                     ";
 
     //prepared statements for security
