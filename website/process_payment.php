@@ -7,6 +7,7 @@
         echo "<script> alert('User not logged in.'); </script>";
     }
 
+    // get values
     $userID = $_SESSION['userID'];
 
     $carID = $_POST['carID'];
@@ -16,10 +17,13 @@
     $pickupDate = $_POST['pickupDateTime'];
     $returnDate = $_POST['returnDateTime'];
 
+    // catch errors
     try {
+        // start
         $con->begin_transaction();
         $rentalPrice = $_POST['rentalPrice'];
-    
+        
+        // insert transaction details values
         $stmt = $con->prepare("INSERT INTO transactiondetails (UserID, CarID, RentalPrice, TotalAmount, PaymentMethod) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("iidds", $userID, $carID, $rentalPrice, $totalAmount, $paymentMethod); 
     
@@ -33,20 +37,29 @@
             throw new Exception('Failed to insert into transactiondetails table.');
         }
 
+        // insert transaction date values
         $stmt = $con->prepare("INSERT INTO transactiondates (TransactionID, UserID, CarID, PickupDate, ReturnDate) VALUES (?, ?, ?, ?, ?)");
         $stmt->bind_param("iiiss", $transactionID, $userID, $carID, $pickupDate, $returnDate); 
     
         if (!$stmt->execute()) {
             throw new Exception('SQL Error: ' . $stmt->error);
         }
-    
-        $stmt = $con->prepare("UPDATE carrentaldetail SET Availability = 'rented' WHERE CarID = ?");
+        
+        // update availability to rented
+        $stmt = $con->prepare("UPDATE carrentaldetail SET Availability = 'Rented' WHERE CarID = ?");
         $stmt->bind_param("i", $carID);
     
         if (!$stmt->execute()) {
             throw new Exception('SQL Error: ' . $stmt->error);
         }
 
+        // set an event to update availability
+        /*   
+            query = CREATE EVENT eventname 
+        
+        */
+
+        // credit card
         if ($paymentMethod === 'credit') {
             $cardholderName = $_POST['cardholder-name'];
             $cardNumber = $_POST['card-number'];
