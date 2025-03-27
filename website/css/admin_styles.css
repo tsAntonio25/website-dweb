@@ -97,6 +97,12 @@ body {
     font-weight: bold;
 }
 
+.botleft {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+}
+
 /*actions*/
 .action {
     text-decoration: none;

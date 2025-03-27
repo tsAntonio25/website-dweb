@@ -14,6 +14,7 @@
                 <li><a href = "admin_transaction.php" ><div class="nav-box">Transactions</div></a></li>
             </ul>
         </nav>
+        <a href = "../landing.php" ><div class="nav-box botleft">Go to The Garage</div></a>
         <script src="../js/script.js"></script>
     </body> 
 </html>
