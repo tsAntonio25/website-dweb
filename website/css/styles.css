@@ -101,7 +101,7 @@ nav ul li a:hover {
 
 .fa {
     color: var(--footerBg);
-    font-size: 50px;
+    font-size: 50px!important;
     cursor: pointer;
 }
 
