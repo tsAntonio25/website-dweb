@@ -98,13 +98,14 @@ body {
 }
 
 .botleft {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
+    background-color: #3C3C3C!important;
+    position: absolute;
+    bottom: 3em;
+    font-weight: 800;
 }
 
-a.botleft {
-    text-decoration: none;
+.botleft:hover {
+    background-color: var(--navHover)!important;
 }
 
 /*actions*/

@@ -12,9 +12,10 @@
                 <li><a href = "admin_user.php"><div class="nav-box">User</div></a></li>
                 <li><a href = "admin_car.php"><div class="nav-box">Cars</div></a></li>
                 <li><a href = "admin_transaction.php" ><div class="nav-box">Transactions</div></a></li>
+                <li><a href = "../landing.php" ><div class="nav-box botleft">Go to The Garage</div></a>
+                </li>
             </ul>
         </nav>
-        <a href = "../landing.php" ><div class="nav-box botleft">Go to The Garage</div></a>
         <script src="../js/script.js"></script>
     </body> 
 </html>
