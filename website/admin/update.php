@@ -35,16 +35,23 @@ function checkAvail($id) {
            case 'car':
                $table1 = "car";
                $table2 = "carrentaldetail";
+               $fields1 = ['Model', 'Brand', 'Color', 'Type', 'FuelType', 'Image', 'Description'];
+               $fields2 = ['Availability', 'RentalPrice'];
                $id_column = "CarID";
                break;
            case 'transaction':
                $table1 = "transactiondetails";
                $table2 = "transactiondates";
+               $fields1 = ['UserID', 'CarID', 'RentalPrice', 'TotalAmount', 'PaymentMethod'];
+               $fields2 = ['PickupDate', 'ReturnDate'];   
                $id_column = "TransactionID";
                break;
            case 'user':
                $table1 = "user";
                $table2 = "userinfo";
+               $fields1 = ['Email', 'Password'];
+               $fields2 = ['FirstName', 'LastName', 'MiddleInitial', 'Suffix', 'Address', 'Barangay', 'City', 'Province', 'ZipCode'];
+               $optionalField = ['Suffix'];   
                $id_column = "UserID";
                break;
            default:
@@ -52,7 +59,7 @@ function checkAvail($id) {
                exit;
        }
    
-       $query1 = "SELECT * FROM $table1 WHERE $id_column = $id";
+       $query1 = "SELECT " . implode(", ", $fields1) . " FROM $table1 WHERE $id_column = $id";
        $result1 = $con->query($query1);
    
        if ($result1->num_rows > 0) {
@@ -62,7 +69,7 @@ function checkAvail($id) {
            exit;
        }
    
-       $query2 = "SELECT * FROM $table2 WHERE $id_column = $id";
+       $query2 = "SELECT " . implode(", ", $fields2) . " FROM $table2 WHERE $id_column = $id";
        $result2 = $con->query($query2);
        $data2 = $result2->num_rows > 0 ? $result2->fetch_assoc() : [];
    
