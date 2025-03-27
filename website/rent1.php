@@ -85,7 +85,7 @@
             <p class="unavailable">This car is currently unavailable for rent.</p>
           <?php endif; ?>
           <div class="rent-buttons">
-            <a href="carlisting.php"><button type="button" class="btn-secondary">Back</button></a>
+            <a href="#" onclick="history.go(-1)"><button type="button" class="btn-secondary">Back</button></a>
             <?php if ($isAvailable): ?>
               <?php if (isset($_SESSION['userID'])) : ?>
                 <a href="rent2.php?carID=<?= htmlspecialchars($car['carID']); ?>">
