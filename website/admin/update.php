@@ -42,7 +42,7 @@ function checkAvail($id) {
            case 'transaction':
                $table1 = "transactiondetails";
                $table2 = "transactiondates";
-               $fields1 = ['UserID', 'CarID', 'RentalPrice', 'TotalAmount', 'PaymentMethod'];
+               $fields1 = ['RentalPrice', 'TotalAmount', 'PaymentMethod'];
                $fields2 = ['PickupDate', 'ReturnDate'];   
                $id_column = "TransactionID";
                break;
