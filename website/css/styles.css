@@ -777,7 +777,7 @@ section.home button {
 }
 
 .car-box{
-    background-color: #707070!important;
+    background-color: #9e9e9e!important;
     width: 280px!important;
     height: 250px!important;
     border-radius: 10px;
@@ -798,7 +798,7 @@ section.home button {
 }
 
 .car-box:hover {
-    background-color: #757272ba!important;
+    background-color: #4d4d4dba!important;
 }
 
 .car-box ul {
