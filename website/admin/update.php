@@ -108,6 +108,9 @@ function checkAvail($id) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Record</title>
     <link rel="stylesheet" href="../css/admin_styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="../assets/logo.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../assets/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../assets/logo.png">
 </head>
 <body>
     <header>
