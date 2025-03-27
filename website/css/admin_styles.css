@@ -103,6 +103,10 @@ body {
     left: 10px;
 }
 
+a.botleft {
+    text-decoration: none;
+}
+
 /*actions*/
 .action {
     text-decoration: none;
