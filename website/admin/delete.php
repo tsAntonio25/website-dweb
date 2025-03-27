@@ -16,8 +16,8 @@
                 $redirect_page = "admin_user.php";
                 break;
             case 'car':
-                $checkCar = $con->query("SELECT * FROM carrentaldetail WHERE CarID = $id");
-                if ($checkCar->num_rows > 0) {
+                $checkCarRental = $con->query("SELECT * FROM carrentaldetail WHERE CarID = $id");
+                if ($checkCarRental->num_rows > 0) {
                     $con->query("DELETE FROM carrentaldetail WHERE CarID = $id");
                 }
                 $table = "car";
@@ -25,10 +25,16 @@
                 $redirect_page = "admin_car.php";
                 break;
             case 'transaction':
-                $checkTransaction = $con->query("SELECT * FROM transactiondates WHERE TransactionID = $id");
-                if ($checkTransaction->num_rows > 0) {
+                $checkCreditCard = $con->query("SELECT * FROM creditcard WHERE TransactionID = $id");
+                if ($checkCreditCard->num_rows > 0) {
+                    $con->query("DELETE FROM creditcard WHERE TransactionID = $id");
+                }
+
+                $checkTransactionDates = $con->query("SELECT * FROM transactiondates WHERE TransactionID = $id");
+                if ($checkTransactionDates->num_rows > 0) {
                     $con->query("DELETE FROM transactiondates WHERE TransactionID = $id");
                 }
+
                 $table = "transactiondetails";
                 $id_column = "TransactionID";
                 $redirect_page = "admin_transaction.php";

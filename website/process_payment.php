@@ -40,6 +40,13 @@
             throw new Exception('SQL Error: ' . $stmt->error);
         }
     
+        $stmt = $con->prepare("UPDATE carrentaldetail SET Availability = 'rented' WHERE CarID = ?");
+        $stmt->bind_param("i", $carID);
+    
+        if (!$stmt->execute()) {
+            throw new Exception('SQL Error: ' . $stmt->error);
+        }
+
         if ($paymentMethod === 'credit') {
             $cardholderName = $_POST['cardholder-name'];
             $cardNumber = $_POST['card-number'];

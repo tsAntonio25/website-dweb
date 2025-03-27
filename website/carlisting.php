@@ -25,7 +25,7 @@
             "image" => htmlspecialchars($row['image']),
             "name" => htmlspecialchars("{$row['brand']} {$row['model']}"),
             "carID" => $row['carID'],
-            "availability" => $row['availability'] === 'Available' ? 'Available' : 'Unavailable'
+            "availability" => $row['availability'] === 'Available' ? 'Available' : 'Rented'
         ];
     }
 ?>
