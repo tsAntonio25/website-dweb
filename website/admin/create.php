@@ -111,7 +111,7 @@ if (isset($_GET['type'])) {
                     <?php foreach ($fields2 as $field) { ?>
                         <tr>
                             <th><?php echo ucfirst($field); ?></th>
-                            <td><input type="text" name="<?php echo $field; ?>" <?php echo in_array($field, $optionalField) ? "" : "required"; ?>></td>
+                            <td><input type="text" name="<?php echo $field; ?>"></td>
                         </tr>
                     <?php } ?>
                 </table>
