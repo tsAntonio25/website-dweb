@@ -178,8 +178,8 @@
                 <input type="hidden" name="total-amount" value="<?= htmlspecialchars($totalAmount); ?>">
                 <input type="hidden" name="carID" value="<?= htmlspecialchars($carID); ?>">
                 <input type="hidden" name="rentalPrice" value="<?= htmlspecialchars($rentalPrice); ?>">
-                <input type="hidden" name="pickupDateTime" value="<?= htmlspecialchars($pickupDateTime->format('Y-m-d H:i')); ?>">
-                <input type="hidden" name="returnDateTime" value="<?= htmlspecialchars($returnDateTime->format('Y-m-d H:i')); ?>">
+                <input type="hidden" name="pickupDateTime" value="<?= isset($pickupDateTime) ? htmlspecialchars($pickupDateTime->format('Y-m-d H:i')) : ''; ?>">
+                <input type="hidden" name="returnDateTime" value="<?= isset($returnDateTime) ? htmlspecialchars($returnDateTime->format('Y-m-d H:i')) : ''; ?>">
 
                 <div class="button-container">
                     <button type="submit" class="btn payconf">Confirm & Pay</button>

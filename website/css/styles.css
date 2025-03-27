@@ -1227,6 +1227,7 @@ a.back {
 
 .btn.payconf {
     width: 60%;
+    display: block!important;
 }
 
 /*footer*/
