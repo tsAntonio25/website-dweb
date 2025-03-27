@@ -54,7 +54,7 @@
         }
 
         // set an event to update availability
-        $stmt = $con->prepare("CREATE EVENT update_car_availability ON SCHEDULE EVERY 1 DAY STARTS CURRENT_TIMESTAMP DO UPDATE carrentaldetail crd INNER JOIN transactiondates t ON crd.car_id = t.car_id SET crd.availability = 'available' WHERE t.return_date <= CURDATE();");
+        $stmt = $con->prepare("CREATE EVENT update_car_availability ON SCHEDULE EVERY 1 DAY STARTS CURRENT_TIMESTAMP DO UPDATE carrentaldetail crd INNER JOIN transactiondates t ON crd.carid = t.carid SET crd.availability = 'available' WHERE t.returndate <= CURDATE();");
         $stmt->execute();
 
         // credit card
