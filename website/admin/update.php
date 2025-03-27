@@ -49,7 +49,7 @@ function checkAvail($id) {
            case 'user':
                $table1 = "user";
                $table2 = "userinfo";
-               $fields1 = ['Email', 'Password'];
+               $fields1 = ['Email'];
                $fields2 = ['FirstName', 'LastName', 'MiddleInitial', 'Suffix', 'Address', 'Barangay', 'City', 'Province', 'ZipCode'];
                $optionalField = ['Suffix'];   
                $id_column = "UserID";
