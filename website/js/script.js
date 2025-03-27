@@ -2,7 +2,7 @@ let loggedin = false;
 
 async function checkLoginStatus() {
     try {
-        const response = await fetch('../website/admin/session.php');
+        const response = await fetch('../admin/session.php');
         const data = await response.json();
         loggedin = data.loggedin;
     } catch (error) {
