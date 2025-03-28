@@ -9,7 +9,7 @@ header('Content-Type: application/json');
 $response = ['loggedin' => $_SESSION['loggedin'] ?? false];
 
 // encode value to json
-json_encode($response);
+echo json_encode($response);
 
 
 ?>
