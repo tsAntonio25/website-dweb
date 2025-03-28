@@ -52,16 +52,33 @@ if (isset($_GET['type'])) {
             $columns1 = implode(", ", array_keys($values1));
             $placeholders1 = implode("', '", array_values($values1));
             $query1 = "INSERT INTO $table1 ($columns1) VALUES ('$placeholders1')";
-            $con->query($query1);
-            $new_id = $con->insert_id;
+            
+            if ($con->query($query1) === TRUE) {
+                $new_id = $con->insert_id;
+            } else {
+                echo "<h2>Error: " . $con->error . "</h2>";
+                exit;
+            }
         }
 
         if (!empty($values2) && isset($new_id)) {
-            $values2[$table1 . "ID"] = $new_id;
+            $values2['TransactionID'] = $new_id;
             $columns2 = implode(", ", array_keys($values2));
             $placeholders2 = implode("', '", array_values($values2));
             $query2 = "INSERT INTO $table2 ($columns2) VALUES ('$placeholders2')";
-            $con->query($query2);
+            
+            if ($con->query($query2) === FALSE) {
+                echo "<h2>Error: " . $con->error . "</h2>";
+                exit;
+            }
+
+            if ($type === 'transaction') {
+                $updateQuery = "UPDATE carrentaldetail SET Availability = 'Rented' WHERE CarID = '$values1[CarID]'";
+                if ($con->query($updateQuery) === FALSE) {
+                    echo "<h2>Error updating car availability: " . $con->error . "</h2>";
+                    exit;
+                }
+            }
         }
 
         echo "<script>alert('Record added successfully!'); window.location.href='$redirect_page';</script>";
