@@ -36,13 +36,13 @@ function checkprofile() {
             // my profile and log out
             withuser.style.display = "block"
             nouser.style.display = "none"
-            console.log("may user")
+            
 
         } else {
             // sign up and login
             nouser.style.display = "block"
             withuser.style.display = "none"
-            console.log("walang user")
+            
         }
     }
 }
