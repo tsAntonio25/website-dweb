@@ -3,8 +3,8 @@
     include 'admin/connectivity.php';
 
     if (!isset($_SESSION['userID'])) {
-        echo "<script> alert('You must be logged in to view this page.');</script>";
-        exit;
+        echo "<script> alert('You must be logged in to view this page.');
+                window.location.href='login.php';</script>";
     }
 
     $userID = $_SESSION['userID'];
