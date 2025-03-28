@@ -44,18 +44,16 @@ if (isset($_POST['sign_up'])) {
         $stmt->bind_param('s', $email);
         $stmt->execute();
         $result = $stmt->get_result();
-
+        
+        // check if email is already at the db || if so, throw error
         if ($result->num_rows > 0) {
             throw new Exception('Email already existing');
         }
-
 
         // hash password 
         $hash_pass = password_hash($password, PASSWORD_DEFAULT);
         // sanitize email
         $email = filter_var($email, FILTER_SANITIZE_EMAIL);
-
-        // check if email is already at the db || if so, throw error
 
         // prepare query
         $stmt = $con->prepare("INSERT INTO user
