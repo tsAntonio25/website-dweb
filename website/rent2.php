@@ -1,6 +1,8 @@
 <?php
     session_start();
     
+    $_SESSION['from_rent2'] = true;
+
     include 'admin/connectivity.php';
 
     if (!isset($_GET['carID']) || !is_numeric($_GET['carID'])) {
