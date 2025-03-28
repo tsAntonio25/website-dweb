@@ -62,7 +62,14 @@ if (isset($_GET['type'])) {
         }
 
         if (!empty($values2) && isset($new_id)) {
-            $values2['TransactionID'] = $new_id;
+            if ($type === 'transaction') {
+                $values2['TransactionID'] = $new_id;
+            } elseif ($type === 'car') {
+                $values2['CarID'] = $new_id;
+            } elseif ($type === 'user') {
+                $values2['UserID'] = $new_id;
+            }
+            
             $columns2 = implode(", ", array_keys($values2));
             $placeholders2 = implode("', '", array_values($values2));
             $query2 = "INSERT INTO $table2 ($columns2) VALUES ('$placeholders2')";
