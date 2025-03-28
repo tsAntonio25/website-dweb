@@ -2,10 +2,11 @@ function redirectToLogin() {
     window.location.href = "login.php?message=" + encodeURIComponent("To rent, you must log in first.");
 }
 
-function goBack(fromRent2) {
-    if (fromRent2) {
-        window.location.href = 'carlisting.php';
+document.getElementById("editProfileButton").addEventListener("click", function() {
+    const editSection = document.getElementById("editProfileSection");
+    if (editSection.style.display === "none" || editSection.style.display === "") {
+        editSection.style.display = "block";
     } else {
-        history.go(-1);
+        editSection.style.display = "none";
     }
-}
+});

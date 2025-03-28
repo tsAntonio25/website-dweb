@@ -80,6 +80,29 @@
             echo "<script>alert('Error returning car. Please try again.'); window.location.href='myprofile.php';</script>";
         }
     }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['editProfile'])) {
+        $updates = [];
+        foreach ($_POST as $key => $value) {
+            if (in_array($key, ['FirstName', 'LastName', 'MiddleInitial', 'Address', 'Barangay', 'City', 'Province', 'ZipCode'])) {
+                $updates[] = "$key = '" . $con->real_escape_string($value) . "'";
+            }
+        }
+    
+        if (!empty($updates)) {
+            $update_query = "UPDATE userinfo SET " . implode(", ", $updates) . " WHERE UserID = ?";
+            $update_stmt = $con->prepare($update_query);
+            $update_stmt->bind_param("i", $userID);
+            
+            if ($update_stmt->execute()) {
+                echo "<script>alert('Profile updated successfully!'); window.location.href='myprofile.php';</script>";
+                exit;
+            } else {
+                echo "<h2>Error updating profile: " . $con->error . "</h2>";
+                exit;
+            }
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -108,9 +131,41 @@
             <div class="gallery-details">
                 <h2><?= htmlspecialchars($user['LastName'] . ', ' . $user['FirstName'] . ' ' . htmlspecialchars($user['MiddleInitial'])); ?></h2>
                 <p><?= htmlspecialchars($user['Barangay'] . ', ' . $user['City'] . ', ' . $user['Province'] . ', ' . $user['ZipCode']); ?></p>
+                <button id="editProfileButton" class="btn-secondary edit">Edit Profile</button>
             </div>
         </div>
     </section>
+
+    <div class="edit-section" id="editProfileSection">
+        <h2>Edit Profile</h2>
+        <form method="POST">
+            <label for="FirstName">First Name:</label>
+            <input type="text" name="FirstName" value="<?= htmlspecialchars($user['FirstName']); ?>" required>
+            <br>
+            <label for="LastName">Last Name:</label>
+            <input type="text" name="LastName" value="<?= htmlspecialchars($user['LastName']); ?>" required>
+            <br>
+            <label for="MiddleInitial">Middle Initial:</label>
+            <input type="text" name="MiddleInitial" value="<?= htmlspecialchars($user['MiddleInitial']); ?>">
+            <br>
+            <label for="Address">Address:</label>
+            <input type="text" name="Address" value="<?= htmlspecialchars($user['Address']); ?>" required>
+            <br>
+            <label for="Barangay">Barangay:</label>
+            <input type="text" name="Barangay" value="<?= htmlspecialchars($user['Barangay']); ?>" required>
+            <br>
+            <label for="City">City:</label>
+            <input type="text" name="City" value="<?= htmlspecialchars($user['City']); ?>" required>
+            <br>
+            <label for="Province">Province:</label>
+            <input type="text" name="Province" value="<?= htmlspecialchars($user['Province']); ?>" required>
+            <br>
+            <label for="ZipCode">Zip Code:</label>
+            <input type="text" name="ZipCode" value="<?= htmlspecialchars($user['ZipCode']); ?>" required>
+            <br>
+            <button type="submit" name="editProfile" class="action save">Save Changes</button>
+        </form>
+    </div>
 
     <section class = "history-section">
         <h1>History</h1>
@@ -177,5 +232,6 @@
     <footer>
         <?php include 'footer.php' ?>
     </footer>
+    <script src="js/redirectLogin.js"></script>
 </body>
 </html>

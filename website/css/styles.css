@@ -977,6 +977,65 @@ section.home button {
     float: left;
 }
 
+.edit {
+    width: 100px!important;
+    font-size: 11px;
+    padding: 0.5em!important;
+    border: #302C2C 1.5px solid;
+}
+
+.edit-section {
+    display: none;
+    padding: 1.5em; 
+    width: 80%;
+    margin: 1em auto;
+    background: #F0F0F0;
+    border-radius: 8px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.edit-section h2 {
+    margin-bottom: 1em;
+    color: var(--footerBg);
+}
+
+.edit-section label {
+    display: block; 
+    margin: 0.5em 0;
+    color: var(--footerBg);
+}
+
+.edit-section input {
+    width: 90%; 
+    padding: 0.5em; 
+    border: 1px solid var(--footerBg); 
+    border-radius: 5px;
+    font-size: 16px;
+    color: #1c1c1c8c;
+}
+
+.edit-section input:focus {
+    border-color: var(--button);
+    outline: none;
+}
+
+.edit-section button {
+    background-color: var(--button);
+    border: none;
+    padding: 1em;
+    width: 200px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 1em;
+    border-radius: 5px;
+    color: white;
+    transition: background 0.3s ease-in-out;
+}
+
+.edit-section button:hover {
+    background-color: #219150;
+}
+
 .history-section {
     margin: 4em;
 }
