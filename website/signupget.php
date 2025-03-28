@@ -78,7 +78,7 @@ if (isset($_POST['sign_up'])) {
 
         // secure query (user info)
         // prepare query
-        $stmt = $con->prepare("INSERT into userInfo (
+        $stmt = $con->prepare("INSERT into userinfo (
          userid,
          firstname,
          lastname,
