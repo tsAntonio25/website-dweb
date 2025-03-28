@@ -299,6 +299,13 @@ section.cta {
     font-weight: 600;
 }
 
+.button-cell {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .not:hover {
     background-color: var(--button)!important;
 }
@@ -1087,7 +1094,7 @@ section.home button {
 }
 
 .unavailable {
-    color: red!important;
+    color: #bd6262!important;
     clear: both; 
     font-style: italic;
     font-weight: bold;

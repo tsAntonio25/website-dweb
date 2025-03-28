@@ -42,6 +42,44 @@
     $historyStmt->bind_param("i", $userID);
     $historyStmt->execute();
     $historyResult = $historyStmt->get_result();
+
+    $returnQuery = "SELECT c.CarID, c.brand, c.model, tdates.ReturnDate, td.TransactionID
+                        FROM transactiondetails td
+                        JOIN car c ON td.CarID = c.CarID
+                        JOIN transactiondates tdates ON td.TransactionID = tdates.TransactionID
+                        JOIN carrentaldetail cr ON c.CarID = cr.CarID
+                        WHERE td.UserID = ? 
+                        AND cr.Availability = 'Rented'
+                        AND td.TransactionID IN (
+                            SELECT MAX(td_inner.TransactionID)
+                            FROM transactiondetails td_inner
+                            WHERE td_inner.UserID = td.UserID
+                            GROUP BY td_inner.CarID
+                        )
+                        ORDER BY tdates.ReturnDate ASC
+                    ";
+
+    $returnStmt = $con->prepare($returnQuery);
+    $returnStmt->bind_param("i", $userID);
+    $returnStmt->execute();
+    $returnResult = $returnStmt->get_result();
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['transactionID'])) {
+        $transactionID = $_POST['transactionID'];
+    
+        $updateQuery = "UPDATE carrentaldetail 
+                        SET Availability = 'Available' 
+                        WHERE CarID = (SELECT CarID FROM transactiondetails WHERE TransactionID = ?)";
+        
+        $updateStmt = $con->prepare($updateQuery);
+        $updateStmt->bind_param("i", $transactionID);
+        
+        if ($updateStmt->execute()) {
+            echo "<script>alert('Car returned successfully.'); window.location.href='myprofile.php';</script>";
+        } else {
+            echo "<script>alert('Error returning car. Please try again.'); window.location.href='myprofile.php';</script>";
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -91,13 +129,48 @@
                 <td><?= htmlspecialchars($history['PickupDate']); ?></td>
                 <td><?= htmlspecialchars($history['ReturnDate']); ?></td>
             </tr>
-    <?php endwhile; ?>
-<?php else: ?>
-    <tr>
-        <td colspan="4">No rentals found.</td> 
-    </tr>
-<?php endif; ?>
-                
+            <?php endwhile; ?>
+            <?php else: ?>
+            <tr>
+                <td colspan="4">No rentals found.</td> 
+            </tr>
+            <?php endif; ?>         
+        </table>
+    </section>
+
+    <section class = "history-section">
+        <h1>Return Rented Car</h1>
+        <table>
+            <tr>
+                <th>Car Name & Model</th>
+                <th>Return Date</th>
+                <th>Action</th>
+            </tr>
+            <?php if ($returnResult->num_rows > 0):
+                while ($return = $returnResult->fetch_assoc()):
+                    $returnDate = new DateTime($return['ReturnDate']);
+                    $currentDate = new DateTime();
+                    $isOverdue = $returnDate < $currentDate;
+                ?>
+                    <tr>
+                        <td><?= htmlspecialchars($return['brand'] . ' ' . $return['model']); ?></td>
+                        <td><?= htmlspecialchars($return['ReturnDate']); ?></td>
+                        <td class="button-cell">
+                            <?php if ($isOverdue): ?>
+                                <p class="unavailable">This car should have been returned by <?= htmlspecialchars($return['ReturnDate']); ?></p>
+                            <?php endif; ?>
+                            <form action="" method="POST">
+                                <input type="hidden" name="transactionID" value="<?= htmlspecialchars($return['TransactionID']); ?>">
+                                <input type="submit" value="Return Car" class="btn">
+                             </form>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="3">No rented cars found.</td> 
+                </tr>
+            <?php endif; ?>         
         </table>
     </section>
  
